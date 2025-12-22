@@ -1,0 +1,53 @@
+\documentclass{report}
+\usepackage{graphicx} % Required for inserting images
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[left=3cm,right=3cm,top=3.5cm,bottom=3.5cm]{geometry}
+
+\usepackage{tikz-cd}
+\usepackage{arydshln}
+\usepackage{tikz}
+
+\usepackage{biblatex}
+\addbibresource{biblio.bib}
+
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{pdfborder=0 0 0, 
+	    colorlinks=true,
+	    citecolor=blue,
+	    linkcolor=blue,
+	    urlcolor=blue,
+}
+
+\title{Mémoire - Théorie des modèles}
+\author{lg}
+\date{}
+
+\input{macros}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+\input{chapitres/intro}
+\input{chapitres/chap1}
+\input{chapitres/chap2}
+\input{chapitres/chap3}
+\input{chapitres/conclusion}
+
+\nocite{*}
+
+\printbibliography
+
+\end{document}
+
