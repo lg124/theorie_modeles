@@ -13,19 +13,19 @@ doute sur le vocabulaire utilisé. On suit de près le plan de \cite{Marker_2002
 dans lequel on pourra trouver plus de détails.
 
 \begin{defi}[Langage]
-Un langage $\cL$ est la donné de:
+Un \kw{langage} $\cL$ est la donné de:
     \begin{enumerate}[label= (\roman*)]
-        \item Un ensemble $\cF$ de fonctions et une arité $n_f \in \bNe$ pour chaque $f \in \cF$.
-        \item Un ensemble $\cR$ de relations et une arité $n_R \in \bNe$ pour
+        \item Un ensemble $\cF$ de \kw{fonctions} et une arité $n_f \in \bNe$ pour chaque $f \in \cF$.
+        \item Un ensemble $\cR$ de \kw{relations} et une arité $n_R \in \bNe$ pour
         chaque $R \in \cR$.
-        \item Un ensemble $\cC$ de constantes.
+        \item Un ensemble $\cC$ de \kw{constantes}.
     \end{enumerate}
-Les éléments de ces ensembles sont appelés les symboles de $\cL$.
+Les éléments de ces ensembles sont appelés les \kw{symboles} de $\cL$.
 \end{defi}
 
 \begin{defi}[Structure]
-Une $\cL$-structure $\cM$ est la donnée d'un ensemble non vide $M$ appelé
-domaine et des interprétations des symboles de $\cL$:
+Une \kw{$\cL$-structure} $\cM$ est la donnée d'un ensemble non vide $M$ appelé
+\kw{domaine} et des \kw{interprétations} des symboles de $\cL$:
     \begin{enumerate}[label= (\roman*)]
         \item Une fonction $f^{\cM}:M^{n_f} \mapsto M$ pour chaque $f\in \cF$.
         \item Une ensemble $R^{\cM} \subset M^{n_R}$ pour chaque $R \in \cR$.
@@ -33,9 +33,15 @@ domaine et des interprétations des symboles de $\cL$:
     \end{enumerate}
 \end{defi}
 
+\begin{nota}
+Dans la suite on notera, sauf mention contraire, les structures avec une lettre
+majuscule cursive ($\cM,\cN,\cA, \ldots$) et leur domaine avec la même lettre
+majuscule droite ($M,N,A, \ldots$).
+\end{nota}
+
 \begin{exem}[Langage des groupes]
 Si on étudie les groupes, on peut utiliser le langage $\cL_{gp} =
-\{\cdot,{}^{-1},e\}$ où $\cdot$ est une fonction binaire ${}^{-1}$ une fonction unaire et $e$ une constante.
+(\cdot,{}^{-1},e)$ où $\cdot$ est une fonction binaire ${}^{-1}$ une fonction unaire et $e$ une constante.
 Une $\cL_{gp}$-structure $\cG = (G,\cdot^{\cG},{}^{{-1}^{\cG}},e^{\cG})$ sera un ensemble $G$
 muni d'une opération binaire $\cdot^{\cG}$, d'une opération unaire
 ${}^{{-1}^{\cG}}$ et d'un élément distingué $e^{\cG}$. \\
@@ -48,13 +54,71 @@ sémantique à vérifier, par exemple $\cN = (\bN,+,s,0)$  avec $\cdot^{\cN} = +
 $\cL_{gp}$-structure même si ce n'est évidemment par un groupe.
 \end{exem}
 
-\begin{defi}[Extensions, Réductions]
-
-\end{defi}
-
 \begin{exem}[Langage des anneaux]
+Il arrive souvent qu'on ne parte pas de zéro mais qu'on rajoute ou enlève des
+symboles à un langage existant ou alors qu'on augmente ou diminue la taille du
+domaine. Considérons par exemple le langage des anneaux $\cL_{ring} =
+(+,\cdot, - , 0 ,1 ) $, alors le language $\cL_{agp} = (+,-,0 )$ des groupes
+notés additivement est un \kw{sous-langage} de $\cL_{ring}$ car chaque symbole de
+$\cL_{agp}$ et aussi un symbole de $\cL_{ring}$ avec la même arité. On dit aussi
+que $\cL_{ring}$ est une \kw{expansion} de $\cL_{agp}$. Si on considère la structure
+$\bR_{ring} = (\bR;+,\cdot, - , 0 ,1 )$, alors $\bR_{agp} = (\bR;+,-,0)$ est
+une réduction de $\bR_{ring}$. Si on change le domaine, on parle de
+sous-structure et d'extensions, ainsi $\bZ_{ring} = (\bZ;+,\cdot, - , 0 ,1 )$
+est une \kw{sous-structure} de $\bR_{ring}$ et $\bR_{ring}$ une \kw{extension} de
+$\bZ_{ring}$.
 
 \end{exem}
+
+\begin{defi}[Sous-langage, expansion]
+Soit $\cL,\cL^{+}$ deux langages. Si $\cL \subset \cL^{+}$, $\cL$ est
+un \kw{sous-langage} de $\cL^{+}$ et $\cL^{+}$ une \kw{expansion} de $\cL$.
+Soit $\cM, \cN$ deux $\cL$-structures de domaines $M$ et $N$ respectivement. Si
+\end{defi}
+
+\begin{defi}{Plongement, sous-structure, extension}
+    Soit $\cM, \cN$ des $\cL$-structures, un $\cL$-plongement $\eta : \cM \rightarrow \cN$ (ou simplement \kw{plongement})
+    est une fonction injective $\eta : M \rightarrow N$ qui préserve les
+    interprétations de tous les symboles de $\cL$, plus précisément : 
+    \begin{enumerate}[label= (\roman*)]
+        \item Pour chaque fonction $f$ de $\cL$ et tout $a_1, \ldots, a_{n_f} \in
+        M$, \[\eta(f^{\cM}(a_1,\ldots,a_{n_f})) =
+        f^{\cN}(\eta(a_1),\ldots,\eta(a_{n_f})) \]
+        \item Pour chaque relation $R$ de $\cL$ et tout $a_1, \ldots, a_{n_R}
+        \in M$, \[(a_1, \ldots, a_{n_R}) \in R^{\cM} \iff (\eta(a_1), \ldots,
+        \eta(a_{n_R})) \in R^{\cN} \]
+        \item Pour chaque constante $c$ de $\cL$, $ \eta(c^{\cM}) = c^{\cN}$
+    \end{enumerate} 
+
+    Si un plongement est bijectif, on parle d'\kw{isomorphisme}. On a alors un
+    plongement $\mu : \cN \rightarrow \cM$ tel que $\eta \circ \mu$ est
+    l'identité de $\cN$ et $\mu \circ \eta$
+    l'identité de $\cM$, on le note, comme d'habitude, $\eta^{-1}$.
+    Si de plus, $\cN = \cM$, on parle d'\kw{automorphisme}.
+
+    Si l'injection canonique est un plongement, $\cM$ est une \kw{sous-structure} de $\cN$ et $\cN$ une \kw{extension} de $\cM$.
+\end{defi}
+
+\begin{exem}
+    \begin{itemize}
+        \item Les inclusions évidentes $\bZ \inj{} \bQ \inj{} \bR \inj{} \bC$ fournissent les
+$\cL_{ring}$-plongements \[ \bZ_{ring} \inj{} \bQ_{ring} \inj{} \bR_{ring}
+\inj{} \bC_{ring} .\] 
+        \item Si $\eta : \bZ \rightarrow \bR$ est la fonction $\eta(x) = e^x$, alors $\eta$
+est un $\cL_{gp}$-plongement de $(\bZ,+,0)$ dans $(\bR,\cdot,1)$.
+        \item Les seuls automorphismes de $\bZ_{agp}$ sont l'identité et la
+        fonction $x \mapsto -x$. En effet, si $\eta : \bZ \rightarrow \bZ$ est
+        un plongement, alors $\eta(0) = 0$ et si $\eta(1) = n$, pour tout $m \in
+        \bNe$, on a \[ \eta(m)=\eta(\underbrace{1+\cdots+1}_\text{m}) =
+        \underbrace{\eta(1)+\cdots+\eta(1)}_\text{m} = mn .\] et de même,
+        $\eta(-n)=-\eta(n)=-mn$, pour avoir un inverse, $\eta$ doit être
+        surjective et donc on doit avoir $n = \pm 1$.
+    \end{itemize}
+
+\end{exem}
+
+
+
 
 \subsection{Formules et modèles}
 
