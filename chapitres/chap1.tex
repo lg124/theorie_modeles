@@ -79,7 +79,7 @@ Soit $\cM, \cN$ deux $\cL$-structures de domaines $M$ et $N$ respectivement. Si
 \begin{defi}{Plongement, sous-structure, extension}
     Soit $\cM, \cN$ des $\cL$-structures, un $\cL$-plongement $\eta : \cM \rightarrow \cN$ (ou simplement \kw{plongement})
     est une fonction injective $\eta : M \rightarrow N$ qui préserve les
-    interprétations de tous les symboles de $\cL$, plus précisément : 
+    interprétations de tous les symboles de $\cL$, plus précisément :
     \begin{enumerate}[label= (\roman*)]
         \item Pour chaque fonction $f$ de $\cL$ et tout $a_1, \ldots, a_{n_f} \in
         M$, \[\eta(f^{\cM}(a_1,\ldots,a_{n_f})) =
@@ -123,7 +123,7 @@ est un $\cL_{gp}$-plongement de $(\bZ,+,0)$ dans $(\bR,\cdot,1)$.
 En plus des symboles spécifiques à un langage définis plus haut (relations,
 fonctions et constantes), le langage formel utilise également des variables
 ($x,y,z,\ldots$) et des symboles logiques $=,\wedge, \neg,
-\exists, (,) $). En plus de ces symboles, un langage consiste aussi en
+\exists, (,) $. En plus de ces symboles, un langage consiste aussi en
 des chaines (listes) de ces symboles appelées termes et formules. Ces
 symboles, termes et formules seront ensuite interprétés dans des structures. On
 a vu précédemment comment les symboles étaient interprétés, on va maintenant
@@ -172,7 +172,7 @@ $t^{\cM} : M^n \rightarrow M$ comme suit:
 Soit $\eta : \cM \rightarrow \cN$ un plongement de $\cL$-structures, $t$ un terme et $\overline{x} = (x_1, \ldots,
 x_n)$ des variables incluant toutes celles qui apparaissent dans $t$ et
 $\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
-\eta(t^{\cM}(\overline{a})) = t^{\cN}(\eta(\overline{a}))\].
+\eta(t^{\cM}(\overline{a})) = t^{\cN}(\eta(\overline{a})).\]
 \end{prop}
 
 \begin{proof}
@@ -181,12 +181,12 @@ $\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
     On procède par récurrence sur la construction des termes. \\
     Si $t=c$ avec $c$ constante, on a 
     \begin{align*}
-    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition \ref{defi:terme},} \\
+    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition~\ref{defi:terme},} \\
     &= \eta(c^{\cN}) && \text{par définition d'un plongement,} \\
-    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par \ref{defi:terme}}
+    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par~\ref{defi:terme}}
     \end{align*}
-    Si $t=x_i$, alors en utilisant \ref{defi:terme} deux fois, on a \[
-    t^{\cM}(\overline{a}))  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
+    Si $t=x_i$, alors en utilisant~\ref{defi:terme} deux fois, on a \[
+    t^{\cM}(\overline{a})  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
     Si $t=f(t_1, \ldots, t_r)$, alors
     \begin{align*}
     \eta(t^{\cM}) &= \eta(f^{\cM}(t_1^{\cM}(\overline{a}),\ldots, t_r^{\cM}(\overline{a}))) \\
@@ -197,8 +197,43 @@ $\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
 
 \end{proof}
 
-\todo[inline]{def: formule, formule atomique, variable libre, phrase/énoncé, interprétation des formules,modèle }
-\todo[inline]{prop : formule et plongement, formule et isomorphisme}
+\begin{defi}[Formule]
+Comme pour les termes, on définie l'ensemble des \kw{formules} de $\cL$ de manière
+récursive:
+\begin{enumerate}[label= (\roman*)]
+    \item Si $t_1$ et $t_2$ sont des termes, alors $(t_1 = t_2)$ est une formule.
+    \item Si $t_1, \ldots, t_n$ sont des termes et $R$ est une relation d'arité
+    $n$, alors $R(t_1,\ldots,t_n)$ est une formule.
+    \item Si $\varphi$ et $\psi$ sont des formules, alors $\neg \phi$ et
+    $(\varphi \vee \psi)$ sont des formules.
+    \item Si $\varphi$ est une formule et $x$ est une variable, alors $\exists x [\varphi]$ est une formule.
+    \item Tout expression obtenue exclusivement par l'application d'un nombre
+    fini de fois des règles précédentes est une formule.
+
+    Les formules des points $(i)$ et $(ii)$ sont dites \kw{atomiques} car elles
+    ne contiennent pas de formules plus petites.
+\end{enumerate}
+\end{defi}
+
+\begin{exem}
+Les variables peuvent jouer deux rôles distincts dans les formules selon
+qu'elles soient \kw{quantifiées} ou non. Par exemple,
+la formule $ x < 1 + 1$ donne une information sur la variable $x$ alors que la
+formule $ \exists x [x \cdot x = 2]$ indique si un élément est une racine, dans
+la seconde formule, la variable est \kw{muette}, la formule à la même
+signification que $ \exists y [y \cdot x = 2]$
+\end{exem}
+
+\begin{defi}[Variable libre/liée, phrase]
+Une variable $x$ d'une formule est \kw{quantifiée} si elle suit immédiatement le
+symbole $\exists$, on dit alors que le quantificateur $\exists x$ \kw{lie} la
+variable. Une variable qui n'est pas liée est dite \kw{libre}. \\
+
+Une formule sans variable libre est appelée une \kw{phrase} ou un \kw{énoncé}.
+\end{defi}
+
+\todo[inline]{def: interprétation des formules,modèle }
+\todo[inline]{prop: formule et plongement, formule et isomorphisme}
 
 \begin{rema}[Abréviations]
 Notre langage formel est très restreint, on va donc utiliser des abréviations usuelles

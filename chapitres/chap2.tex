@@ -5,7 +5,7 @@ $\cL_{ring}$-structures donc plutôt que de noter $\cA_{ring}$ ou $\cA$, on
 désignera par la même lettre $A$ à la fois le modèle et le domaine. 
 
 Pour des raisons de convenances, on rappelle ici le langage et les axiomes pour
-les anneaux et les corps qui avaient été donné plus haut.
+les anneaux (unitaires et commutatifs) et les corps qui avaient été donné plus haut.
 
 \begin{defi}[Anneaux, corps]
 Le language naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
@@ -29,18 +29,18 @@ Ensuite les axiomes de monoïde commutatif (dans le language $\cL_{mon} = (\cdot
     \item $\forall x,y [x\cdot y = y\cdot x]$.
 \end{enumerate}
 
-et la distributivité
+enfin, la distributivité et l'\textit{unitarité}
 
 \begin{enumerate}[label=\textbf{R\arabic*},start=8]
     \item $\forall x,y,z [x \cdot (y+z) = (x \cdot y) + (x \cdot z)]$.
+    \item $0 \neq 1$,
 \end{enumerate}
 
 Ces huit phrases axiomatisent la théorie des anneaux commutatifs.
 
-On rajoute ensuite les axiomes 
+On rajoute ensuite l'axiome
 
 \begin{enumerate}[label=\textbf{F\arabic*}]
-    \item $0 \neq 1$,
     \item $\forall x [x = 0 \vee \exists y [x\cdot y = 1]]$.
 \end{enumerate}
 
@@ -52,12 +52,12 @@ pour obtenir les axiomes de la théorie des corps.
 
 On rappelle ensuite quelques définitions et propriétés qui nous seront utiles
 par la suite. On donne certaines démonstrations, on pourra trouver les autres
-dans n'importe quel livre d'algèbre, par exemple dans \cite{Berhuy_2025}.
+dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
 
 \begin{defi}[Anneau intègre]
 Un anneau est \kw{intègre} si il est sans diviseur de zéro, c'est à dire si
 c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \rightarrow (x=0
-\vee y=0) ] \].
+\vee y=0) ]. \]
 \end{defi}
 
 \begin{prop}
@@ -83,13 +83,119 @@ est noté $A(X_1, \ldots, X_n)$ et on l'appelle le corps des fractions
 rationnelles.
 \end{exem}
 
-\todo[inline]{defs: Morphisme d'anneau,noyau, idéal, idéal engendré,idéal
-propre, idéal premier, idéal principal, idéal maximal, caractéristique,
-sous-corps premier
-}
+\begin{defi}[Morphisme d'anneaux, noyau]
+Un \kw{(homo)morphisme d'anneaux} est une application $f$ entre deux anneaux $A$ et
+$B$ qui respecte la structure d'anneau, c'est à dire:
+\begin{enumerate}[label= (\roman*)]
+    \item $f(a+b) = f(a) + f(b), \forall a,b \in A$.
+    \item $f(a \cdot b) = f(a) \cdot f(b), \forall a,b \in A$.
+    \item $f(1_A) = 1_B$.
+\end{enumerate}
 
-\todo[inline]{props: noyau d'un morphisme est un idéal, quotient par un idéal, 
-R/I intègre ssi I premier, R/I corps ssi I maximal,}
+Le noyau de $f$ est l'ensemble $\ker(f) = \{ a \in A \mid f(a) = 0 \} = f^{-1}({0})$.
+\end{defi}
+
+\begin{defi}[Idéal]
+Un \kw{idéal} d'un anneau $A$ est un sous ensemble $I \subset A$ tel que:
+\begin{enumerate}[label= (\roman*)]
+    \item $I$ est un sous-groupe additif de $(A,+)$.
+    \item $\forall a \in A, \forall x \in I, ax \in I$.
+\end{enumerate}
+
+L'\kw{idéal engendré} par un ensemble $J \subset A$ est l'intersection de tous
+les idéaux de $A$ contenant $J$, on le note $(A)$
+
+Si un idéal $I$ est tel que $I \subsetneq A$, on dit que l'idéal est \kw{propre}.
+\end{defi}
+
+\begin{prop}
+Soit $f :A \rightarrow B$ un morphisme d'anneaux et $J$ un idéal de $B$, alors
+$I = f^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(f)$ est un idéal de $A$.
+\end{prop}
+
+\begin{proof}
+    On sait déjà que $I$ est une sous-groupe de $A$, ensuite pour $x\in I, a \in
+    A$, on a $f(x) \in J$ donc \[ f(ax) = f(a)f(x) \in J \] car $J$ est un idéal
+    et donc $ax \in J$ d'où le premier point.
+    Comme $\{0\}$ est clairement un idéal, on a le second point. 
+\end{proof}
+
+\begin{defi}[Idéal premier, principal, maximal]
+Un idéal $I$ d'une anneau $A$ est :
+\begin{itemize}
+    \item \kw{premier} si $\forall a,b \in A, (ab \in I \implies a \in I \vee b
+    \in I)$
+    \item \kw{principal} si $\exists a \in A, I = (a)$.
+    \item \kw{maximal} si $I \neq A$ et pour tout idéal $J$ tel que $I \subset J
+    \subset A$, on a $J = I \vee J = A$.
+\end{itemize}
+\end{defi}
+
+\begin{defi}[Caractéristique,Sous-corps premier]
+La \kw{caractéristique} d'un corps est, si il existe, le plus petit entier
+strictement positif tel que $\underbrace{1+\cdots+1}_\text{p} = 0$, et $0$
+sinon.
+Le \kw{sous-corps premier} d'un corps $F$ est l'intersection de tous ses
+sous-corps, c'est donc le sous-corps engendré par $1$.
+Si $F$ est de caractéristique $p>0$, alors son sous-corps premier est
+$\bZnZ{p}$, sinon c'est $\bQ$.
+\end{defi}
+
+\begin{prop}[Anneau quotient, propriété universelle]
+Soit $I$ un idéal d'un anneau $A$; on note $\pi : A \rightarrow A/I$ la
+projection canonique et soit $f : A \rightarrow B$ un morphisme d'anneau qui
+d'annule sur $I$, alors il existe un unique morphisme $\overline{f} : A/I
+\rightarrow B$ tel que le diagramme suivant commute.
+% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAjFVqMWbdgHoAkt14gM2PASIjy4+s1aIQAIW7iYUAObwioAGYAnCAFskZEDghJNIABYw6UNjgA7hA+fgjUOlL6ADrRaFgg1Ax0AEYwDAAK-GpCILZYZl44ijb2ToiebkgATElYYHogUHRwPv4Rko2xMAAeWHA4cACEAASxEDQwtgz1MMCx9LZoXlhciSDJaZnZgmz5hcU8pY7O1FWItRK6bAt0SyvGXEA
+\[
+\begin{tikzcd}
+A \arrow[d, "\pi"', two heads] \arrow[r, "f"]    & B \\
+A/I \arrow[ru, "\exists! \overline{f}"', dashed] &  
+\end{tikzcd}
+\]
+
+\end{prop}
+
+\begin{prop}
+Soit $I$ un idéal d'un anneau $A$, alors:
+\begin{enumerate}[label= (\roman*)]
+    \item $A/I$ est intègre si et seulement si $I$ est premier.
+    \item $A/I$ est un corps si et seulement si $I$ est maximal.
+\end{enumerate}
+En particulier, tout idéal maximal est premier.
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}[label= (\roman*)]
+    \item Supposons $A/I$ intègre, il n'est donc pas trivial donc $I \neq A$.
+    Soit $a,b \in A$ tels que $ab \in I$, on a $\overline{ab} =
+    \overline{a}\overline{b} = \overline{0}$ donc par intégrité, $\overline{a}=
+    \overline{0} \vee \overline{b} = \overline{0}$ donc $a \in I \vee b \in I$
+    donc $I$ est premier. Réciproquement, si $I$ est premier, $I \neq A$ donc
+    $A/I$ n'est pas trivial. Soient $\overline{a},\overline{b} \in A/I$ tels que
+    $\overline{a} \cdot \overline{b} = \overline{0}$, alors $\overline{ab} =
+    \overline{0}$ donc $ab \in I$ donc comme $I$ est premier, $a \in I \vee b
+    \in I$ c'est à dire $\overline{a} = 0 \vee \overline{b} = 0$ donc $A/I$ est intègre.
+    \item Supposons que $A/I$ est un corps, comme précédemment on a $I \neq A$.
+    Soit $J$ un idéal de $A$ tel que $I \subset J \subset A$, supposons $I \neq
+    J$ et montrons qu'alors $J=A$. Soit $a \in A \backslash I$, on a $\overline{a} \neq
+    \overline{0}$ donc il existe $\overline{b}\in A/I$ tel que
+    $\overline{a}\overline{b} = 1$ et donc $\overline{ab-1} = \overline{0}$ donc
+    $ab-1 \in I \subset J$ et donc $1 = (ab-1) + ab \in J$ ainsi, $J$ contient un
+    élément inversible et donc $J=A$ et par suite, $I$ est maximal.
+    Réciproquement, si $I$ est maximal, $I \neq A$ et $A/I$ est non trivial.
+    Soit $\overline{a} \in (A/I) \backslash \{0\}$, soit $J = (a,I)$ l'idéal
+    engendré par $a \not\in I$ et $I$. On a $I \subsetneq J$ donc comme $I$ est
+    maximal, $J=A$ et particulier, $1 \in J$ donc il existe $b\in A, x\in I$
+    tels que $ab+x = 1$ donc $\overline{a}\cdot\overline{b} = \overline{1}$ et
+    $\overline{a}$ est inversible, ainsi $A/I$ est un corps.
+\end{enumerate}
+
+Comme un corps est un anneau intègre, par ce qui précède, tout idéal maximal est premier.
+
+    
+\end{proof}
+
 
 \section{Extensions de corps}
 
