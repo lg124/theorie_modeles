@@ -118,17 +118,115 @@ est un $\cL_{gp}$-plongement de $(\bZ,+,0)$ dans $(\bR,\cdot,1)$.
 \end{exem}
 
 
-
-
 \subsection{Formules et modèles}
 
-\section{Théories et axiomes}
+En plus des symboles spécifiques à un langage définis plus haut (relations,
+fonctions et constantes), le langage formel utilise également des variables
+($x,y,z,\ldots$) et des symboles logiques $=,\wedge, \neg,
+\exists, (,) $). En plus de ces symboles, un langage consiste aussi en
+des chaines (listes) de ces symboles appelées termes et formules. Ces
+symboles, termes et formules seront ensuite interprétés dans des structures. On
+a vu précédemment comment les symboles étaient interprétés, on va maintenant
+s’intéresser aux termes et aux formules.
 
-\section{Ensembles définissables}
+\begin{exem}[Termes, formules]
+Les \kw{termes} sont des chaines de symboles qui font référence à des éléments ou à
+des fonctions de la structure.
+Reprenons par exemple le langage des anneaux $\cL_{ring}$, les chaines \[ 0;
+(1+1); -((1+1)+1); x\cdot(1+1); (x+y) \] sont des \kw{termes}.
+On peut les interpréter dans $\bR_{ring}$ respectivement comme les nombres
+$0;2;-3$ et les fonctions $x \mapsto 2x$ et $(x,y) \mapsto x+y$.
+Notons qu'un terme ne dépend que du langage mais son interprétation dépend de la structure.
+Les \kw{formules} sont des chaines qui donnent des informations sur la structure ou
+ses éléments. 
+Par exemple $(1+1) = 0$ est une \kw{formule} qui  est \kw{fausse} dans $\bR_{ring}$
+mais \kw{vraie} dans $\bZnZ{2}_{ring}$, $\exists x [(x\cdot x) = (1+1)]$ affirme que
+$2$ est un carré, elle est fausse dans $\bZ_{ring}$ mais vraie dans $\bR_{ring}$.
+\end{exem}
+
+\begin{defi}[Terme]\label{defi:terme}
+L'ensemble des termes d'un langage $\cL$ est défini de la manière récursive
+suivante:
+\begin{enumerate}[label= (\roman*)]
+    \item Chaque variable est un terme.
+    \item Chaque constante de $\cL$ est un terme.
+    \item Si $f$ est une fonction de $\cL$ d'arité $n$, et $t_1, \ldots, t_n$
+    des termes, alors $f(t_1,\ldots, t_n)$ est un terme.
+    \item Tout expression obtenue exclusivement par l'application d'un nombre
+    fini de fois des règles précédentes est un terme.
+\end{enumerate}
+
+Si $\cM$ est une $\cL$-structure, $t$ un terme et $\overline{x} = (x_1, \ldots,
+x_n)$ des variables incluant toutes celles qui apparaissent dans $t$. La
+définition récursive des termes permet la définition récursive d'une fonction
+$t^{\cM} : M^n \rightarrow M$ comme suit:
+\begin{enumerate}[label= (\roman*)]
+    \item Si $t=c$ avec $c$ une constante, $t^{\cM}(\overline{x}) = c^{\cM}$.
+    \item Si $t=x_i$, alors $t^{\cM}(\overline{x}) = x_i$.
+    \item Si $t=f(t_1, \ldots, t_r)$, alors $t^{\cM}(\overline{x}) =
+    f^{\cM}(t_1^{\cM}(\overline{x}),\ldots, t_r^{\cM}(\overline{x}))$
+\end{enumerate}
+\end{defi}
+
+\begin{prop}\label{prop:terme_plongement}
+Soit $\eta : \cM \rightarrow \cN$ un plongement de $\cL$-structures, $t$ un terme et $\overline{x} = (x_1, \ldots,
+x_n)$ des variables incluant toutes celles qui apparaissent dans $t$ et
+$\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
+\eta(t^{\cM}(\overline{a})) = t^{\cN}(\eta(\overline{a}))\].
+\end{prop}
+
+\begin{proof}
+    (On détaille cette preuve évidente car le même principe de preuve va apparaître
+    à plusieurs reprises.) \\
+    On procède par récurrence sur la construction des termes. \\
+    Si $t=c$ avec $c$ constante, on a 
+    \begin{align*}
+    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition \ref{defi:terme},} \\
+    &= \eta(c^{\cN}) && \text{par définition d'un plongement,} \\
+    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par \ref{defi:terme}}
+    \end{align*}
+    Si $t=x_i$, alors en utilisant \ref{defi:terme} deux fois, on a \[
+    t^{\cM}(\overline{a}))  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
+    Si $t=f(t_1, \ldots, t_r)$, alors
+    \begin{align*}
+    \eta(t^{\cM}) &= \eta(f^{\cM}(t_1^{\cM}(\overline{a}),\ldots, t_r^{\cM}(\overline{a}))) \\
+    & = f^{\cN}(\eta(t_1^{\cM}(\overline{a}),\ldots,t_r^{\cM}(\overline{a}))) && \text{par définition d'un plongement,} \\
+    & = f^{\cN}(t_1^{\cN}(\eta(\overline{a})),\ldots, t_r^{\cN}(\eta(\overline{a}))) && \text{par hypothèse de récurrence,} \\
+    & = t^{\cN}(\eta(\overline{a})).
+    \end{align*}
+
+\end{proof}
+
+\todo[inline]{def: formule, formule atomique, variable libre, phrase/énoncé, interprétation des formules,modèle }
+\todo[inline]{prop : formule et plongement, formule et isomorphisme}
+
+\begin{rema}[Abréviations]
+Notre langage formel est très restreint, on va donc utiliser des abréviations usuelles
+pour rendre les choses plus lisibles, par exemple on va écrire:
+
+\begin{alignat*}{2}
+\text{différent: } &(t_1 \neq t_2) && \text{ pour } \neg(t_1 = t_2), \\
+\text{ou: } &(\varphi \vee \psi) && \text{ pour } \neg(\neg\varphi \wedge \neg\psi), \\
+\text{implication: } &(\varphi \rightarrow \psi) && \text{ pour } (\neg\varphi \vee \psi), \\
+\text{équivalence: } &(\varphi \leftrightarrow \psi) && \text{ pour } ((\varphi \rightarrow \psi) \wedge (\psi \rightarrow \varphi)), \\
+\text{pour tout: } &\forall x[\varphi] && \text{ pour } \neg{\exists}x[\neg\varphi].
+\end{alignat*}
+
+On aurait bien sûr pu ajouter ces symboles dans le language mais les preuves
+auraient aussi été allongées $\ldots$ on les utilise donc comme abréviations.
+
+\end{rema}
+
+
+\section{Ensembles définissables,quantificateurs}
+
+\section{Théories et axiomes}
 
 \section{Satisfaisabilité et consistence}
 
 \section{Le théorème de compacité}
+
+
 
 
 
