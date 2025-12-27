@@ -7,7 +7,7 @@ désignera par la même lettre $A$ à la fois le modèle et le domaine.
 Pour des raisons de convenances, on rappelle ici le langage et les axiomes pour
 les anneaux (unitaires et commutatifs) et les corps qui avaient été donné plus haut.
 
-\begin{defi}[Anneaux, corps]
+\begin{defi}[Anneaux, corps] \label{defi:ring}
 Le language naturel des anneaux est $\cL_{ring} = (+,\cdot,-,0,1)$.
 
 On a les axiomes des groupes abéliens (dans le language des groupes additifs
@@ -324,6 +324,64 @@ Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près.
 \todo[inline]{Preuve Steinitz}
 \end{proof}
 
-\section{Catégoricité, complétude}
+\begin{defi}[Indépendance algébrique, base de transcendance]
+Soit $L/K$ une extension de corps, un sous-ensemble $E \subset L$ est
+\kw{algébriquement indépendant} sur $K$ si pour tout $n \in \bNe$ et $P \in
+K[X_1, \ldots, X_n]$ non nul, si $e_1, \ldots, e_n \in E$ sont distincts, alors
+$P(e_1,\ldots, e_n) \neq 0$.
+Si $E$ est algébriquement indépendant sur $K$ et que $L$ est une extension algébrique de
+$K(E)$, alors on dit que $E$ est une base de transcendance de $L/K$.
+\end{defi}
+
+\begin{prop}
+Toute extension de corps admet une base de transcendance et toutes les bases de
+transcendance d'une extension ont un même cardinal appelé le \kw{degré de
+transcendance} de l'extension.
+\end{prop}
+
+\begin{prop}\label{prop:alg_clos_isom}
+Deux corps algébriquement clos sont isomorphes si et seulement si ils ont même
+caractéristique et même degré de transcendance 
+\end{prop}
+
+\section{???}
+
+On a maintenant tous les outils algébriques nécessaires et pouvons revenir à la
+théorie des modèles. On va définir la théorie des cors algébriquement clos (ACF).
+
+\begin{defi}[Théorie des corps algébriquement clos]
+    On se place dans le language des anneaux $\cL_{ring}$ avec les axiomes des
+    corps \ref{defi:ring}.\\
+    On axiomatise les corps algébriquement clos en rajoutant, pour
+    chaque $n \in \bNe$, l'axiome \[ \forall a_0, \ldots, a_{n-1}, \exists x
+    [x^n+a_{n-1}\cdot x^{n-1} + \cdots + a_1 \cdot x + a_0 = 0].\]
+
+    On note $ACF$ l'ensemble des axiomes des corps algébriquement clos. \\
+
+    On axiomatise la caractéristique $p \in \bP$ en notant $\chi_p : \underbrace{1 +
+    \cdots 1 = 0}_\text{p} $.
+
+    On pose alors \[ \ACF_p := \Th(ACF \cup \chi_p) \] la théorie des corps
+    algébriquement clos de caractéristique $p$ et \[ \ACF_0 := \Th(ACF \cup \{\neg
+    \chi_p \mid p \in \bP\}) \] la théorie des corps algébriquement clos de
+    caractéristique nulle. On notera $\ACF_n$ la théorie des corps
+    algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
+\end{defi}
+
+\begin{prop}[Elimination des quantificateurs]
+    La théorie $\ACF_n$ admet l'élimination des quantificateurs
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{prop}[Complétude]
+    La théorie $\ACF_n$ est complète.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}
 
 \section{Ensembles définissables, variétés}
