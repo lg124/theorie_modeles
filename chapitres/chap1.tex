@@ -71,9 +71,11 @@ $\bZ_{ring}$.
 \end{exem}
 
 \begin{defi}[Sous-langage, expansion]
-Soit $\cL,\cL^{+}$ deux langages. Si $\cL \subset \cL^{+}$, $\cL$ est
-un \kw{sous-langage} de $\cL^{+}$ et $\cL^{+}$ une \kw{expansion} de $\cL$.
-Soit $\cM, \cN$ deux $\cL$-structures de domaines $M$ et $N$ respectivement. Si
+Soit $\cL,\cL'$ deux langages. Si $\cL \subset \cL'$, on dit que $\cL$ est
+un \kw{sous-langage} de $\cL'$ et $\cL'$ une \kw{expansion} de $\cL$.
+Soit $\cM'$ une $\mathcal{L'}$-structure, en restreignant l’interprétation donnée par $\mathcal{M'}$ au langage $\mathcal{L}$,
+on obtient une $\mathcal{L}$-structure notée $\mathcal{M}'\upharpoonright_{\mathcal{L}}$. On dit que $\mathcal{M}'\upharpoonright_{\mathcal{L}}$
+est une réduction de $\mathcal{M}'$, et $\mathcal{M}'$ une expansion de $\mathcal{M}'\upharpoonright_{\mathcal{L}}$.
 \end{defi}
 
 \begin{defi}{Plongement, sous-structure, extension}
@@ -255,7 +257,18 @@ auraient aussi été allongées $\ldots$ on les utilise donc comme abréviations
 
 
 \section{Ensembles définissables,quantificateurs}
-
+\begin{defi}[Ensembles définissables]
+Soit $\mathcal{M} = (M,\dots)$ une $\mathcal{L}$-structure. On dit qu'un 
+sous-ensemble $X \subseteq M^n$ est \textbf{définissable} s'il existe une 
+$\mathcal{L}$-formule $\phi(v_1,\dots,v_n,w_1,\dots,w_m)$ et $\overline{b}
+\in M^m$ tels que $X= \{ \overline{a} \in M^n \mid \mathcal{M} \models 
+\phi(\overline{a},\overline{b}) \}$. On dit que 
+$\phi(\overline{v},\overline{b})$ \textbf{définit} $X$. Soit $A \subseteq 
+M$, on dit que $X$ est \textbf{$A$-définissable}, ou \textbf{définissable 
+sur $A$}, si le paramètre choisi peut être pris dans $A$, c'est-à-dire s'il
+existe une formule $\phi(\overline{v},w_1,\dots,w_l)$ et $\overline{b} \in 
+A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
+\end{defi}
 \section{Théories et axiomes}
 
 \section{Satisfaisabilité et consistence}
