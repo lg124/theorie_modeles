@@ -10,14 +10,14 @@ algébriquement clos dont l'idée est la même.
 
 On va avoir besoin du lemme suivant: 
 
-\begin{lemm} \label{lem-phrase-corps}
+\begin{lemm} \label{lemm-phrase-corps}
 Pour tout couple $(n,d)$ d'entiers positifs, il existe une phrase
 $\varphi_{n,d}$ dans le language des anneaux qui exprime que dans un corps $K$,
 toute famille $(f_1, \ldots, f_n)$ de polynômes en $n$ variables de degré
 inférieur ou égal à $d$, si l'application associée est injective, alors elle est surjective.
 \end{lemm}
 
-\begin{theo}[Ax-Grothendieck]\label{th-Ax-Grothendieck}
+\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
 Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
 injective, alors elle est bijective. 
 \end{theo}
@@ -25,7 +25,7 @@ injective, alors elle est bijective.
 \begin{proof}
 D'après le \cref{lem-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
 montrer le résultat
-pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{th-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
+pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{theo-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
 un sous-corps fini de $\Fpalg$. Soit $f = (f_1, \ldots, f_n) : \Fpalg^n
 \rightarrow \Fpalg^n$ ,  une application polynomiale injective. Supposons qu'il
 existe $y \in \Fpalg^n$ qui n'est pas dans l'image de $f$. Soit $K$ le sous-corps
@@ -35,19 +35,19 @@ qui est injective et non surjective, ce qui est absurde car $K$ est fini.
 \end{proof}
 
 
-\begin{lemm} \label{lem-phrase_variete}
+\begin{lemm} \label{lemm-phrase-variete}
 Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
 Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
 \end{lemm}
 
-\begin{theo}[Ax-Grothendieck]\label{th-Ax-Grothendieck-variete}
+\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
 Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
 : V \rightarrow V$ une application polynomiale. Si $f$ est
 injective, alors elle est bijective. 
 \end{theo}
 
 \begin{proof}
-La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{th-Ax-Grothendieck}).
+La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{theo-Ax-Grothendieck}).
 Par le lemme et par principe de Lefschetz, il suffit de démontrer le résultat pour $K=\Fpalg$.
 
 La seule adaptation nécessaire concerne la construction du sous-corps fini. Si
@@ -65,4 +65,64 @@ surjective, ce qui est exclu.
 
 
 \section{Nullstellensatz}
+
+\todo[inline]{blabla}
+
+La définition d'un corps algébriquement clos demande que chaque polynôme non
+constant admette une racine dans le corps, mais grâce à l'élimination des
+quantificateurs (\cref{prop-acf-elim}), on peut étendre ce résultat à des
+systèmes d'équations polynomiales en plusieurs variables de la manière suivante.
+
+
+\begin{theo}\label{theo-solution-systeme}
+Soit $K$ un corps algébriquement clos, si un système \kw{fini} d'équations
+polynomiales (et/ou de négations d'équations polynomiales) à
+coefficients dans $K$ admet une solution dans une extension $L$ de $K$, alors il
+admet une solution dans $K$.
+\end{theo}
+
+\begin{proof}
+Soit $\overline{c}$ un n-uplet qui contient les coordonnés de tous les
+coefficients des polynômes du système, on peut coder le système avec une formule
+$\varphi(\overline{x},\overline{c})$ où $\varphi(\overline{x},\overline{y})$ sera
+de la forme \[  (\bigwedge_{i=1}^{p} f_i(\overline{x},\overline{y})  =0 ) \wedge
+(\bigwedge_{i=1}^{q} g_i(\overline{x},\overline{y})  \neq 0 )  \] où les
+$f_i,g_i$ sont des polynômes de $\bZ[\overline{x},\overline{y}]$. Supposons que
+$L \models \exists \overline{x} \varphi(\overline{x},\overline{y})$. Alors,
+d'après la \cref{prop-sous-struct-existance}, alors $\overline{L} models
+\exists \overline{x} \varphi(\overline{x},\overline{y})$. Donc, comme $\ACF_n$
+admet l'élimination des quantificateur (\cref{prop-acf-elim}), il existe une
+formule $\theta(\overline{y})$ sans quantificateurs telle que $\ACF_n \vdash
+\forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{y})
+\leftrightarrow \theta(\overline{y}) ]$. Ainsi on a $\ACF_n \models
+\theta(\overline{c})$ et comme $\theta$ est sans quantificateur et $K$ une
+sous-structure de $\overline{L}$ d'après le \cref{lemm-sous-struct-sant-quant}
+on a $K \models \theta{\overline{c}}$ et finalement, comme $K \models \ACF_n$,
+on a $K \models \exists \overline{x} \varphi(\overline{x},\overline{y})$.
+\end{proof} 
+
+Le théorème précédent affirme que pour savoir si un système d'équations admet
+des solutions, il n'y a pas besoin de chercher plus loin que dans un corps
+algébriquement clos, il ne donne cependant pas d'indication sur l'existence ou
+non de solutions. Pour cela, on a besoin du Nullstelensatz.
+
+\begin{theo}[Nullstelensatz faible]
+Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
+Alors $I$ est un idéal propre si et seulement si $V(I) \neq \emptyset$.
+\end{theo}
+
+\begin{proof}
+Le sens réciproque est clair, $I$ est propre si et seulement si $1 \not\in I$,
+comme $1$ ne s'annule pas, si $1 \in I, V(I) = \emptyset$. \\
+Supposons maintenant que $I$ est un idéal propre. Par le théorème de Krull
+(\cref{theo-Krull}), $I$ est contenu dans un idéal maximal $J$. Posons $L =
+K[\overline{x}]/J$, comme $J$ est maximal, c'est une extension de corps de $K$.
+Noyons $\overline{y} = \pi(\overline{x})$ la classe de $\overline{x}$, pour tout
+$f\in J$, et en particulier pour $f \in I$, on a $f(\overline{y}) = 0$.
+Ensuite, par le théorème de la base de Hilbert (\cref{theo-base-Hilbert}),
+l'idéal $I$ est engendré par un nombre fini de polynômes $f_1, \ldots, f_k$ et
+donc $L \models \exists \overline{x} \bigwedge_{i=1}^{k} f_i(\overline{x}) = 0$
+et donc par le \cref{theo-solution-systeme}, $K \models \exists \overline{x}
+\bigwedge_{i=1}^{k} f_i(\overline{x}) = 0$ et donc $V(I) \neq \emptyset$.
+\end{proof}
 

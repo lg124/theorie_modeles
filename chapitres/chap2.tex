@@ -160,7 +160,7 @@ A/I \arrow[ru, "\exists! \overline{f}"', dashed] &
 
 \end{prop}
 
-\begin{prop}
+\begin{prop}\label{prop-quotient-ideal-maximal}
 Soit $I$ un idéal d'un anneau $A$, alors:
 \begin{enumerate}[label= (\roman*)]
     \item $A/I$ est intègre si et seulement si $I$ est premier.
@@ -199,6 +199,11 @@ Comme un corps est un anneau intègre, par ce qui précède, tout idéal maximal
 
     
 \end{proof}
+
+\begin{theo}[Théorème de Krull]\label{theo-Krull}
+Soit $I$ un idéal propre d'un anneau commutatif $A$, alors il existe un idéal
+maximal de $A$ contenant $I$.
+\end{theo}
 
 
 \section{Extensions de corps}
@@ -280,7 +285,7 @@ les extensions finies, il suffit de classifier les idéaux premiers de
 $K[X_1,\ldots,X_n]$ pour tout $n \in \bNe$.
 \end{prop}
 
-\begin{theo}[Base de Hilbert]
+\begin{theo}[Base de Hilbert]\label{theo-base-Hilbert}
 Soit $K$ un corps et $n\in \bNe$ alors tout idéal de $K[X_1, \ldots, X_n ]$ est
 engendré par un nombre fini de polynômes.
 \end{theo}
@@ -347,7 +352,7 @@ Deux corps algébriquement clos sont isomorphes si et seulement si ils ont même
 caractéristique et même degré de transcendance 
 \end{prop}
 
-\begin{theo}[Théorème de structure des corps finis]\label{th-structure-corps-fini}
+\begin{theo}[Théorème de structure des corps finis]\label{theo-structure-corps-fini}
 Soit $p \in \bP, k \in \bNe$. 
 L'ensemble des racines du polynôme $P(X) = X^{p^k} - X$ dans $\Fpalg$
 est un sous-corps de $\Fpalg$ noté $\bF_{p^k}$ et c'est l'unique corps
@@ -380,9 +385,9 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
     algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
 \end{defi}
 
-\begin{prop}[Elimination des quantificateurs]\label{prop-acf-elim}
+\begin{theo}[Elimination des quantificateurs]\label{prop-acf-elim}
     La théorie $\ACF_n$ admet l'élimination des quantificateurs
-\end{prop}
+\end{theo}
 
 \begin{proof}
 
@@ -422,7 +427,7 @@ On montre que $1 \implies 2 \implies 3 \implies 1$ puis $3 \implies
 Il est clair que $1 \implies 2$ et  $3 \implies 1$, $2 \implies 3$
 est une conséquence immédiate de la complétude (\cref{prop-acf-complet}).\\
 $(3 \implies 4)$: On a $\ACF_0 \models \varphi$ donc par compacité
-(\cref{th-compacite}), il existe $\Sigma \subset \ACF_0$ fini tel que $\Sigma
+(\cref{theo-compacite}), il existe $\Sigma \subset \ACF_0$ fini tel que $\Sigma
 \models \varphi$. Comme $\Sigma$ est fini, l'ensemble $E= \{ p \in \bP \mid \neg
 \chi_p \in \Sigma$ aussi. En posant $M = \max(E)$ (et $M=0$ si $E = \emptyset)$,
 pour $p > M$, on a $ \ACF_p \models \Sigma$ et donc $\ACF_p \models \varphi$. \\
@@ -436,3 +441,5 @@ suffisamment grand ce qui contredit $4$ d'où le résultat.
 \end{proof}
 
 \section{Ensembles définissables, variétés}
+
+
