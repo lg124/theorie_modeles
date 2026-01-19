@@ -54,7 +54,8 @@ pour obtenir les axiomes de la théorie des corps.
 \todo[inline]{A la fin, supprimer les résultats qu'on a au final pas utilisé ...}
 
 On rappelle ensuite quelques définitions et propriétés qui nous seront utiles
-par la suite. On donne certaines démonstrations, on pourra trouver les autres
+par la suite. On donne certaines démonstrations, et on essaye d'utiliser la
+théorie des modèles quand cela semble raisonnable. On pourra trouver les autres démonstrations
 dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
 
 \begin{defi}[Anneau intègre]
@@ -215,15 +216,12 @@ Il est clair que $\sqrt{I}$ est un idéal de $A$, et qu'on a toujours $I \subset
 \sqrt{I}$. Si on a l'égalité $I = V(I)$, on dit que l'idéal $I$ est \kw{radiciel}.
 \end{defi}
 
-
-
-
 \section{Extensions de corps}
 
 \todo[inline]{ajouter des exemples?}
 
 Les corps algébriquement clos se manifestent comme des extensions de corps, on a
-donc besoin de quelques résultats les concernant. On comment par les extensions
+donc besoin de quelques résultats les concernant. On commence par les extensions
 simples puis on passe aux extensions finies.
 
 \begin{defi}[Extension de corps]
@@ -259,16 +257,44 @@ annulateur} de $V$ est l'ensemble \[ I(V) := \{ f \in K[x] \mid f(V) =
 \end{defi}  
 
 
-\begin{prop}
-Soit $K$ un corps et $I$ un idéal de $K[X]$, alors $I$ est engendré par un
-unique polynôme unitaire $P$ et $I$ est premier si et seulement si
-$P$ est irréductible.
+\begin{prop}[\protect{$K[X]$} est principal]\label{prop-KX-principal}
+    Soit $K$ un corps, alors $K[X]$ est principal et pour tout idéal $I = (P)$ non nul, les assertions suivantes sont équivalentes:
+    \begin{enumerate}[label= (\roman*)]
+        \item $P$ est irréductible.
+        \item $I$ est un idéal premier.
+        \item $I$ est un idéal maximal.
+    \end{enumerate}
 \end{prop}
 
 \begin{defi}[Polynome minimal]
 Soit $K(a)/K$ une extension simple, un polynôme $P$ qui engendre $I(a)$ est
 appelé \kw{polynome minimal} de $a$.
 \end{defi}
+
+\begin{theo}[Existence d'un corps de rupture]\label{theo-corps-rupture}
+    Soit $K$ un corps et $P \in K[X]$ un polynôme non constant.
+    Il existe une extension $L$ de $K$ dans laquelle $P$ admet au moins une racine.
+\end{theo}
+
+\begin{proof}
+    Supposons d'abord que $P$ est irréductible dans $K[X]$.
+    Comme $K[X]$ est principal et que $P$ est irréductible, l'idéal $(P)$ est maximal (\cref{prop-KX-principal}).
+    
+    Donc d'après la \cref{prop-quotient-ideal-maximal} l'anneau quotient $L = K[X]/(P)$ est un corps.
+    
+    Montrons que $L$ est l'extension recherchée:
+    \begin{enumerate}
+        \item \textbf{$L$ contient $K$ :} Considérons la projection canonique $\pi : K[X] \to L$. La restriction de $\pi$ aux polynômes constants, $\phi : K \to L$ définie par $\phi(a) = \pi(a)$, est un morphisme d'anneaux. Comme $K$ est un corps, $\phi$ est injectif. On peut donc identifier $K$ à son image $\phi(K) \subset L$.
+        \item \textbf{$P$ a une racine dans $L$ :} Soit $\alpha = \pi(X)$ la classe de l'indéterminée $X$ dans $L$. Évaluons le polynôme $P = \sum a_i X^i$ en $\alpha$ :
+        \[ P(\alpha) = \sum_{i} a_i (\pi(X))^i = \sum_{i} \pi(a_i X^i) = \pi\left( \sum_{i} a_i X^i \right) = \pi(P) \]
+        Or, par construction, $P \in (P)$, donc $\pi(P) = 0$ dans $L$.
+        Ainsi, $P(\alpha) = 0$ et $\alpha$ est une racine de $P$ dans $L$.
+    \end{enumerate}
+    
+    Et si $P$ n'est pas irréductible, il suffit d'appliquer ce qui
+    précède sur un de ses facteurs irréductibles.
+\end{proof}
+
 
 \begin{prop}[Classification des extensions simples]
 Soit $K(a)/K$ une extension simple. De ce qui précède, on déduit que l'extension
@@ -315,6 +341,7 @@ Si $L/K$ est une extension algébrique finie, alors c'est une extension simple.
 Si $L/K$ et  $K/F$ sont des extensions algébriques, alors $L/F$ également.
 \end{lemm}
 
+
 \section{Clôture algébrique d'un corps}
 
 \begin{defi}[Corps algébriquement clos,clôture algébrique]
@@ -323,15 +350,71 @@ $K[X]$ admet une racine dans $K$. On dit que $L$ est une \kw{clôture algébriqu
 de $K$ si $L/K$ est une extension algébrique et $L$ est algébriquement clos.
 \end{defi}
 
-\begin{prop}
-Pour tout corps $K$, il existe une extension $L/K$ telle que $L$ soit
-algébriquement clos.
+On va avoir besoin des lemmes suivants:
+
+\begin{lemm}\label{lemm-extension-racine}
+    Pour tout corps $K$, il existe une extension $K^{*}/K$ telle que tout polynôme non constant $P \in K[X]$ admette au moins une racine dans $K^*$.
+\end{lemm}
+
+\begin{proof}
+    Considérons le langage des anneaux auquel on ajoute les constantes de $K$ et
+   une constante pour chaque polynôme unitaire non constant $P \in K[X]$, \[ \cL_K =
+   \cL_{ring} \cup \{c_x \mid x \in K\}  \cup \{c_P \mid P\in K[X] \text{ unitaire
+   non constant}\}\]
+
+    Soit $T$ la théorie constituée de:
+    \begin{enumerate}
+        \item $\Diag(K)$ (pour assurer que le modèle sera une extension de $K$).
+        \item L'axiome $P(c_P) = 0$ pour chaque $P \in K[X]$.
+    \end{enumerate}
+    
+    Soit $T_0$ un sous-ensemble fini de $T$. Il ne fait intervenir qu'un nombre
+    fini de polynômes $P_1, \ldots , P_m$. D'après le \cref{theo-corps-rupture} il
+    existe une extension finie $L$ de $K$ contenant une racine $r_i$ pour chaque
+    $P_i$.
+    En interprétant chaque constante  $c_{P_i}$ par la racine $r_i$,  on a $L
+    \models T_0$.
+    
+    Ainsi, tout sous-ensemble fini de $T$ est satisfiable, par le théorème
+    de compacité (\cref{theo-compacite}) la théorie $T$ est satisfiable. Soit
+    $K^{*} \models T$, comme $K^{*} \models \Diag(K)$, $K \subset K^{*}$ et par
+    construction, tout polynôme non constant de $K[X]$ y admet une racine d'où
+    le résultat.
+\end{proof}
+
+\begin{lemm}[Union d'une chaîne de corps]\label{lemm-chaine-corps}
+    Soit $(K_n)_{n \in \mathbb{N}}$ une suite de corps telle que pour tout $n$, $K_n$ est un sous-corps de $K_{n+1}$ (on parle d'une \textbf{chaîne croissante}).
+    Alors l'ensemble $K_\infty = \bigcup_{n \in \mathbb{N}} K_n$, muni des opérations induites, est un corps.
+\end{lemm}
+
+\begin{proof}
+    Soient $x, y \in K_\infty$. Par définition de la réunion, il existe des indices $i$ et $j$ tels que $x \in K_i$ et $y \in K_j$. Posons $N = \max(i, j)$. Par croissance de la chaîne, $K_i \subseteq K_N$ et $K_j \subseteq K_N$, donc $x$ et $y$ appartiennent tous deux au corps $K_N$.
+    
+    Les opérations $x+y$, $x \cdot y$, $-x$ et $x^{-1}$ (si $x \ne 0$) sont donc bien définies dans $K_N$ et par suite dans $K_\infty$. Les axiomes des corps (associativité, distributivité, etc.) étant vérifiés dans chaque $K_n$, ils le sont dans l'union.
+\end{proof}
+
+On peut maintenant montrer le résultat suivant:
+
+\begin{prop}\label{prop-existence-cloture-algebrique}
+Tout corps admet une clôture algébrique.
 \end{prop}
 
 \begin{proof}
-\todo[inline]{Preuve existence L/K algébriquement clos (par théorie des modèles)}
+    Soit $K$ un corps,
+    Définissons par récurrence une chaîne de corps $(K_n)_{n \in \mathbb{N}}$ :
+    \begin{itemize}
+        \item $K_0 = K$.
+        \item $K_{n+1}$ est l'extension de $K_n$ obtenue par le \cref{lemm-extension-racine} (telle que tout polynôme de $K_n[X]$ ait une racine dans $K_{n+1}$).
+    \end{itemize}
+    
+    Soit $L = \bigcup_{n \in \mathbb{N}} K_n$. D'après le \cref{lemm-chaine-corps}, $L$ est un corps.
+    Ensuite, soit $P \in L[X]$ un polynôme non constant. 
+    Comme $P$ possède un nombre fini de coefficients, il existe un rang $n$ tel que tous les coefficients de $P$ appartiennent à $K_n$, c'est-à-dire $P \in K_n[X]$.
+    Par construction, $P$ admet une racine dans $K_{n+1}$ et donc dans $L$ donc
+    $L$ est algébriquement clos.
+    En posant $\overline{K}=  \{ x \in L \mid x \text{ algébrique sur} K \}$, il
+    est immédiat que $\overline{K}$ que est une clôture algébrique de $K$.
 \end{proof}
-
 
 \begin{theo}[Théorème de Steinitz]
 Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près. On la
@@ -339,10 +422,12 @@ notera $\overline{K}$
 \end{theo}
 
 
-
+\todo[inline]{unicite Admise ou pas?}
 \begin{proof}
-\todo[inline]{Preuve Steinitz}
+    L'existence a été montrée par la \cref{prop-existence-cloture-algebrique}
+    et on admettra l'unicité.
 \end{proof}
+
 
 \begin{defi}[Indépendance algébrique, base de transcendance]
 Soit $L/K$ une extension de corps, un sous-ensemble $E \subset L$ est
@@ -372,12 +457,14 @@ de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
 \ge 1} \bF_{p^k}$.
 \end{theo}
 
-
-\section{???}
-\todo[inline]{Titre}
+\section{Théorie des corps algébriquement clos}
 
 On a maintenant tous les outils algébriques nécessaires et pouvons revenir à la
-théorie des modèles. On va définir la théorie des corps algébriquement clos (ACF).
+théorie des modèles. On commence par définir la théorie des corps
+algébriquement clos (ACF). Puis on montre successivement qu'elle admet
+l'élimination des quantificateurs, la complétude ainsi que le principe de
+Lefschetz qui nous seront indispensables pour la suite. On étudie ensuite les
+ensembles définissables de la théorie et leur lien avec les variétés algébriques.
 
 \begin{defi}[Théorie des corps algébriquement clos]
     On se place dans le langage des anneaux $\cL_{ring}$ avec les axiomes des
@@ -398,10 +485,6 @@ théorie des modèles. On va définir la théorie des corps algébriquement clos
     algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
 \end{defi}
 
-\todo[inline]{ACFn ou simplement ACF?}
-
-
-
 \todo[inline]{def dans le chap 1 ou pas?}
 
 \begin{defi}[Elimination des quantificateurs]\label{def-quant-elim}
@@ -412,7 +495,7 @@ Plus précisément, une $\cL$-théorie
 $T$ a l'\kw{élimination des quantificateurs} dans $\cL$ si pour toute
 $\cL$-formule $\varphi(x_1, \ldots, x_n)$, il existe une $\cL$-formule
 $\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
-\models \forall x_1 \cdots \forall x_m ( ( \varphi(x_1, \ldots, x_n)
+\models \forall x_1 \cdots \forall x_m ( \varphi(x_1, \ldots, x_n)
 \leftrightarrow \theta(x_1, \ldots, x_m)) \] 
 \end{defi}
 
@@ -442,7 +525,7 @@ $\ACF_p$ est complète.
 \end{proof}
 
 \begin{coro}[Principe de Lefschetz]\label{coro-Lefschetz}
-    Soit $\varphi$ une phrase du l'langage des anneaux. On a alors les
+    Soit $\varphi$ une phrase du langage des anneaux. On a les
     équivalences suivantes
 
     \begin{enumerate}[label= (\roman*)]
