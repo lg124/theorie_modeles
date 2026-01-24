@@ -501,18 +501,32 @@ $\theta(x_1, \ldots, x_m)$ sans quantificateurs, où $n \le m$ telle que \[ T
 \leftrightarrow \theta(x_1, \ldots, x_m)) \] 
 \end{defi}
 
+Le fait qu'une théorie admette l'élimination des quantificateurs va bien au-delà
+des aspects syntaxiques et a de nombreuses conséquences en particulier pour ces
+applications algébriques comme les nôtres, elle permet notamment de montrer
+aisément la complétude d'une théorie et facilite grandement l'étude des
+ensembles définissables. Elle permet également de réduire la décidabilité d'une
+théorie à une simple vérification algébrique. 
+
 \begin{theo}[Théorème de Tarski]\label{theo-acf-elim}
     La théorie $\ACF$ a l'élimination des quantificateurs
 \end{theo}
 
-\begin{rema}
 La démonstration de ce théorème étant très technique, nous choisissons de
 l'admettre et de nous concentrer sur ses conséquences. Signalons cependant que contrairement
 aux preuves modernes de ce résultat qui utilisent des
 résultats puissants de théorie des modèles, la preuve originale de Tarski (voir \cite{Tarski_1951}) est
-elle constructive et fournit un algorithme explicite, basé sur le résultant pour
-éliminer un à un les quantificateurs.
-\end{rema}
+elle constructive et fournit donne une méthode effective basée sur le résultant pour
+éliminer un à un les quantificateurs. Ainsi, en partant d'une phrase on
+peut obtenir algorithmiquement une phrase sans quantificateurs équivalente dont
+la valeur de vérité est alors facilement vérifiable. On a donc établi le
+résultat suivant:
+
+\begin{coro}[Décidabilité de $ACF_p$]
+    La théorie $\ACF$ est décidable.
+\end{coro}
+
+\todo[inline]{blabla}
 
 \begin{prop}[Complétude]\label{prop-acf-complet}
     La théorie $\ACF_n$ est complète.
@@ -530,6 +544,15 @@ $\theta$ telle que $\ACF_n \models \varphi \leftrightarrow \theta$. Par le
 \leftrightarrow L \models \varphi$ et donc $K$ et $L$ sont équivalentes et
 $\ACF_p$ est complète.
 \end{proof}
+
+La complétude d'ACF est un résultat puissant qui va nous permettre de
+généraliser facilement des résultats démontrés sur des cas particuliers. En
+effet, comme toutes les vérités (du premier ordre) sont partagées par tous les
+modèles d'une même caractéristique, on va pouvoir transférer un théorème
+démontré sur un corps spécifique (par exemple $\bC$ sur lequel on dispose de
+nombreux outils analytiques ou topologiques) vers tout autre corps de même caractéristique.
+Le résultat suivant généralise ce principe en montrant qu'on peut aussi faire le
+lien entre la caractéristique nulle et la caractéristique positive.
 
 \begin{coro}[Principe de Lefschetz]\label{coro-Lefschetz}
     Soit $\varphi$ une phrase du langage des anneaux. On a les
@@ -559,26 +582,30 @@ est une conséquence immédiate de la complétude (\cref{prop-acf-complet}).\\
 $(3 \implies 4)$: On a $\ACF_0 \models \varphi$ donc par compacité
 (\cref{theo-compacite}), il existe $\Sigma \subset \ACF_0$ fini tel que $\Sigma
 \models \varphi$. Comme $\Sigma$ est fini, l'ensemble $E= \{ p \in \bP \mid \neg
-\chi_p \in \Sigma$ aussi. En posant $M = \max(E)$ (et $M=0$ si $E = \emptyset)$,
+\chi_p \in \Sigma \}$ aussi. En posant $M = \max(E)$ (et $M=0$ si $E = \emptyset)$,
 pour $p > M$, on a $ \ACF_p \models \Sigma$ et donc $\ACF_p \models \varphi$. \\
 $4 \implies 5$ est claire et enfin, \\
 $(5 \implies 2)$: Supposons que $\ACF_0 \not\models \varphi$,
 par la \cref{prop-acf-complet} $\ACF_0$ est complète ainsi $\ACF_0 \models \neg
 \varphi$ donc par ce qui précède, $\ACF_p \models \neg\varphi$ pour $p$
 suffisamment grand ce qui contredit $4$ d'où le résultat.
-
-
 \end{proof}
 
-\section{Ensembles définissables, variétés}
+
+Dans ce qui suit, on montre que l'élimination des quantificateurs possède
+également une interprétation géométrique. En géométrie algébrique classique, on
+étudie les variétés (lieux d'annulations de polynômes), mais en général, si on
+utilise des opérations comme la projection (ce qui correspond au quantificateur
+dans un énoncé logique),on sort a priori de ce cadre. Le but de cet
+section est d'établir le dictionnaire entre objects de la logique (les formules)
+et ceux de la géométrie (ensembles constructibles).
 
 Dans cette section, on fixe un corps algébriquement clos $K$ et un entier $n \ge
-1$. Le \cref{theo-acf-elim} montre que tous les ensembles définissables de $K^n$
-sont définissables sans quantificateurs. Dans cette section, on précise ce que
-sont les ensembles définissables sont, leur lien avec les variétés affines et
-plus généralement avec les ensembles constructibles.
+1$. 
 
-\todo[inline]{blabla}
+\section{Ensembles définissables et variétés}
+
+\todo[inline]{Cette section est-elle hors sujet? mettre en annexe?}
 
 \begin{defi}[Variété affine]
 Soit $S \subset K[\overline{x}]$, on note $V(S)$ le sous ensemble de $K^n$

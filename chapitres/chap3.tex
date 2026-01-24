@@ -1,16 +1,28 @@
 \chapter{Applications}
 
-\todo[inline]{lots of blabla}
+Dans ce qui précède, nous avons introduit la théorie des modèles et établi
+certains résultats, notamment sur les corps algébriquement clos. Il est
+maintenant temps d'appliquer ces résultats et de démontrer que la puissance de
+la théorie des modèles permet de résoudre des problèmes concrets provenant
+d'autres branches des mathématiques.
+
+Dans ce chapitre, nous allons exposer deux applications classiques donc les
+démonstrations par la théorie des modèles illustrent efficacement les principes
+que nous avons établi dans les chapitres précédents. Le premier, le \kw{théorème
+d'Ax-Grothendieck}, illustre la puissance du principe de transfert en
+transformant un problème difficile sur $\bC$ en un simple problème de comptage
+sur un corps fini. Le second, le \kw{Nullstelensatz} de Hilbert, montre comment
+l'élimination des quantificateurs permet de simplifier les questions d'existence
+de solutions à des systèmes d'équations.
 
 \section{Ax-Grothendieck}
 
+\todo[inline]{Reformuler si on passe les variétés en annexe}
 On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
 détaillée avant de passer au cas général d'une variété algébrique sur un corps
 algébriquement clos dont l'idée est la même.
 
 On va avoir besoin du lemme suivant: 
-
-
 
 \begin{lemm} \label{lemm-phrase-corps}
 Pour tout couple $(n,d)$ d'entiers positifs, il existe une phrase
@@ -19,7 +31,7 @@ toute famille $(f_1, \ldots, f_n)$ de polynômes en $n$ variables de degré
 inférieur ou égal à $d$, si l'application associée est injective, alors elle est surjective.
 \end{lemm}
 
-\begin{proof}
+\begin{exem}
 Construisons la phrase pour l'exemple $n=3$ et $d=2$, la construction générale
 est la même.
 
@@ -43,7 +55,7 @@ Un polynôme $P$ en $3$ variables de degré $\le 2$ est une combinaison linéair
     \Surj(\overline{c}) \right) \]
     
     qui est bien une formule de longueur finie du premier ordre dans le langage des anneaux.
-\end{proof}
+\end{exem}
 
 \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
 Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
@@ -68,7 +80,7 @@ Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varph
 Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
 \end{lemm}
 
-\begin{proof}
+\begin{exem}
 Illustrons la construction de la phrase $\phi_{n,m,d,s}$ dans un cas simple :
     \begin{itemize}
         \item $n=2$ (Dimension ambiante: le plan $K^2$).
@@ -99,7 +111,7 @@ Illustrons la construction de la phrase $\phi_{n,m,d,s}$ dans un cas simple :
     \[ \text{Surj}_V(\overline{a}, \overline{c}) : \forall \bar{z} \left( \bar{z} \in V_{\overline{a}} \longrightarrow \exists \bar{w} [\bar{w} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{w}) = \bar{z}] \right) \]
 
     On a donc \[ \varphi_{2,1,2,1} : \forall \overline{a} \forall \overline{c} \left[ (\text{Stable}(\overline{a}, \overline{c}) \wedge \text{Inj}_V(\overline{a}, \overline{c})) \longrightarrow \text{Surj}_V(\overline{a}, \overline{c}) \right] \]
-\end{proof}
+\end{exem}
 
 \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
 Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
@@ -121,8 +133,6 @@ Alors l'ensemble des points rationnels $V(k) = V \cap k^n$ est fini (car inclus 
 Par stabilité, $f$ induit une application $f: V(k) \to V(k)$ injective et non
 surjective, ce qui est exclu.
 \end{proof}
-
-
 
 
 \section{Nullstellensatz}
