@@ -174,35 +174,6 @@ $t^{\cM} : M^n \rightarrow M$ comme suit:
 \end{enumerate}
 \end{defi}
 
-\begin{prop}\label{prop-terme-plongement}
-Soit $\eta : \cM \rightarrow \cN$ un plongement de $\cL$-structures, $t$ un terme et $\overline{x} = (x_1, \ldots,
-x_n)$ des variables incluant toutes celles qui apparaissent dans $t$ et
-$\overline{a} = (a_1, \ldots, a_n) \in M^n$. Alors \[
-\eta(t^{\cM}(\overline{a})) = t^{\cN}(\eta(\overline{a})).\]
-\end{prop}
-
-\begin{proof}
-    (On détaille cette preuve évidente car le même principe de preuve va apparaître
-    à plusieurs reprises.) \\
-    On procède par récurrence sur la construction des termes. \\
-    Si $t=c$ avec $c$ constante, on a 
-    \begin{align*}
-    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition~\ref{defi-terme},} \\
-    &= \eta(c^{\cN}) && \text{par définition d'un plongement,} \\
-    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par~\ref{defi-terme}}
-    \end{align*}
-    Si $t=x_i$, alors en utilisant~\ref{defi-terme} deux fois, on a \[
-    t^{\cM}(\overline{a})  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
-    Si $t=f(t_1, \ldots, t_r)$, alors
-    \begin{align*}
-    \eta(t^{\cM}) &= \eta(f^{\cM}(t_1^{\cM}(\overline{a}),\ldots, t_r^{\cM}(\overline{a}))) \\
-    & = f^{\cN}(\eta(t_1^{\cM}(\overline{a}),\ldots,t_r^{\cM}(\overline{a}))) && \text{par définition d'un plongement,} \\
-    & = f^{\cN}(t_1^{\cN}(\eta(\overline{a})),\ldots, t_r^{\cN}(\eta(\overline{a}))) && \text{par hypothèse de récurrence,} \\
-    & = t^{\cN}(\eta(\overline{a})).
-    \end{align*}
-
-\end{proof}
-
 \begin{defi}[Formule]
 Comme pour les termes, on définie l'ensemble des \kw{formules} de $\cL$ de manière
 récursive:
@@ -239,7 +210,7 @@ Une formule sans variable libre est appelée une \kw{phrase} ou un \kw{énoncé}
 \end{defi}
 
 \todo[inline]{def: interprétation des formules,modèle }
-\todo[inline]{prop: formule et plongement, formule et isomorphisme}
+\todo[inline]{prop: formule et plongement}
 
 \begin{rema}[Abréviations]
 Notre langage formel est très restreint, nous utiliserons des abréviations usuelles
@@ -260,6 +231,40 @@ des combinaisons de symboles de notre langage restreint, nous pourrons les utili
 dans nos formules sans avoir à traiter leurs cas spécifiques lors des preuves par induction.
 \end{rema}
 
+\begin{theo}\label{Equivalence et isomorphisme}
+Soient $\mathcal{M}$ et $\mathcal{N}$ deux $\mathcal{L}$-structures. Supposons qu'il existe $j: \mathcal{M} \rightarrow \mathcal{N}$ un isomorphisme,
+alors $\mathcal{M} \equiv \mathcal{N}$.
+\end{theo}
+
+\begin{proof}
+Nous commençons par montrer par induction sur les termes que pour $t$ un $\mathcal{L}$-terme, muni de variables libres dans $\overline{v} = (v_1,\dots,v_n)$,
+et $\overline{a}=(a_1,\dots,a_n) \in M^n$, on a $j(t^{\mathcal{M}}(\overline{a}))
+= t^{\mathcal{N}}(j(\overline{a}))$, en notant $j(\overline{a})=(j(a_1),\dots,j(a_n))$.
+\end{proof}
+
+\begin{proof}
+    (On détaille cette preuve évidente car le même principe de preuve va apparaître
+    à plusieurs reprises.) \\
+    On procède par récurrence sur la construction des termes. \\
+    Si $t=c$ avec $c$ constante, on a 
+    \begin{align*}
+    \eta(t^{\cM}(\overline{a})) &= \eta(c^{\cM}) && \text{par la Définition~\ref{defi-terme},} \\
+    &= \eta(c^{\cN}) && \text{par définition d'un plongement,} \\
+    &= t^{\cN}(\eta(\overline{a}))  && \text{encore par~\ref{defi-terme}}
+    \end{align*}
+    Si $t=x_i$, alors en utilisant~\ref{defi-terme} deux fois, on a \[
+    t^{\cM}(\overline{a})  = \eta(a_i) = t^{\cN}(\eta(\overline{a}))\]
+    Si $t=f(t_1, \ldots, t_r)$, alors
+    \begin{align*}
+    \eta(t^{\cM}) &= \eta(f^{\cM}(t_1^{\cM}(\overline{a}),\ldots, t_r^{\cM}(\overline{a}))) \\
+    & = f^{\cN}(\eta(t_1^{\cM}(\overline{a}),\ldots,t_r^{\cM}(\overline{a}))) && \text{par définition d'un plongement,} \\
+    & = f^{\cN}(t_1^{\cN}(\eta(\overline{a})),\ldots, t_r^{\cN}(\eta(\overline{a}))) && \text{par hypothèse de récurrence,} \\
+    & = t^{\cN}(\eta(\overline{a})).
+    \end{align*}
+
+\end{proof}
+
+\todo[inline]{reprendre cette preuve en adaptant les notations et en alignant tous les cas à gauche}
 
 \section{Ensembles définissables,quantificateurs}
 \begin{defi}[Ensembles définissables]
@@ -275,7 +280,36 @@ existe une formule $\phi(\overline{v},w_1,\dots,w_l)$ et $\overline{b} \in
 A^l$, tels que $\phi(\overline{v},\overline{b})$ définit X.
 \end{defi}
 
+\begin{exem}
+On se munit du langage des anneaux $\mathcal{L}_{ring} = \{0, 1, +, \cdot\}$ et de son modèle $\mathbb{C}$, le corps des nombres complexes.
+Pour $n \in \mathbb{N}^*$, on définit les racines n-ième de l'unité $U_n = \{z \in \mathbb{C}, z^n = 1 \}$.
+$U_n$ est alors définissable via la formule 
+\begin{align*}
+\phi(z): \underbrace{z \cdot \dots \cdot z}_{n \text{ fois}} = 1
+\end{align*}
+Nous précisons que $U_n$ est $\kw{0-définissable}$, c'est à dire que la formule $\phi$ qui la définit n'a pas de paramètre.
+\end{exem}
 
+\begin{prop}
+Soit $\mathcal{M}$ une $\mathcal{L}$-structure. Si $X \subset M^n$ est $A$-définissable, alors tout $\mathcal{L}$-automorphisme $\sigma$
+qui fixe point par point $A$ (i.e pour tout $a \in A$, $\sigma(a) = A$), laisse $X$ invariant (i.e $\sigma(X)=X$)
+\end{prop}
+
+\begin{proof}
+Soit $\overline{a} \in A$ et $\psi(\overline{v}, \overline{a})$ la $\mathcal{L}$-formule définissant $X$.
+Soient $\sigma$ un automorphisme de $\mathcal{M}$ tel que $\sigma(\overline{a}) = \overline{a}$ et $\overline{b} \in M^n$.
+\end{proof}
+
+Il est typique d'utiliser ce résulat pour sa contraposée, nous donnons un exemple.
+
+\begin{coro}
+Les nombres réels $\mathbb{R}$ en tant que sous-ensemble du corps des complexes $\mathbb{C}$ n'est pas définissable.
+\end{coro}
+
+\begin{rema}
+Bien que la topologie singulière de $\mathbb{R}$ nous pousserait à croire qu'il occupe une place particulière dans $\mathbb{C}$, la Théorie des Modèles
+illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions sur la droite réelle.
+\end{rema}
 
 \section{Théories et axiomes}
 
