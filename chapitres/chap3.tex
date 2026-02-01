@@ -206,33 +206,7 @@ Alors \[ I(V(I)) = \sqrt{I} \]
 \end{theo}
 
 \begin{proof}
-On pose $R = \mathbb{K}[\xbar]$, comme $R$ est noétherien, on a $\{P_1,\dots,P_m\}$ une famille finie tel que $I = (P_1,\dots,P_m)$
-L'inclusion réciproque est immédiate: supposons $f \in \sqrt{I} \text{ et } n \in \mathbb{N}^* \text{ tel que } f^n \in I$,
-on a pour tout $\xbar \in V(I),\text{ }f^n(\xbar)=0$, d'où par intégrité, pour tout $\xbar \in V(I),\text{ }f(\xbar)=0$.\\
-Soit $f \in I(V(I))$, nous montrons qu'il existe $n \in \mathbb{N}$ tel que $f^n \in I$.
-On note $R_f$ l'anneau localisé de $R$ par rapport à $f$ et $IR_f$ l'idéal engendré par $I$ dans $R_f$.
-Nous pouvons reformuler notre problème: il suffit de montrer que $IR_f = R_f$, car ceci implique que $1 \in IR_f$, donc l'existence de 
-$\frac{Q_i}{f^{k_i}} \in R_f$ pour tout i $\in \llbracket 1, m \rrbracket $ tel que $1 = \sum_{i=1}^{m} \frac{P_iQ_i}{f^{k_i}}$,
-d'où $f^n = \sum_{i=1}^{m} P_iQ_i \in I$ pour n suffisament grand. Or $R_f \cong \mathbb{K}[\xbar, T]/(1-Tf)$
-, donc montrer que $IR_f=R_f$ revient à montrer qu'il existe $A,\text{ }Q_i \in \mathbb{K}[\xbar, T]$
-tel que 
-\begin{align*}
-1 = \sum_{i=1}^{m}P_iQ_i + A(1-Tf). \tag{1}
-\end{align*}
-Soit $J$ l'idéal de $\mathbb{K}[\xbar,T]$ tel que $J=(P_1,\dots,P_m,1-Tf)$. On montre par l'absurde que $V(J)=\emptyset$:
-soit $(\xbar, T_0) \in V(J)$, alors on a en particulier $(\xbar) \in V(I)$ comme condition sur les m premiers générateurs, et
-$T_0$ annule le dernier générateur, d'où les deux idendités:
-\begin{align*}
-f(\xbar) = 0\\
-1-T_0f(\xbar) = 0
-\end{align*}
-Impliquant $1=0$, ceci achève la preuve par l'absurde et $V(J) = \emptyset$.
-On invoque le théorème \ref{theo-Nullstelensatz-faible} pour conclure que $J$ n'est pas idéal propre, i.e $J=\mathbb{K}[\xbar,T]$,
-or $J=(P_1,\dots,P_m,1-Tf)$, donc l'égalité (1) se vérifie.
-\end{proof}
-
-
-\begin{proof}
+Par théorème de la base de Hilbert, on a $\{P_1,\dots,P_m\}$ une famille finie tel que $I = (P_1,\dots,P_m)$
     On utilise l'astuce de Rabinowitsch.
     Soit $f \in I(V(I))$,
  on considère l'anneau de polynômes à $n+1$ variables $K[\overline{x}, Y]$ et l'idéal $J$ engendré par les polynômes de $I$ et par le polynôme $1 - Y f(\bar{x})$.
@@ -250,5 +224,6 @@ or $J=(P_1,\dots,P_m,1-Tf)$, donc l'égalité (1) se vérifie.
     En multipliant cette équation par une puissance $f^k$ suffisamment grande, on obtient une relation dans $K[\bar{x}]$ de la forme :
     \[ f^k = \sum_{i=1}^m P_i(\bar{x}) Q_i(\bar{x}) \]
     avec $Q_i \in K[\overline{x}]$ donc  $f^k \in I$.
-    L'inclusion réciproque est immédiate par intégrité de $K[\overline{x}]$.
+L'inclusion réciproque est immédiate: supposons $f \in \sqrt{I} \text{ et } n \in \mathbb{N}^* \text{ tel que } f^n \in I$,
+on a pour tout $\xbar \in V(I),\text{ }f^n(\xbar)=0$, d'où par intégrité, pour tout $\xbar \in V(I),\text{ }f(\xbar)=0$.\\
 \end{proof}
