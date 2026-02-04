@@ -420,14 +420,41 @@ $T_0$ est insatisfaisable.
 Une $\mathcal{L}$-théorie $T$ est dite complète si pour toute $\mathcal{L}$-phrase $\phi$, on a soit $T \models \phi$, soit $T \models \neg\phi$.
 \end{defi}
 
-\begin{defi}
+\begin{defi}[Categoricité]
 Soient $\kappa$ un cardinal infini et $T$ une $\cL$-théorie satisfaite par des modèles de cardinalité $\kappa$.
 On dit que $T$ est $\kappa$-catégorique si les modèles de $T$ de cardinalité $\kappa$ sont deux à deux isomorphes.
 \end{defi}
 
+\noindent Nous donnons un premier exemple de théorie $\kappa$-catégorique: la théorie au langage vide forçant ses modèles à être infini.
+
+\begin{prop}
+Soit $\cL = \emptyset$. Pour $n \in \mathbb{N^*}$, on définit la $\cL$-phrase
+\begin{align*}
+\phi_n = \exists x_1\dots\exists x_n(\bigwedge_{1\leq i < j \leq n} x_i \neq x_j)
+\end{align*}
+On définit la $\cL$-théorie $T_{\infty} = \{\phi_n,\text{ }n \in \mathbb{N^*}\}$.\\
+Alors pour tout cardinal $\kappa$, $T_{\infty}$ est $\kappa$-catégorique.
+\end{prop}
+
+\begin{proof}
+Soit $\kappa$ un cardinal infini. Soient $\cM$ et $\cN$ deux modèles de $T_{\infty}$ tel que $\lvert \cM \rvert = \lvert \cN \rvert = \kappa$.
+Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un argument ensembliste, $M$ et $N$ étant de même cardinalité, il existe $\phi: M \longrightarrow N$ une bijection.
+$\phi$ étant une bijection entre structures vides, il n'y a aucun symbole à preserver et c'est un $\cL$-isomorphisme.
+\end{proof}
+
+\begin{rema}
+Ce premier résultat permet de nous familiariser avec la notion de categoricité, mais aussi de comprendre que c'est bien l'ajout d'une structure
+algébrique qui permet de distinguer des modèles de même cardinalité via des invariants. Nous étudions maintenant le cas de la théorie $\ACF_p$, qui perd la catégoricité pour $\kappa = \aleph_0$.
+\end{rema}
+
 
 \begin{prop}
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est $\kappa$-catégorique pour tout cardinal $\kappa$ indénombrable.
+\end{prop}
+
+\begin{prop}
+Soit $T$ une $\cL$-théorie satisfaite par des modèles infinis. Si $\kappa$ est un cardinal infini tel que $\kappa > \lvert \cL \rvert$, alors
+il existe un modèle de $T$ de cardinalité $\kappa$.
 \end{prop}
 
 \begin{theo}[Test de Vaught]
