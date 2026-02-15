@@ -58,109 +58,110 @@ par la suite. On donne certaines démonstrations, et on essaye d'utiliser la
 théorie des modèles quand cela semble raisonnable. On pourra trouver les autres démonstrations
 dans n'importe quel livre d'algèbre, par exemple dans~\cite{Berhuy_2025}.
 
-\begin{defi}[Anneau intègre]
-Un anneau non trivial est \kw{intègre} si il  est sans diviseur de zéro, c'est à dire si
-c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \implies (x=0
-\vee y=0) ]. \]
-\end{defi}
 
-\begin{prop}
-    Si $A$ est un anneau intègre, il possède un corps des fractions $K_A$ qui
-    vérifie la propriété universelle suivante:
-    Pour tout plongement $f : A \inj{} F$ de $A$ dans un corps $F$, il existe un
-    unique plongement $\tilde{f} : K_A \inj{} F$ tel que le diagramme suivant commute.
+% \begin{defi}[Anneau intègre]
+% Un anneau non trivial est \kw{intègre} si il  est sans diviseur de zéro, c'est à dire si
+% c'est un modèle pour la phrase \[ \forall x,y [x \cdot y = 0 \implies (x=0
+% \vee y=0) ]. \]
+% \end{defi}
 
-    % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbANIB9Tjz7Y8BIqOHj6zVohAAxbuJhQA5vCKgAZgCcIAWyRkQOCElEgGdAEYwGABX4VIQ8YSxwQai0pXSwI5zosBjYACwgIAGtuXhAbezdqFyQAJmoGLDAdECg6OGTjOM8ff0DBNgZQ8MjJSoAdHpgADyw4HDgAAgBCPrwGWGBLLjicBKTdVIysq1sHRCdCxBKJbTZLBu9fAOVW3WssE2TO+MSUtMyuCi4gA
-    \[
-    \begin{tikzcd}
-    A \arrow[r, "i", hook] \arrow[rd, "f"', hook] & K_A \arrow[d, "\exists !\tilde{f}", dashed, hook] \\
-                                                & F                                                
-    \end{tikzcd}
-    \]
-\end{prop}
+% \begin{prop}
+%     Si $A$ est un anneau intègre, il possède un corps des fractions $K_A$ qui
+%     vérifie la propriété universelle suivante:
+%     Pour tout plongement $f : A \inj{} F$ de $A$ dans un corps $F$, il existe un
+%     unique plongement $\tilde{f} : K_A \inj{} F$ tel que le diagramme suivant commute.
 
-\begin{exem}
-On note $A[X_1, \ldots, X_n]$ l'anneau des polynômes à coefficients dans $A$ en
-$n$ indéterminées dans un anneau $A$. Si $A$ est intègre, $A[X_1, \ldots, X_n]$
-également. Si $A$ est un corps, le corps des fractions de $A[X_1, \ldots, X_n]$
-est noté $A(X_1, \ldots, X_n)$ et on l'appelle le corps des fractions
-rationnelles.
-\end{exem}
+%     % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRQBGclVqMWbANIB9Tjz7Y8BIqOHj6zVohAAxbuJhQA5vCKgAZgCcIAWyRkQOCElEgGdAEYwGABX4VIQ8YSxwQai0pXSwI5zosBjYACwgIAGtuXhAbezdqFyQAJmoGLDAdECg6OGTjOM8ff0DBNgZQ8MjJSoAdHpgADyw4HDgAAgBCPrwGWGBLLjicBKTdVIysq1sHRCdCxBKJbTZLBu9fAOVW3WssE2TO+MSUtMyuCi4gA
+%     \[
+%     \begin{tikzcd}
+%     A \arrow[r, "i", hook] \arrow[rd, "f"', hook] & K_A \arrow[d, "\exists !\tilde{f}", dashed, hook] \\
+%                                                 & F                                                
+%     \end{tikzcd}
+%     \]
+% \end{prop}
 
-\begin{defi}[Morphisme d'anneaux, noyau]
-Un \kw{(homo)morphisme d'anneaux} est une application $f$ entre deux anneaux $A$ et
-$B$ qui respecte la structure d'anneau, c'est à dire:
-\begin{enumerate}[label= (\roman*)]
-    \item $f(a+b) = f(a) + f(b), \forall a,b \in A$.
-    \item $f(a \cdot b) = f(a) \cdot f(b), \forall a,b \in A$.
-    \item $f(1_A) = 1_B$.
-\end{enumerate}
+% \begin{exem}
+% On note $A[X_1, \ldots, X_n]$ l'anneau des polynômes à coefficients dans $A$ en
+% $n$ indéterminées dans un anneau $A$. Si $A$ est intègre, $A[X_1, \ldots, X_n]$
+% également. Si $A$ est un corps, le corps des fractions de $A[X_1, \ldots, X_n]$
+% est noté $A(X_1, \ldots, X_n)$ et on l'appelle le corps des fractions
+% rationnelles.
+% \end{exem}
 
-Le noyau de $f$ est l'ensemble $\ker(f) = \{ a \in A \mid f(a) = 0 \} = f^{-1}({0})$.
-\end{defi}
+% \begin{defi}[Morphisme d'anneaux, noyau]
+% Un \kw{(homo)morphisme d'anneaux} est une application $f$ entre deux anneaux $A$ et
+% $B$ qui respecte la structure d'anneau, c'est à dire:
+% \begin{enumerate}[label= (\roman*)]
+%     \item $f(a+b) = f(a) + f(b), \forall a,b \in A$.
+%     \item $f(a \cdot b) = f(a) \cdot f(b), \forall a,b \in A$.
+%     \item $f(1_A) = 1_B$.
+% \end{enumerate}
 
-\begin{defi}[Idéal]
-Un \kw{idéal} d'un anneau $A$ est un sous ensemble $I \subset A$ tel que:
-\begin{enumerate}[label= (\roman*)]
-    \item $I$ est un sous-groupe additif de $(A,+)$.
-    \item $\forall a \in A, \forall x \in I, ax \in I$.
-\end{enumerate}
+% Le noyau de $f$ est l'ensemble $\ker(f) = \{ a \in A \mid f(a) = 0 \} = f^{-1}({0})$.
+% \end{defi}
 
-L'\kw{idéal engendré} par un ensemble $J \subset A$ est l'intersection de tous
-les idéaux de $A$ contenant $J$, on le note $(A)$
+% \begin{defi}[Idéal]
+% Un \kw{idéal} d'un anneau $A$ est un sous ensemble $I \subset A$ tel que:
+% \begin{enumerate}[label= (\roman*)]
+%     \item $I$ est un sous-groupe additif de $(A,+)$.
+%     \item $\forall a \in A, \forall x \in I, ax \in I$.
+% \end{enumerate}
 
-Si un idéal $I$ est tel que $I \subsetneq A$, on dit que l'idéal est \kw{propre}.
-\end{defi}
+% L'\kw{idéal engendré} par un ensemble $J \subset A$ est l'intersection de tous
+% les idéaux de $A$ contenant $J$, on le note $(A)$
 
-\begin{prop}
-Soit $f :A \implies B$ un morphisme d'anneaux et $J$ un idéal de $B$, alors
-$I = f^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(f)$ est un idéal de $A$.
-\end{prop}
+% Si un idéal $I$ est tel que $I \subsetneq A$, on dit que l'idéal est \kw{propre}.
+% \end{defi}
 
-\begin{proof}
-    On sait déjà que $I$ est une sous-groupe de $A$, ensuite pour $x\in I, a \in
-    A$, on a $f(x) \in J$ donc \[ f(ax) = f(a)f(x) \in J \] car $J$ est un idéal
-    et donc $ax \in J$ d'où le premier point.
-    Comme $\{0\}$ est clairement un idéal, on a le second point. 
-\end{proof}
+% \begin{prop}
+% Soit $f :A \implies B$ un morphisme d'anneaux et $J$ un idéal de $B$, alors
+% $I = f^{-1}(J)$ est un idéal de $A$. En particulier, $\ker(f)$ est un idéal de $A$.
+% \end{prop}
 
-\begin{defi}[Idéal premier, principal, maximal]
-Un idéal $I$ d'une anneau $A$ est :
-\begin{itemize}
-    \item \kw{premier} si $\forall a,b \in A, ab \in I \implies (a \in I \vee b
-    \in I)$
-    \item \kw{principal} si $\exists a \in A, I = (a)$.
-    \item \kw{maximal} si $I \neq A$ et pour tout idéal $J$ tel que $I \subset J
-    \subset A$, on a $J = I \vee J = A$.
-\end{itemize}
+% \begin{proof}
+%     On sait déjà que $I$ est une sous-groupe de $A$, ensuite pour $x\in I, a \in
+%     A$, on a $f(x) \in J$ donc \[ f(ax) = f(a)f(x) \in J \] car $J$ est un idéal
+%     et donc $ax \in J$ d'où le premier point.
+%     Comme $\{0\}$ est clairement un idéal, on a le second point. 
+% \end{proof}
 
-Si tout idéal de $A$ et principal, on dit que $A$ est un anneau \kw{principal}.
-\end{defi}
+% \begin{defi}[Idéal premier, principal, maximal]
+% Un idéal $I$ d'une anneau $A$ est :
+% \begin{itemize}
+%     \item \kw{premier} si $\forall a,b \in A, ab \in I \implies (a \in I \vee b
+%     \in I)$
+%     \item \kw{principal} si $\exists a \in A, I = (a)$.
+%     \item \kw{maximal} si $I \neq A$ et pour tout idéal $J$ tel que $I \subset J
+%     \subset A$, on a $J = I \vee J = A$.
+% \end{itemize}
 
-\begin{defi}[Caractéristique,Sous-corps premier]
-La \kw{caractéristique} d'un corps est, si il existe, le plus petit entier
-strictement positif tel que $\underbrace{1+\cdots+1}_\text{p} = 0$, et $0$
-sinon.
-Le \kw{sous-corps premier} d'un corps $F$ est l'intersection de tous ses
-sous-corps, c'est donc le sous-corps engendré par $1$.
-Si $F$ est de caractéristique $p>0$, alors son sous-corps premier est
-$\bZnZ{p}$, sinon c'est $\bQ$.
-\end{defi}
+% Si tout idéal de $A$ et principal, on dit que $A$ est un anneau \kw{principal}.
+% \end{defi}
 
-\begin{prop}[Anneau quotient, propriété universelle]
-Soit $I$ un idéal d'un anneau $A$; on note $\pi : A \implies A/I$ la
-projection canonique et soit $f : A \implies B$ un morphisme d'anneau qui
-d'annule sur $I$, alors il existe un unique morphisme $\overline{f} : A/I
-\implies B$ tel que le diagramme suivant commute.
-% https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAjFVqMWbdgHoAkt14gM2PASIjy4+s1aIQAIW7iYUAObwioAGYAnCAFskZEDghJNIABYw6UNjgA7hA+fgjUOlL6ADrRaFgg1Ax0AEYwDAAK-GpCILZYZl44ijb2ToiebkgATElYYHogUHRwPv4Rko2xMAAeWHA4cACEAASxEDQwtgz1MMCx9LZoXlhciSDJaZnZgmz5hcU8pY7O1FWItRK6bAt0SyvGXEA
-\[
-\begin{tikzcd}
-A \arrow[d, "\pi"', two heads] \arrow[r, "f"]    & B \\
-A/I \arrow[ru, "\exists! \overline{f}"', dashed] &  
-\end{tikzcd}
-\]
+% \begin{defi}[Caractéristique,Sous-corps premier]
+% La \kw{caractéristique} d'un corps est, si il existe, le plus petit entier
+% strictement positif tel que $\underbrace{1+\cdots+1}_\text{p} = 0$, et $0$
+% sinon.
+% Le \kw{sous-corps premier} d'un corps $F$ est l'intersection de tous ses
+% sous-corps, c'est donc le sous-corps engendré par $1$.
+% Si $F$ est de caractéristique $p>0$, alors son sous-corps premier est
+% $\bZnZ{p}$, sinon c'est $\bQ$.
+% \end{defi}
 
-\end{prop}
+% \begin{prop}[Anneau quotient, propriété universelle]
+% Soit $I$ un idéal d'un anneau $A$; on note $\pi : A \implies A/I$ la
+% projection canonique et soit $f : A \implies B$ un morphisme d'anneau qui
+% d'annule sur $I$, alors il existe un unique morphisme $\overline{f} : A/I
+% \implies B$ tel que le diagramme suivant commute.
+% % https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBpiBdUkANwEMAbAVxiRAEEQBfU9TXfIRRkAjFVqMWbdgHoAkt14gM2PASIjy4+s1aIQAIW7iYUAObwioAGYAnCAFskZEDghJNIABYw6UNjgA7hA+fgjUOlL6ADrRaFgg1Ax0AEYwDAAK-GpCILZYZl44ijb2ToiebkgATElYYHogUHRwPv4Rko2xMAAeWHA4cACEAASxEDQwtgz1MMCx9LZoXlhciSDJaZnZgmz5hcU8pY7O1FWItRK6bAt0SyvGXEA
+% \[
+% \begin{tikzcd}
+% A \arrow[d, "\pi"', two heads] \arrow[r, "f"]    & B \\
+% A/I \arrow[ru, "\exists! \overline{f}"', dashed] &  
+% \end{tikzcd}
+% \]
+
+% \end{prop}
 
 \begin{prop}\label{prop-quotient-ideal-maximal}
 Soit $I$ un idéal d'un anneau $A$, alors:
@@ -199,7 +200,6 @@ En particulier, tout idéal maximal est premier.
 
 Comme un corps est un anneau intègre, par ce qui précède, tout idéal maximal est premier.
 
-    
 \end{proof}
 
 \begin{theo}[Théorème de Krull]\label{theo-Krull}
@@ -248,7 +248,7 @@ ev_a(b)=b$ et $ev_a(X) = a$.
 \end{lemm}
 
 
-\todo[inline]{redondant avec idéal d'une variété? a del?}
+%\todo[inline]{redondant avec idéal d'une variété? a del?}
 \begin{defi}[Idéal annulateur]
 Le noyau du morphisme d'évaluation $ev_a$ du lemme précédent est appelé
 \kw{idéal anulteur} et noté $I(a)$, on a donc \[ I(a) := \{ f \in K[x] \mid f(a) =
@@ -298,32 +298,32 @@ appelé \kw{polynome minimal} de $a$.
 \end{proof}
 
 
-\begin{prop}[Classification des extensions simples]
-Soit $K(a)/K$ une extension simple. De ce qui précède, on déduit que l'extension
-est entièrement déterminée, à isomorphisme près, par le choix d'un polynôme
-minimal de $a$ qui est irréductible. Donc classifier les extensions simples
-revient à classifier les idéaux premiers de $K[X]$.
-\end{prop}
+% \begin{prop}[Classification des extensions simples]
+% Soit $K(a)/K$ une extension simple. De ce qui précède, on déduit que l'extension
+% est entièrement déterminée, à isomorphisme près, par le choix d'un polynôme
+% minimal de $a$ qui est irréductible. Donc classifier les extensions simples
+% revient à classifier les idéaux premiers de $K[X]$.
+% \end{prop}
 
-\begin{exem}
-Prenons $K=\bQ$ et $a = \sqrt{2} \in \bQ(\sqrt{2})$. Le polynôme minimal de
-$\sqrt{2}$ est $X^2-2$. 
-Prenons maintenant $a = \pi$, comme $\pi$ est transcendant, son polynôme minimal
-est le polynôme nul et $I(\pi) = \{0\}$ donc $ev_{\pi}: \bQ[X] \implies
-\bQ(\pi)$ est injectif et par suite, $\bQ(r) \simeq \bQ(X)$. 
-\end{exem}
+% \begin{exem}
+% Prenons $K=\bQ$ et $a = \sqrt{2} \in \bQ(\sqrt{2})$. Le polynôme minimal de
+% $\sqrt{2}$ est $X^2-2$. 
+% Prenons maintenant $a = \pi$, comme $\pi$ est transcendant, son polynôme minimal
+% est le polynôme nul et $I(\pi) = \{0\}$ donc $ev_{\pi}: \bQ[X] \implies
+% \bQ(\pi)$ est injectif et par suite, $\bQ(r) \simeq \bQ(X)$. 
+% \end{exem}
 
 \begin{defi}[Extension finie]
 Soit $L/K$ une extension de corps, si il existe $\overline{a} =
 (a_1,\ldots,a_n) \in L^n$ tel que $L = K(\overline{a})$, on dit que l'extension est \kw{finie}.
 \end{defi}
 
-\begin{prop}[Classification des extensions finies]
-Soit $K(a_1,\ldots,a_n)/K$ une extension finie. Comme dans le cas simple, on a
-$K(a_1,\ldots,a_n) \simeq K[X_1,\ldots,X_n]/I(a_1,\ldots,a_n)$ donc pour classifier
-les extensions finies, il suffit de classifier les idéaux premiers de
-$K[X_1,\ldots,X_n]$ pour tout $n \in \bNe$.
-\end{prop}
+% \begin{prop}[Classification des extensions finies]
+% Soit $K(a_1,\ldots,a_n)/K$ une extension finie. Comme dans le cas simple, on a
+% $K(a_1,\ldots,a_n) \simeq K[X_1,\ldots,X_n]/I(a_1,\ldots,a_n)$ donc pour classifier
+% les extensions finies, il suffit de classifier les idéaux premiers de
+% $K[X_1,\ldots,X_n]$ pour tout $n \in \bNe$.
+% \end{prop}
 
 \begin{theo}[Base de Hilbert]\label{theo-base-Hilbert}
 Soit $K$ un corps et $n\in \bNe$ alors tout idéal de $K[X_1, \ldots, X_n ]$ est
@@ -459,6 +459,10 @@ de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
 \ge 1} \bF_{p^k}$.
 \end{theo}
 
+\begin{proof}
+\todo[inline]{Preuve}
+\end{proof}
+
 \section{Théorie des corps algébriquement clos}
 
 On a maintenant tous les outils algébriques nécessaires et pouvons revenir à la
@@ -571,7 +575,7 @@ lien entre la caractéristique nulle et la caractéristique positive.
         algébriquement clos de caractéristique $p$ sur lesquels $\varphi$ est
         vraie.
     \end{enumerate}
-    
+
 \end{coro}
 
 \begin{proof}
@@ -592,76 +596,10 @@ suffisamment grand ce qui contredit $4$ d'où le résultat.
 \end{proof}
 
 
-Dans ce qui suit, on montre que l'élimination des quantificateurs possède
-également une interprétation géométrique. En géométrie algébrique classique, on
-étudie les variétés (lieux d'annulations de polynômes), mais en général, si on
-utilise des opérations comme la projection (ce qui correspond au quantificateur
-dans un énoncé logique),on sort a priori de ce cadre. Le but de cet
-section est d'établir le dictionnaire entre objects de la logique (les formules)
-et ceux de la géométrie (ensembles constructibles).
 
-Dans cette section, on fixe un corps algébriquement clos $K$ et un entier $n \ge
-1$. 
 
-\section{Ensembles définissables et variétés}
 
-\todo[inline]{Cette section est-elle hors sujet? mettre en annexe?}
-
-\begin{defi}[Variété affine]
-Soit $S \subset K[\overline{x}]$, on note $V(S)$ le sous ensemble de $K^n$
-formé des zéros communs à tous les éléments de $S$. C'est à dire: 
-\[ V(S) = \{ \overline{a} \in K^n \mid P(\overline{a} ) = 0,  \forall P \in S \} .\]
-Les sous-ensembles de $K^n$ de ce type sont les sous-variétés algébrique affine de
-$K^n$.
-Dans la suite on utilisera simplement \kw{variété} pour les qualifier.
-\end{defi}
-
-\begin{defi}[Idéal d'une variété]
-Soit $V \subset K^n$, on appelle idéal de $V$, et on note $I(V)$ l'ensemble des
-polynômes nuls sur $V$. C'est à dire:
-\[ I(V) = \{ P \in  K[\overline{x}] \mid P(\overline{a}) = 0, \forall \overline{a} \in V \}.\]
-\end{defi}
-
-On a les propriétés immédiates suivantes:
-
-\begin{lemm}\label{lemm-variete-trivial}
-\todo[inline]{mettre ce qui sert}
-\end{lemm}
-
-\begin{prop}
-Soit $V \subset K^n$ une variété, alors il existe un ensemble $E$ fini de
-polynômes tel que $V = V(E)$.
-\end{prop}
-
-\begin{proof}
-    Supposons $V=V(P)$, alors par le \cref{lemm-variete-trivial}, on a $ V =
-    V(I(V(P)))$ et par le \cref{theo-base-Hilbert}, l'idéal $I(V(P))$ est
-    engendré par un ensemble fini $E$ de polynômes d'où le résultat.
-\end{proof}
-
-\begin{defi}[Ensemble constructible]
-    Un sous-ensemble de $K^n$ est dit \kw{constructible} s'il est une
-    combinaison booléenne finie 
-    (union, intersection, complémentaire) de variétés.
-\end{defi}
-
-Ainsi, les ensembles constructibles sont exactement les sous-ensembles de $K^n$
-qui sont les définissables sans quantificateurs avec paramètres dans $K$, et comme $\ACF$ élimine les
-quantificateurs (\cref{theo-acf-elim}), ce sont exactement les ensembles définissables.
-
-\begin{prop}[Dictionnaire Logique-Géométrie]\label{prop-dict-logic-geom}
-    Tout sous ensemble de $K^n$ définissable dans le language des anneaux avec paramètres dans $K$ est une union \kw{finie} d'ensembles de
-    la forme $V \backslash W$ avec $V,W$ des variétés de $K^n$.
-\end{prop}
-
-\begin{proof}
-\todo[inline]{preuve lien}
-\end{proof}
-
-\begin{prop}[Projection]
-\todo[inline]{projection}
-\end{prop}
-
+\todo[inline]{Def constructible}
 \begin{theo}[Théorème de Chevalley]
 Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
 \rightarrow K^m$ une fonction \kw{polynomiale}, alors $f(S) \subset K^m$ est .
@@ -670,4 +608,77 @@ Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
 \begin{proof}
     \todo[inline]{Preuve Chevalley}
 \end{proof}
+
+
+% Dans ce qui suit, on montre que l'élimination des quantificateurs possède
+% également une interprétation géométrique. En géométrie algébrique classique, on
+% étudie les variétés (lieux d'annulations de polynômes), mais en général, si on
+% utilise des opérations comme la projection (ce qui correspond au quantificateur
+% dans un énoncé logique),on sort a priori de ce cadre. Le but de cet
+% section est d'établir le dictionnaire entre objects de la logique (les formules)
+% et ceux de la géométrie (ensembles constructibles).
+
+% Dans cette section, on fixe un corps algébriquement clos $K$ et un entier $n \ge
+% 1$. 
+
+% \section{Ensembles définissables et variétés}
+
+% \todo[inline]{Cette section est-elle hors sujet? mettre en annexe?}
+
+% \begin{defi}[Variété affine]
+% Soit $S \subset K[\overline{x}]$, on note $V(S)$ le sous ensemble de $K^n$
+% formé des zéros communs à tous les éléments de $S$. C'est à dire: 
+% \[ V(S) = \{ \overline{a} \in K^n \mid P(\overline{a} ) = 0,  \forall P \in S \} .\]
+% Les sous-ensembles de $K^n$ de ce type sont les sous-variétés algébrique affine de
+% $K^n$.
+% Dans la suite on utilisera simplement \kw{variété} pour les qualifier.
+% \end{defi}
+
+% \begin{defi}[Idéal d'une variété]
+% Soit $V \subset K^n$, on appelle idéal de $V$, et on note $I(V)$ l'ensemble des
+% polynômes nuls sur $V$. C'est à dire:
+% \[ I(V) = \{ P \in  K[\overline{x}] \mid P(\overline{a}) = 0, \forall \overline{a} \in V \}.\]
+% \end{defi}
+
+% On a les propriétés immédiates suivantes:
+
+% \begin{lemm}\label{lemm-variete-trivial}
+% \todo[inline]{mettre ce qui sert}
+% \end{lemm}
+
+% \begin{prop}
+% Soit $V \subset K^n$ une variété, alors il existe un ensemble $E$ fini de
+% polynômes tel que $V = V(E)$.
+% \end{prop}
+
+% \begin{proof}
+%     Supposons $V=V(P)$, alors par le \cref{lemm-variete-trivial}, on a $ V =
+%     V(I(V(P)))$ et par le \cref{theo-base-Hilbert}, l'idéal $I(V(P))$ est
+%     engendré par un ensemble fini $E$ de polynômes d'où le résultat.
+% \end{proof}
+
+% \begin{defi}[Ensemble constructible]
+%     Un sous-ensemble de $K^n$ est dit \kw{constructible} s'il est une
+%     combinaison booléenne finie 
+%     (union, intersection, complémentaire) de variétés.
+% \end{defi}
+
+% Ainsi, les ensembles constructibles sont exactement les sous-ensembles de $K^n$
+% qui sont les définissables sans quantificateurs avec paramètres dans $K$, et comme $\ACF$ élimine les
+% quantificateurs (\cref{theo-acf-elim}), ce sont exactement les ensembles définissables.
+
+% \begin{prop}[Dictionnaire Logique-Géométrie]\label{prop-dict-logic-geom}
+%     Tout sous ensemble de $K^n$ définissable dans le language des anneaux avec paramètres dans $K$ est une union \kw{finie} d'ensembles de
+%     la forme $V \backslash W$ avec $V,W$ des variétés de $K^n$.
+% \end{prop}
+
+% \begin{proof}
+% \todo[inline]{preuve lien}
+% \end{proof}
+
+% \begin{prop}[Projection]
+% \todo[inline]{projection}
+% \end{prop}
+
+
 
