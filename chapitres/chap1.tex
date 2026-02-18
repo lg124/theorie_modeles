@@ -360,6 +360,26 @@ illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions 
 
 \section{Ultrafiltres et Théorème de Compacité}
 
+\begin{defi}[Filtres]
+Soit $I$ un ensemble quelconque, un filtre sur $I$ est un sous-ensemble $\mathcal{F}$ de $\mathcal{P}(I)$ tel que 
+\begin{enumerate}
+\item $I \in \mathcal{F}, \emptyset \not\in \mathcal{F}$
+\item $X, Y \in \mathcal{F} \implies X \cap Y \in \mathcal{F}$
+\item $X \in \mathcal{F} \wedge X \subset Y \implies Y \in \mathcal{F}$
+\end{enumerate}
+Un filtre est un ultrafiltre s'il est un filtre maximal au sens de l'inclusion.
+\end{defi}
+
+\todo[inline]{finir filtre et exemple}
+
+\subsection{Ultraproduits}
+
+Soit $I$ un ensemble et $(A_i)_{i \in I}$ une famille d'ensembles non vide et $\mathcal{A} = \prod_{i \in I} A_i$ leur produit cartésien.
+
+
+\todo[inline]{construction des ultraproduits, sa structure d'anneau}
+\todo[inline]{theoreme de Los et ce qu'il demande, l'admettre ? theoreme de compacité et ce qu'il demande }
+
 
 \section{Le Théorème de Compacité}
 
@@ -466,6 +486,7 @@ Alors $T$ est complète.
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
 \end{coro}
 
+\todo[inline]{sous section sur degré de transcandance et preuves}
 \todo[inline]{appeler steinitz, donner exemples pour demystifier ces manipulations d'infini}
 
 \todo[inline]{}\label{lemm-sous-struct-sans-quant}
