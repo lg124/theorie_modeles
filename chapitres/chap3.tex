@@ -17,10 +17,10 @@ de solutions à des systèmes d'équations.
 
 \section{Ax-Grothendieck}
 
-\todo[inline]{Reformuler si on passe les variétés en annexe}
-On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
-détaillée avant de passer au cas général d'une variété algébrique sur un corps
-algébriquement clos dont l'idée est la même.
+% \todo[inline]{Reformuler si on passe les variétés en annexe}
+% On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
+% détaillée avant de passer au cas général d'une variété algébrique sur un corps
+% algébriquement clos dont l'idée est la même.
 
 On va avoir besoin du lemme suivant: 
 
@@ -75,64 +75,64 @@ qui est injective et non surjective, ce qui est absurde car $K$ est fini.
 \end{proof}
 
 
-\begin{lemm} \label{lemm-phrase-variete}
-Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
-Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
-\end{lemm}
+% \begin{lemm} \label{lemm-phrase-variete}
+% Pour tout quadruplet d'entiers $(n, m, d, \delta)$, il existe une phrase $\varphi_{n,m,d,\delta}$ dans le langage des anneaux qui exprime la propriété suivante :
+% Pour tout corps $K$, pour toute variété algébrique $V \subset K^n$ définie par $m$ équations de degré au plus $\delta$, et pour toute application polynomiale $f: V \to V$ définie par des polynômes de degré au plus $d$, si $f$ est injective alors elle est surjective.
+% \end{lemm}
 
-\begin{exem}
-Illustrons la construction de la phrase $\phi_{n,m,d,s}$ dans un cas simple :
-    \begin{itemize}
-        \item $n=2$ (Dimension ambiante: le plan $K^2$).
-        \item $m=1$ (La variété $V$ est définie par $1$ équation).
-        \item $d=2$ (L'équation est de degré $\le 2$, c'est une conique).
-        \item $\delta=1$ (L'application $f$ est polynomiale de degré $\le 1$, c'est une application affine).
-    \end{itemize}
+% \begin{exem}
+% Illustrons la construction de la phrase $\phi_{n,m,d,s}$ dans un cas simple :
+%     \begin{itemize}
+%         \item $n=2$ (Dimension ambiante: le plan $K^2$).
+%         \item $m=1$ (La variété $V$ est définie par $1$ équation).
+%         \item $d=2$ (L'équation est de degré $\le 2$, c'est une conique).
+%         \item $\delta=1$ (L'application $f$ est polynomiale de degré $\le 1$, c'est une application affine).
+%     \end{itemize}
 
-    \textbf{Coefficients:}
-    \begin{itemize}
-        \item La variété $V$ est définie par l'annulation d'un polynôme $P$ de degré $\le 2$ en $2$ variables. Il y a $6$ monômes ($1, x_1, x_2, x_1^2, x_2^2, x_1x_2$). On note $\overline{a}$ le vecteur des $6$ coefficients de $P$.
-        On définit l'appartenance à $V$ par la formule:
-        \[ x \in V_{\overline{a}} \iff P(\overline{a},\overline{x}) = 0 \]
+%     \textbf{Coefficients:}
+%     \begin{itemize}
+%         \item La variété $V$ est définie par l'annulation d'un polynôme $P$ de degré $\le 2$ en $2$ variables. Il y a $6$ monômes ($1, x_1, x_2, x_1^2, x_2^2, x_1x_2$). On note $\overline{a}$ le vecteur des $6$ coefficients de $P$.
+%         On définit l'appartenance à $V$ par la formule:
+%         \[ x \in V_{\overline{a}} \iff P(\overline{a},\overline{x}) = 0 \]
         
-        \item L'application $f$ est définie par $2$ polynômes $(f_1, f_2)$ de degré $\le 1$. Chaque polynôme a $3$ coefficients ($c_0 + c_1x_1 + c_2x_2$). On note $\overline{c}$ le vecteur des $2 \times 3 = 6$ coefficients définissant $f$.
-    \end{itemize}
+%         \item L'application $f$ est définie par $2$ polynômes $(f_1, f_2)$ de degré $\le 1$. Chaque polynôme a $3$ coefficients ($c_0 + c_1x_1 + c_2x_2$). On note $\overline{c}$ le vecteur des $2 \times 3 = 6$ coefficients définissant $f$.
+%     \end{itemize}
 
-    \textbf{Conditions sur les coefficients}
-    Contrairement au cas affine (\cref{lemm-phrase-corps}), n'importe quel choix
-    de coefficients $\overline{c}$ ne convient pas, il faut que $f$ envoie bien
-    les points de $V$ dans $V$. On introduit une formule de "Stabilité":
-    \[ \text{Stable}(\overline{a}, \overline{c}) : \forall \bar{x} \left( P(\overline{a}, \bar{x})=0 \longrightarrow P(\overline{a}, f(\overline{c}, \bar{x})) = 0 \right) \]
+%     \textbf{Conditions sur les coefficients}
+%     Contrairement au cas affine (\cref{lemm-phrase-corps}), n'importe quel choix
+%     de coefficients $\overline{c}$ ne convient pas, il faut que $f$ envoie bien
+%     les points de $V$ dans $V$. On introduit une formule de "Stabilité":
+%     \[ \text{Stable}(\overline{a}, \overline{c}) : \forall \bar{x} \left( P(\overline{a}, \bar{x})=0 \longrightarrow P(\overline{a}, f(\overline{c}, \bar{x})) = 0 \right) \]
 
-    \textbf{Injectivité et Surjectivité restreintes à $V$}
-    On veut que les quantificateurs ne portent que sur les points de $V$, on
-    utilise donc la formule d'appartenance introduite précédemment
-    \[ \text{Inj}_V(\overline{a}, \overline{c}) : \forall \bar{x} \forall \bar{y} \left( [\bar{x} \in V_{\overline{a}} \wedge \bar{y} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{x}) = f(\overline{c}, \bar{y})] \longrightarrow \bar{x} = \bar{y} \right) \]
-    \[ \text{Surj}_V(\overline{a}, \overline{c}) : \forall \bar{z} \left( \bar{z} \in V_{\overline{a}} \longrightarrow \exists \bar{w} [\bar{w} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{w}) = \bar{z}] \right) \]
+%     \textbf{Injectivité et Surjectivité restreintes à $V$}
+%     On veut que les quantificateurs ne portent que sur les points de $V$, on
+%     utilise donc la formule d'appartenance introduite précédemment
+%     \[ \text{Inj}_V(\overline{a}, \overline{c}) : \forall \bar{x} \forall \bar{y} \left( [\bar{x} \in V_{\overline{a}} \wedge \bar{y} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{x}) = f(\overline{c}, \bar{y})] \longrightarrow \bar{x} = \bar{y} \right) \]
+%     \[ \text{Surj}_V(\overline{a}, \overline{c}) : \forall \bar{z} \left( \bar{z} \in V_{\overline{a}} \longrightarrow \exists \bar{w} [\bar{w} \in V_{\overline{a}} \wedge f(\overline{c}, \bar{w}) = \bar{z}] \right) \]
 
-    On a donc \[ \varphi_{2,1,2,1} : \forall \overline{a} \forall \overline{c} \left[ (\text{Stable}(\overline{a}, \overline{c}) \wedge \text{Inj}_V(\overline{a}, \overline{c})) \longrightarrow \text{Surj}_V(\overline{a}, \overline{c}) \right] \]
-\end{exem}
+%     On a donc \[ \varphi_{2,1,2,1} : \forall \overline{a} \forall \overline{c} \left[ (\text{Stable}(\overline{a}, \overline{c}) \wedge \text{Inj}_V(\overline{a}, \overline{c})) \longrightarrow \text{Surj}_V(\overline{a}, \overline{c}) \right] \]
+% \end{exem}
 
-\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
-Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
-: V \rightarrow V$ une application polynomiale. Si $f$ est
-injective, alors elle est bijective. 
-\end{theo}
+% \begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck-variete}
+% Soit $K$ un corps algébriquement clos, $V$ une variété algébrique sur $K$ et $f
+% : V \rightarrow V$ une application polynomiale. Si $f$ est
+% injective, alors elle est bijective. 
+% \end{theo}
 
-\begin{proof}
-La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{theo-Ax-Grothendieck}).
-Par le lemme et par principe de Lefschetz, il suffit de démontrer le résultat pour $K=\Fpalg$.
+% \begin{proof}
+% La preuve suit exactement le même schéma que pour le cas affine $V=\bC^n$ (\cref{theo-Ax-Grothendieck}).
+% Par le lemme et par principe de Lefschetz, il suffit de démontrer le résultat pour $K=\Fpalg$.
 
-La seule adaptation nécessaire concerne la construction du sous-corps fini. Si
-l'on suppose qu'il existe $y \in V$ hors de l'image de $f$,
-on considère le sous-corps fini $k \subset \Fpalg$ engendré par: les
-coefficients de l'application $f$ et les coordonnées de $y$ (comme
-précédemment) ET les coefficients des polynômes définissant la variété $V$.
+% La seule adaptation nécessaire concerne la construction du sous-corps fini. Si
+% l'on suppose qu'il existe $y \in V$ hors de l'image de $f$,
+% on considère le sous-corps fini $k \subset \Fpalg$ engendré par: les
+% coefficients de l'application $f$ et les coordonnées de $y$ (comme
+% précédemment) ET les coefficients des polynômes définissant la variété $V$.
 
-Alors l'ensemble des points rationnels $V(k) = V \cap k^n$ est fini (car inclus dans $k^n$).
-Par stabilité, $f$ induit une application $f: V(k) \to V(k)$ injective et non
-surjective, ce qui est exclu.
-\end{proof}
+% Alors l'ensemble des points rationnels $V(k) = V \cap k^n$ est fini (car inclus dans $k^n$).
+% Par stabilité, $f$ induit une application $f: V(k) \to V(k)$ injective et non
+% surjective, ce qui est exclu.
+% \end{proof}
 
 
 \section{Nullstellensatz}
@@ -164,7 +164,7 @@ d'après la \cref{prop-sous-struct-existance}, $\overline{L} \models
 \exists \overline{x} \varphi(\overline{x},\overline{c})$. Donc, comme $\ACF$
 admet l'élimination des quantificateur (\cref{theo-acf-elim}), il existe une
 formule $\theta(\overline{y})$ sans quantificateurs telle que $\ACF_n \vdash
-\forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{y})
+\forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{c})
 \leftrightarrow \theta(\overline{y}) ]$. Ainsi on a $\overline{L} \models
 \theta(\overline{c})$ et comme $\theta$ est sans quantificateur et $K$ une
 sous-structure de $\overline{L}$ d'après le \cref{lemm-sous-struct-sans-quant}
@@ -212,7 +212,7 @@ Par théorème de la base de Hilbert, il existe une famille finie telle que $I =
     \[ J = (I, 1 - Y f) \subset K[\overline{x}, Y] \]
 
     Soit $(\abar,b) \in V(J)$, on a $P_i(\abar) = 0$ pour tout $i$ donc
-    $f(\abar) 0$  et $1 - b f(\abar) = 0$ ce
+    $f(\abar) = 0$  et $1 - b f(\abar) = 0$ ce
     qui est absurde, donc $V(J) = \emptyset$ donc d'après le Nullstelensatz
     faible (\cref{theo-Nullstelensatz-faible}), $J$ n'est pas propre donc $J = K[\bar{x}, Y]$ et $1 \in J$.
     Il existe ainsi des polynômes $A_1, \dots, A_m, B \in K[\bar{x}, Y]$ et $P_1, \dots, P_m \in I$ tels que :
