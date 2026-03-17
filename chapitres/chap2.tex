@@ -425,12 +425,10 @@ Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près. On 
 notera $\overline{K}$
 \end{theo}
 
-
-\todo[inline]{unicite Admise ou pas?}
-\begin{proof}
-    L'existence a été montrée par la \cref{prop-existence-cloture-algebrique}
-    et on admettra l'unicité.
-\end{proof}
+% \begin{proof}
+%     L'existence a été montrée par la \cref{prop-existence-cloture-algebrique}
+%     et on admettra l'unicité.
+% \end{proof}
 
 
 \begin{defi}[Indépendance algébrique, base de transcendance]
@@ -461,9 +459,9 @@ de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
 \ge 1} \bF_{p^k}$.
 \end{theo}
 
-\begin{proof}
-\todo[inline]{Preuve}
-\end{proof}
+    % \begin{proof}
+    % \todo[inline]{Preuve}
+    % \end{proof}
 
 \section{Théorie des corps algébriquement clos}
 
@@ -473,6 +471,13 @@ algébriquement clos (ACF). On admettra qu'elle admet
 l'élimination des quantificateurs puis on démontre la complétude ainsi que le principe de
 Lefschetz qui nous seront indispensables pour la suite. On étudie ensuite les
 ensembles définissables de la théorie et leur lien avec les ensembles constructibles.
+
+
+Pour axiomatiser les corps algébriquement clos, nous devons exprimer le fait que tout
+polynôme non constant admet une racine. Pour rester en logique du premier ordre,
+nous ne pouvons quantifier que sur les éléments du corps, et donc ni sur les
+polynômes ni sur leur degré. Pour pallier à ce problème, nous ajoutons un axiome
+pour chaque degré $n \in \bNe$.
 
 \begin{defi}[Théorie des corps algébriquement clos]
     On se place dans le langage des anneaux $\cL_{ring}$ avec les axiomes des
@@ -514,6 +519,30 @@ aisément la complétude d'une théorie et facilite grandement l'étude des
 ensembles définissables. Elle permet également de réduire la décidabilité d'une
 théorie à une simple vérification algébrique. 
 
+On peut notamment l'interpréter sous les angles suivants:
+\begin{enumerate}[label= (\roman*)]
+    \item Angle algébrique: L'élimination des quantificateurs traduit que
+    l'existence de solutions à un système d'équations polynomiales dépend
+    uniquement de ses paramètres. Prenons un exemple élémentaire : à quelle
+    condition le polynôme $ax^2+bx+c$ admet-il une racine? Dans un corps
+    algébriquement clos: il suffit que le polynôme ne soit pas une constante non
+    nulle, la formule $\exists x, (ax^2+bx+c = 0)$ est donc équivalente à la
+    phrase sans quantificateurs $(a \neq 0) \vee (b \neq 0) \vee (c = 0)$.
+    Le théorème de Tarski affirme que ce mécanisme se généralise à tout système
+    d'équations.
+
+    \item Angle géométrique: Géométriquement, le quantificateur existentiel
+    $(\exists)$ correspond à la projection d'un ensemble alors
+    que les formules sans quantificateurs correspondent aux ensembles
+    constructibles (\cref{defi-constructible}). Prenons encore une fois un
+    exemple simple dans le plan $\bC^2$ : Considérons l'hyperbole d'équation
+    $xy=1$, sa projection sur l'axe des abscisses est l'ensemble des $x$ qui
+    satisfont la formule $\exists y, xy= 1$. Géométriquement, on sait que cette
+    projection couvre tout l'axe sauf l'origine et donc que la formule $\exists y, xy= 1$ est
+    équivalente à la formule sans quantificateurs $x \neq 0$. Le théorème de
+    Chevalley généralise cette construction à la projection de tout ensemble constructible.
+\end{enumerate}
+
 \begin{theo}[Théorème de Tarski]\label{theo-acf-elim}
     La théorie $\ACF$ a l'élimination des quantificateurs
 \end{theo}
@@ -532,7 +561,21 @@ résultat suivant:
     La théorie $\ACF$ est décidable (\cref{defi-decidable}).
 \end{coro}
 
-\todo[inline]{blabla}
+\todo[inline]{defi constructible}\label{defi-constructible}
+
+\begin{theo}[Théorème de Chevalley]
+Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
+\rightarrow K^m$ une fonction \kw{polynomiale}, alors $f(S) \subset K^m$ est
+constructible.
+En particulier, la projection de tout ensemble constructible est constructible.
+\end{theo}
+
+\begin{proof}
+    \todo[inline]{Preuve Chevalley}
+\end{proof}
+
+\todo[inline]{Complétude}
+
 
 \begin{prop}[Complétude]\label{prop-acf-complet}
     La théorie $\ACF_n$ est complète.
@@ -599,17 +642,6 @@ suffisamment grand ce qui contredit $4$ d'où le résultat.
 
 
 
-
-
-\todo[inline]{Def constructible}
-\begin{theo}[Théorème de Chevalley]
-Soit $m \in \bNe$, $S$ un ensemble constructible de $K^n$, et $f: K^n
-\rightarrow K^m$ une fonction \kw{polynomiale}, alors $f(S) \subset K^m$ est .
-\end{theo}
-
-\begin{proof}
-    \todo[inline]{Preuve Chevalley}
-\end{proof}
 
 
 % Dans ce qui suit, on montre que l'élimination des quantificateurs possède

@@ -17,12 +17,34 @@ de solutions à des systèmes d'équations.
 
 \section{Ax-Grothendieck}
 
+On veut démontrer le théorème suivant: 
+
+\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
+Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
+injective, alors elle est bijective. 
+\end{theo}
+
+On va suivre le plan suivant :
+
+\begin{enumerate}[label= (\roman*)]
+\item On traduit l'énoncé en une formule du premier ordre dans le language des anneaux.
+\item On invoque le principe de Lefschetz, pour démontrer le résultat sur $\bC$,
+il suffit de le montrer sur $\Fpalg$ pour tout $p \in \bP$.
+\item On se restreint à un sous-corps fini en raisonnant par l'absurde.
+\item Le résultat est évident sur un corps fini.
+
+\end{enumerate}
+
 % \todo[inline]{Reformuler si on passe les variétés en annexe}
 % On présente dans un premier temps le cas particulier de $\bC^n$ et sa preuve
 % détaillée avant de passer au cas général d'une variété algébrique sur un corps
 % algébriquement clos dont l'idée est la même.
 
-On va avoir besoin du lemme suivant: 
+
+
+
+
+Pour traduire notre énoncé en logique du premier ordre, on va avoir besoin du lemme suivant: 
 
 \begin{lemm} \label{lemm-phrase-corps}
 Pour tout couple $(n,d)$ d'entiers positifs, il existe une phrase
@@ -56,11 +78,6 @@ Un polynôme $P$ en $3$ variables de degré $\le 2$ est une combinaison linéair
     
     qui est bien une formule de longueur finie du premier ordre dans le langage des anneaux.
 \end{exem}
-
-\begin{theo}[Ax-Grothendieck]\label{theo-Ax-Grothendieck}
-Soit $f : \bC^n \rightarrow \bC^n$ une application polynomiale. Si $f$ est
-injective, alors elle est bijective. 
-\end{theo}
 
 \begin{proof}
 D'après le \cref{lemm-phrase-corps} et par principe de Lefschetz (\cref{coro-Lefschetz}), il suffit de
@@ -137,12 +154,19 @@ qui est injective et non surjective, ce qui est absurde car $K$ est fini.
 
 \section{Nullstellensatz}
 
-\todo[inline]{blabla}
-
 La définition d'un corps algébriquement clos demande que chaque polynôme non
 constant admette une racine dans le corps, mais grâce à l'élimination des
 quantificateurs (\cref{theo-acf-elim}), on peut étendre ce résultat à des
-systèmes d'équations polynomiales en plusieurs variables de la manière suivante.
+systèmes d'équations (et d'inéquations) polynomiales en plusieurs variables.
+
+Habituellement, si une équation polynomiale n'a pas de solutions, par exemple
+$x^2 + 1 = 0$ sur $\bR$, la parade est de plonger le corps dans une extension
+(ici $\bC$) pour y trouver une solution.
+
+Le lemme suivant affirme que si le corps $K$ est algébriquement clos, ce
+cas ne se produit pas même pour les systèmes dans le sens où si un système
+d'équation polynomiales admet une solution dans une extension arbitrairement
+grande de $K$, il admet déjà une solution dans $K$.
 
 
 \begin{lemm}\label{lemm-solution-systeme}
@@ -175,7 +199,7 @@ on a $K \models \exists \overline{x} \varphi(\overline{x},\overline{c})$.
 Le lemme précédent affirme que pour savoir si un système d'équations admet
 des solutions, il n'y a pas besoin de chercher plus loin que dans un corps
 algébriquement clos, il ne donne cependant pas d'indication sur l'existence ou
-non de solutions. Pour cela, on a besoin du Nullstelensatz.
+non de solutions. Pour cela, on a besoin du Nullstellensatz.
 
 \begin{theo}[Nullstelensatz faible]\label{theo-Nullstelensatz-faible}
 Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
@@ -213,7 +237,7 @@ Par théorème de la base de Hilbert, il existe une famille finie telle que $I =
 
     Soit $(\abar,b) \in V(J)$, on a $P_i(\abar) = 0$ pour tout $i$ donc
     $f(\abar) = 0$  et $1 - b f(\abar) = 0$ ce
-    qui est absurde, donc $V(J) = \emptyset$ donc d'après le Nullstelensatz
+    qui est absurde, donc $V(J) = \emptyset$ donc d'après le Nullstellensatz
     faible (\cref{theo-Nullstelensatz-faible}), $J$ n'est pas propre donc $J = K[\bar{x}, Y]$ et $1 \in J$.
     Il existe ainsi des polynômes $A_1, \dots, A_m, B \in K[\bar{x}, Y]$ tels que:
     \[ 1 = \sum_{i=1}^m P_i(\bar{x}) A_i(\bar{x}, Y) + (1 - Y f(\bar{x})) B(\bar{x}, Y) \]
