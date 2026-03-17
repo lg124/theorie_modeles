@@ -27,7 +27,7 @@ injective, alors elle est bijective.
 On va suivre le plan suivant :
 
 \begin{enumerate}[label= (\roman*)]
-\item On traduit l'énoncé en une formule du premier ordre dans le language des anneaux.
+\item On traduit l'énoncé en une formule du premier ordre dans le langage des anneaux.
 \item On invoque le principe de Lefschetz, pour démontrer le résultat sur $\bC$,
 il suffit de le montrer sur $\Fpalg$ pour tout $p \in \bP$.
 \item On se restreint à un sous-corps fini en raisonnant par l'absurde.
@@ -85,10 +85,10 @@ montrer le résultat
 pour $\Fpalg$ pour tout $p \in \bP$. Par le \cref{theo-structure-corps-fini}, toute partie finie de $\Fpalg$ est contenue dans
 un sous-corps fini de $\Fpalg$. Soit $f = (f_1, \ldots, f_n) : \Fpalg^n
 \rightarrow \Fpalg^n$ ,  une application polynomiale injective. Supposons qu'il
-existe $y \in \Fpalg^n$ qui n'est pas dans l'image de $f$. Soit $K$ le sous-corps
-fini de $\Fpalg$ qui contient toutes les composantes de $y$ et tous les
-coefficients des $f_i$, alors $f$ induit une application $K^n \rightarrow K^n$
-qui est injective et non surjective, ce qui est absurde car $K$ est fini. 
+existe $y \in \Fpalg^n$ qui n'est pas dans l'image de $f$. Soit $K$ le sous-corps de $\Fpalg$ qui contient toutes les composantes de $y$ et tous les
+coefficients des $f_i$. $f$ induit alors une application $K^n \rightarrow K^n$
+qui est injective et non surjective ce qui est absurde car $K$ est fini d'après le
+\cref{theo-structure-corps-fini}.
 \end{proof}
 
 
