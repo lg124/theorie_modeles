@@ -229,7 +229,8 @@ Soit $K$ un corps, une \kw{extension} de $K$ est un corps $L$ qui contient $K$
 comme sous-corps. On le note $L/K$. Le corps $L$ muni de son produit et de la
 loi externe $K \times L \implies L:(\lambda,x)\mapsto \lambda x$ est une
 $K$-algèbre. La dimension de $L$ comme $K$-espace vectoriel est appelé
-\kw{degré} de $L/K$ et noté $[L:K]$. Une \kw{sous-extension} de $L/K$ est un
+\kw{degré} de $L/K$ et noté $[L:K]$, si il est fini, l'extension est dite
+\kw{finie}.Une \kw{sous-extension} de $L/K$ est un
 sous-corps de $L$ contenant $K$.
 \end{defi}
 
@@ -313,9 +314,10 @@ appelé \kw{polynome minimal} de $a$.
 % \bQ(\pi)$ est injectif et par suite, $\bQ(r) \simeq \bQ(X)$. 
 % \end{exem}
 
-\begin{defi}[Extension finie]
+\begin{defi}[Extension de type fini]
 Soit $L/K$ une extension de corps, si il existe $\overline{a} =
-(a_1,\ldots,a_n) \in L^n$ tel que $L = K(\overline{a})$, on dit que l'extension est \kw{finie}.
+(a_1,\ldots,a_n) \in L^n$ tel que $L = K(\overline{a})$, on dit que l'extension
+est \kw{de type fini}.
 \end{defi}
 
 % \begin{prop}[Classification des extensions finies]
@@ -331,12 +333,12 @@ engendré par un nombre fini de polynômes.
 \end{theo}
 
 \begin{defi}[Extension algébrique]
-Soit $L/K$ une extension de corps, si tout élément de $F$ est algébrique sur
+Soit $L/K$ une extension de corps, si tout élément de $L$ est algébrique sur
 $K$, on dit que $L/K$ est une \kw{extension algébrique}.
 \end{defi}
 
 \begin{prop}
-Si $L/K$ est une extension algébrique finie, alors c'est une extension simple.
+Si $L/K$ est une extension algébrique finie et séparable, alors c'est une extension simple.
 \end{prop}
 
 \begin{lemm}
@@ -355,7 +357,7 @@ de $K$ si $L/K$ est une extension algébrique et $L$ est algébriquement clos.
 On va avoir besoin des lemmes suivants:
 
 \begin{lemm}\label{lemm-extension-racine}
-    Pour tout corps $K$, il existe une extension $K^{*}/K$ telle que tout polynôme non constant $P \in K[X]$ admette au moins une racine dans $K^*$.
+    Pour tout corps $K$, il existe une extension $L/K$ telle que tout polynôme non constant $P \in K[X]$ admette au moins une racine dans $L$.
 \end{lemm}
 
 \begin{proof}
@@ -366,7 +368,7 @@ On va avoir besoin des lemmes suivants:
 
     Soit $T$ la théorie constituée de:
     \begin{enumerate}
-        \item $\Diag(K)$ (pour assurer que le modèle sera une extension de $K$).
+        \item $\Diag(K)$ (\cref{defi-diagramme}) (pour assurer que le modèle sera une extension de $K$).
         \item L'axiome $P(c_P) = 0$ pour chaque $P \in K[X]$.
     \end{enumerate}
     
@@ -379,7 +381,7 @@ On va avoir besoin des lemmes suivants:
     
     Ainsi, tout sous-ensemble fini de $T$ est satisfiable, par le théorème
     de compacité (\cref{theo-compacite}) la théorie $T$ est satisfiable. Soit
-    $K^{*} \models T$, comme $K^{*} \models \Diag(K)$, $K \subset K^{*}$ et par
+    $L \models T$, comme $L \models \Diag(K)$, $K \subset L$ et par
     construction, tout polynôme non constant de $K[X]$ y admet une racine d'où
     le résultat.
 \end{proof}
@@ -527,7 +529,7 @@ la valeur de vérité est alors facilement vérifiable. On a donc établi le
 résultat suivant:
 
 \begin{coro}[Décidabilité de $ACF_p$]
-    La théorie $\ACF$ est décidable.
+    La théorie $\ACF$ est décidable (\cref{defi-decidable}).
 \end{coro}
 
 \todo[inline]{blabla}
