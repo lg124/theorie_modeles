@@ -142,7 +142,7 @@ $t^{\cM} : M^n \rightarrow M$ comme suit:
 \end{enumerate}
 \end{defi}
 
-\begin{defi}[Formule]
+\begin{defi}[Formule]\label{termeformule}
 On définit l'ensemble des \kw{formules} de $\cL$ de manière récursive:
 \begin{enumerate}[label= (\roman*)]
     \item Si $t_1$ et $t_2$ sont des termes, alors $(t_1 = t_2)$ est une formule.
@@ -264,8 +264,8 @@ Si $\phi$ est $\psi_1 \wedge \psi_2$ et qu'on suppose que le résultat est vrai 
 &\iff \cN \models \phi(\abar)
 \end{align*}
 
-\noindent Le résultat est donc vrai pour toutes les formules atomiques et est stable sous négation et conjonction logique. Il est donc,
-par construction des formules d'un langage, vrai pour toutes formules sans quantificateurs.
+\noindent Le résultat est donc vrai pour toutes les formules atomiques et est stable sous négation et conjonction logique.
+Par construction des formules d'un langage (définition \ref{termeformule}), il est vrai pour toutes formules sans quantificateurs.
 \end{proof}
 
 \begin{defi}[Structures élémentairement équivalentes]
@@ -347,6 +347,20 @@ Soit $\cL$ un langage.
 \end{enumerate}
 \end{defi}
 
+\begin{exem}
+On axiomatise la structure de groupe via le langage $\cL = \{ \star , e \}$ et la théorie suivante:
+\begin{enumerate}
+\item $\forall x,y,z, (x \star y) \star z = x \star (y \star z)$
+\item $\forall x, x \star e = e \star x = x$
+\item $\forall x, x \star y = y \star x = e$
+\end{enumerate}
+Cette théorie est satisfiable: par exemple, $\mathbb{R}$ muni de la loi d'addition $+$ et du neutre $e_{\mathbb{R}} = 0$ en est un modèle.
+\end{exem}
+
+\begin{exem}
+L'objet d'étude central du mémoire est la \kw{théorie des corps algébriquement clos},
+dont nous présentons l'axiomatisation dans la définition \ref{defACF}.
+\end{exem}
 
 \section{Ensembles définissables}
 \begin{defi}[Ensembles définissables]
@@ -405,6 +419,8 @@ illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions 
 
 \section{Ultrafiltres et Théorème de Compacité}
 
+Le théorème de compacite, pilier de la théorie des modèles, fournit un cadre
+
 \begin{theo}[Théorème de compacité]\label{theo-compacite}
 Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable. 
 \end{theo}
@@ -435,8 +451,6 @@ Soit $I$ un ensemble et $(A_i)_{i \in I}$ une famille d'ensembles non vide et $\
 
 \section{Le Théorème de Compacité}
 
-\todo[inline]{intro sur theoreme de compacité comme pierre angulaire de la théorie des modèles}
-
 \begin{defi}[Preuve]
 Soient $\phi$ une $\mathcal{L}$-formule, $T$ une $\mathcal{L}$-théorie. Une \kw{preuve de $\phi$ à partir de $T$}
 est une suite finie $\psi_1,\dots,\psi_n$ de $\mathcal{L}$-formules telle que $\psi_n = \phi$ et, pour chaque i, $\psi_i$ est soit un axiome de T, soit déduite de
@@ -463,8 +477,6 @@ Nous omettons la vérification de ce résultat pour nous concentrer sur l'implic
 \begin{theo}[Théorème de complétude de Gödel]
 Soit $T$ une $\mathcal{L}$-théorie et $\phi$ une $\mathcal{L}$-phrase, alors $T \models \phi$ si et seulement si $T \vdash \phi$.
 \end{theo}
-\todo[inline]{construction de Henkin en annexe?}
-
 
 \begin{coro}
 T est cohérente si et seulement si T est satisfaisable.
