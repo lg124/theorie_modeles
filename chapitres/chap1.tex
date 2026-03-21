@@ -4,12 +4,6 @@
 
 \subsection{Langages et structures}
 
-L'objectif n'étant pas de faire un cours de logique, on se contente de donner
-les définitions indispensables pour la suite et de nombreux exemples, le lecteur
-pressé peut se contenter des exemples et se référer aux définitions en cas de
-doute sur le vocabulaire utilisé. On suit de près le plan de \cite{Marker_2002}
-dans lequel on pourra trouver plus de détails.
-
 \begin{defi}[Langage]
 Un \kw{langage} $\cL$ est la donnée de:
     \begin{enumerate}[label= (\roman*)]
@@ -40,7 +34,7 @@ majuscule droite ($M,N,A, \ldots$).
 \end{nota}
 
 \begin{exem}[Langage des groupes]
-Si on étudie les groupes, on peut utiliser le langage $\cL_{gp} =
+L'étude des groupes induit le langage $\cL_{gp} =
 (\cdot,{}^{-1},e)$ où $\cdot$ est une fonction binaire ${}^{-1}$ une fonction unaire et $e$ une constante.
 Une $\cL_{gp}$-structure $\cG = (G,\cdot^{\cG},{}^{{-1}^{\cG}},e^{\cG})$ sera un ensemble $G$
 muni d'une opération binaire $\cdot^{\cG}$, d'une opération unaire
@@ -48,39 +42,35 @@ ${}^{{-1}^{\cG}}$ et d'un élément distingué $e^{\cG}$. \\
 Par exemple $(\bR,\cdot,{}^{-1},1)$ est une $\cL_{gp}$-structure où on interprète
 $\cdot$ comme la multiplication usuelle, ${}^{-1}$ comme l'inversion usuelle et
 $e$ comme $1$.  \\
-Il faut faire attention au fait qu'il n'y a pour le moment aucune règle
-sémantique à vérifier, par exemple $\cN = (\bN,+,s,0)$  avec $\cdot^{\cN} = +$ l'addition usuelle, ${}^{{-1}^{\cN}}
+Remarquons qu'il n'y a pour le moment aucune règle
+sémantique à vérifier, par exemple $\cN = (\bN,+,s,0)$ avec $\cdot^{\cN} = +$ l'addition usuelle, ${}^{{-1}^{\cN}}
 = s$ le successeur et $e^{\cG} = 0$ est bien une
 $\cL_{gp}$-structure même si ce n'est évidemment par un groupe.
 \end{exem}
 
-\todo[inline]{exemple ci dessous à placer après la def ??}
-\begin{exem}[Langage des anneaux]
-Il arrive souvent qu'on ne parte pas de zéro mais qu'on rajoute ou enlève des
-symboles à un langage existant ou alors qu'on augmente ou diminue la taille du
-domaine. Considérons par exemple le langage des anneaux $\cL_{ring} =
-(+,\cdot, - , 0 ,1 ) $, alors le langage $\cL_{agp} = (+,-,0 )$ des groupes
-notés additivement est un \kw{sous-langage} de $\cL_{ring}$ car chaque symbole de
-$\cL_{agp}$ et aussi un symbole de $\cL_{ring}$ avec la même arité. On dit aussi
-que $\cL_{ring}$ est une \kw{expansion} de $\cL_{agp}$. Si on considère la structure
-$\bR_{ring} = (\bR;+,\cdot, - , 0 ,1 )$, alors $\bR_{agp} = (\bR;+,-,0)$ est
-une réduction de $\bR_{ring}$. Si on change le domaine, on parle de
-sous-structure et d'extensions, ainsi $\bZ_{ring} = (\bZ;+,\cdot, - , 0 ,1 )$
-est une \kw{sous-structure} de $\bR_{ring}$ et $\bR_{ring}$ une \kw{extension} de
-$\bZ_{ring}$.
-
-\end{exem}
-
 \begin{defi}[Sous-langage, expansion]
-Soit $\cL,\cL'$ deux langages. Si $\cL \subset \cL'$, on dit que $\cL$ est
+Soient $\cL,\cL'$ deux langages. Si $\cL \subset \cL'$, on dit que $\cL$ est
 un \kw{sous-langage} de $\cL'$ et $\cL'$ une \kw{expansion} de $\cL$.
 Soit $\cM'$ une $\mathcal{L'}$-structure, en restreignant l’interprétation donnée par $\mathcal{M'}$ au langage $\mathcal{L}$,
 on obtient une $\mathcal{L}$-structure notée $\mathcal{M}'\upharpoonright_{\mathcal{L}}$. On dit que $\mathcal{M}'\upharpoonright_{\mathcal{L}}$
 est une réduction de $\mathcal{M}'$, et $\mathcal{M}'$ une expansion de $\mathcal{M}'\upharpoonright_{\mathcal{L}}$.
 \end{defi}
 
-\begin{defi}{Plongement, sous-structure, extension}\label{plongement}
-    Soit $\cM, \cN$ des $\cL$-structures, un $\cL$-plongement $\eta : \cM \rightarrow \cN$ (ou simplement \kw{plongement})
+\begin{exem}[Langage des anneaux]
+Considérons le langage des anneaux $\cL_{ring} =
+(+,\cdot, - , 0 ,1 ) $, alors le langage $\cL_{agp} = (+,-,0 )$ des groupes
+notés additivement est un \kw{sous-langage} de $\cL_{ring}$ car chaque symbole de
+$\cL_{agp}$ et aussi un symbole de $\cL_{ring}$ avec la même arité. On dit aussi
+que $\cL_{ring}$ est une \kw{expansion} de $\cL_{agp}$. En considérant la structure
+$\bR_{ring} = (\bR;+,\cdot, - , 0 ,1 )$, alors $\bR_{agp} = (\bR;+,-,0)$ est
+une réduction de $\bR_{ring}$. Si on change le domaine, on parle de
+sous-structure et d'extensions, ainsi $\bZ_{ring} = (\bZ;+,\cdot, - , 0 ,1 )$
+est une \kw{sous-structure} de $\bR_{ring}$ et $\bR_{ring}$ une \kw{extension} de
+$\bZ_{ring}$.
+\end{exem}
+
+\begin{defi}[Plongement, sous-structure, extension]\label{plongement}
+    Soient $\cM, \cN$ des $\cL$-structures, un $\cL$-plongement $\eta : \cM \rightarrow \cN$ (ou simplement \kw{plongement})
     est une fonction injective $\eta : M \rightarrow N$ qui préserve les
     interprétations de tous les symboles de $\cL$, plus précisément :
     \begin{enumerate}[label= (\roman*)]
@@ -104,7 +94,7 @@ est une réduction de $\mathcal{M}'$, et $\mathcal{M}'$ une expansion de $\mathc
 
 \begin{exem}
     \begin{itemize}
-        \item Les inclusions évidentes $\bZ \inj{} \bQ \inj{} \bR \inj{} \bC$ fournissent les
+        \item Les injections évidentes $\bZ \inj{} \bQ \inj{} \bR \inj{} \bC$ fournissent les
 $\cL_{ring}$-plongements \[ \bZ_{ring} \inj{} \bQ_{ring} \inj{} \bR_{ring}
 \inj{} \bC_{ring} .\] 
         \item Si $\eta : \bZ \rightarrow \bR$ est la fonction $\eta(x) = e^x$, alors $\eta$
@@ -122,35 +112,15 @@ est un $\cL_{gp}$-plongement de $(\bZ,+,0)$ dans $(\bR,\cdot,1)$.
 
 
 \subsection{Formules et modèles}
-\todo[inline]{blabla}
 
 En plus des symboles spécifiques à un langage définis plus haut (relations,
-fonctions et constantes), le langage formel utilise également des variables
-($x,y,z,\ldots$) et des symboles logiques $=,\wedge, \neg,
-\exists, (,) $. En plus de ces symboles, un langage consiste aussi en
-des chaines (listes) de ces symboles appelées termes et formules. Ces
-symboles, termes et formules seront ensuite interprétés dans des structures. On
-a vu précédemment comment les symboles étaient interprétés, on va maintenant
-s’intéresser aux termes et aux formules.
-
-\begin{exem}[Termes, formules]
-Les \kw{termes} sont des chaines de symboles qui font référence à des éléments ou à
-des fonctions de la structure.
-Reprenons par exemple le langage des anneaux $\cL_{ring}$, les chaines \[ 0;
-(1+1); -((1+1)+1); x\cdot(1+1); (x+y) \] sont des \kw{termes}.
-On peut les interpréter dans $\bR_{ring}$ respectivement comme les nombres
-$0;2;-3$ et les fonctions $x \mapsto 2x$ et $(x,y) \mapsto x+y$.
-Notons qu'un terme ne dépend que du langage mais son interprétation dépend de la structure.
-Les \kw{formules} sont des chaines qui donnent des informations sur la structure ou
-ses éléments. 
-Par exemple $(1+1) = 0$ est une \kw{formule} qui  est \kw{fausse} dans $\bR_{ring}$
-mais \kw{vraie} dans $\bZnZ{2}_{ring}$, $\exists x [(x\cdot x) = (1+1)]$ affirme que
-$2$ est un carré, elle est fausse dans $\bZ_{ring}$ mais vraie dans $\bR_{ring}$.
-\end{exem}
+fonctions et constantes), nous travaillons avec des symboles communs à tout langage:
+les symboles logiques $=,\wedge, \neg, \exists, (,) $, et les variables
+($x,y,z,\ldots$). Nous donnons le formalisme nécessaire pour construire des chaînes de symboles 
+via un langage donné (appellées termes et formules) et leurs interpretations dans une structure.
 
 \begin{defi}[Terme]\label{defi-terme}
-L'ensemble des termes d'un langage $\cL$ est défini de la manière récursive
-suivante:
+On définit l'ensemble des termes d'un langage $\cL$ de manière récursive:
 \begin{enumerate}[label= (\roman*)]
     \item Chaque variable est un terme.
     \item Chaque constante de $\cL$ est un terme.
@@ -173,8 +143,7 @@ $t^{\cM} : M^n \rightarrow M$ comme suit:
 \end{defi}
 
 \begin{defi}[Formule]
-Comme pour les termes, on définie l'ensemble des \kw{formules} de $\cL$ de manière
-récursive:
+On définit l'ensemble des \kw{formules} de $\cL$ de manière récursive:
 \begin{enumerate}[label= (\roman*)]
     \item Si $t_1$ et $t_2$ sont des termes, alors $(t_1 = t_2)$ est une formule.
     \item Si $t_1, \ldots, t_n$ sont des termes et $R$ est une relation d'arité
@@ -184,31 +153,36 @@ récursive:
     \item Si $\varphi$ est une formule et $x$ est une variable, alors $\exists x [\varphi]$ est une formule.
     \item Tout expression obtenue exclusivement par l'application d'un nombre
     fini de fois des règles précédentes est une formule.
-
-    Les formules des points $(i)$ et $(ii)$ sont dites \kw{atomiques} car elles
-    ne contiennent pas de formules plus petites.
 \end{enumerate}
+Les formules des points $(i)$ et $(ii)$ sont dites \kw{atomiques} car elles
+ne contiennent pas de formules plus petites.
 \end{defi}
 
-\begin{exem}
-Les variables peuvent jouer deux rôles distincts dans les formules selon
-qu'elles soient \kw{quantifiées} ou non. Par exemple,
-la formule $ x < 1 + 1$ donne une information sur la variable $x$ alors que la
-formule $ \exists x [x \cdot x = 2]$ indique si un élément est une racine, dans
-la seconde formule, la variable est \kw{muette}, la formule à la même
-signification que $ \exists y [y \cdot y = 2]$
+\begin{exem}[Termes, formules]
+Reprenons le langage des anneaux $\cL_{ring}$, les chaines \[ 0;
+(1+1); -((1+1)+1); x\cdot(1+1); (x+y) \] sont des \kw{termes}.
+On peut les interpréter dans $\bR_{ring}$ respectivement comme les nombres
+$0;2;-3$ et les fonctions $x \mapsto 2x$ et $(x,y) \mapsto x+y$.
+Notons qu'un terme ne dépend que du langage mais son interprétation dépend de la structure.
+Les \kw{formules} sont des chaines qui donnent des informations sur la structure ou
+ses éléments via une valeur de vérité qu'on leur associe une fois interpretées.
+Par exemple $(1+1) = 0$ est une \kw{formule} qui  est \kw{fausse} dans $\bR_{ring}$
+mais \kw{vraie} dans $\bZnZ{2}_{ring}$, $\exists x [(x\cdot x) = (1+1)]$ affirme que
+$2$ est un carré, elle est fausse dans $\bZ_{ring}$ mais vraie dans $\bR_{ring}$.
 \end{exem}
 
 \begin{defi}[Variable libre/liée, phrase]
 Une variable $x$ d'une formule est \kw{quantifiée} si elle suit immédiatement le
 symbole $\exists$, on dit alors que le quantificateur $\exists x$ \kw{lie} la
-variable. Une variable qui n'est pas liée est dite \kw{libre}. \\
-
+variable. Une variable qui n'est pas liée est dite \kw{libre}.
 Une formule sans variable libre est appelée une \kw{phrase} ou un \kw{énoncé}.
 \end{defi}
 
-\todo[inline]{def: interprétation des formules,modèle }
-\todo[inline]{prop: formule et plongement}
+\begin{exem}
+Dans la formule $x < 1 + 1$, la variable $x$ est libre: la formule donne une information directe sur la variable $x$ considérée. Tandis que 
+dans la formule $ \exists x [x \cdot x = 2]$, la variable $x$ est quantifiée: l'information donnée est sur la structure considérée plutot que sur une certaine variable, 
+en effet, cette formule équivaut $ \exists y [y \cdot y = 2]$.
+\end{exem}
 
 \begin{rema}[Abréviations]
 Notre langage formel est très restreint, nous utiliserons des abréviations usuelles
@@ -226,8 +200,73 @@ On préfère restreindre notre langage au strict minimum tout en utilisant ces
 autres symboles comme de simples abréviations pour ne pas alourdir nos preuves.
 En effet, comme le quantificateur universel ou la disjonction sont définis comme 
 des combinaisons de symboles de notre langage restreint, nous pourrons les utiliser
-dans nos formules sans avoir à traiter leurs cas spécifiques lors des preuves par induction.
+dans nos formules sans avoir à traiter leurs cas spécifiques lors des définitions ou des preuves par induction. 
+Ces abréviations sont exploitées dès la définition suivante.
 \end{rema}
+
+\begin{defi}
+Soient $\cM$ une $\cL$-structure, $\phi$ une $\cL$-formule prenant ses variables libres dans $ \vbar = (v_1,\dots,v_m)$
+et soit $\abar \in M^n$. On définit de manière récursive $\cM \models \phi(\abar)$:
+\begin{enumerate}
+\item Si $\phi$ est $t_1 = t_2$, alors $\cM \models \phi(\abar)$ si $t_1^{\cM}(\abar) = t_2^{\cM}(\abar)$
+\item Si $\phi$ est $\cR (t_1,\dots,t_{n_{\cR}})$, alors $\cM \models \phi(\abar)$ si $(t_1^{\cM}(\abar),\dots,t_{n_{\cR}}^{\cM}(\abar)) \in \cR^{\cM}$
+\item Si $\phi$ est $\neg \psi$, alors $\cM \models \phi(\abar)$ si $\cM \not\models \psi(\abar)$
+\item Si $\phi$ est $(\psi_1 \wedge \psi_2)$, alors $\cM \models \phi(\abar)$ si $\cM \models \psi_1(\abar)$ et $\cM \models \psi_2(\abar)$
+\item Si $\phi$ est $\exists w \psi(\vbar,w)$, alors $\cM \models \phi(\abar)$ s'il existe $b \in M$ tel que $\cM \models \psi(\abar,b)$
+\end{enumerate}
+Si $\cM \models \phi(\abar)$, on dit que $\cM$ \kw{satisfait} $\phi(\abar)$, ou encore que $\phi(\abar)$ est \kw{vraie} dans $\cM$.
+\end{defi}
+
+\noindent La démonstration suivante donne une première mise en oeuvre du raisonnement par induction.
+
+\begin{prop}
+Soient $\cM, \cN$ deux $\cL$-structures telles que $\cM$ est une sous-structure de $\cN$. Soient $\abar \in M$ et
+$\phi$ une $\cL$-formule sans quantificateurs. Alors $\cM \models \phi(\abar) \iff \cN \models \phi(\abar)$
+\end{prop}
+
+\begin{proof}
+On commence en montrant par induction que l'interpretation des termes dans ces deux structures est identique,
+c'est à dire que si $t(\vbar)$ est un terme et $\bbar \in M$, alors $t^{\cM}(\bbar) = t^{\cN}(\bbar)$\\
+Si $t$ est une constante $c$, alors  $t^{\cM}(\bbar) = c^{\cM} = c^{\cN} = t^{\cN}(\bbar)$\\
+Si $t$ est une variable $v_i$, alors $t^{\cM}(\bbar) = b_i = t^{\cN}(\bbar)$\\
+Si $t = f(t_1,\dots,t_n)$ tel que $f$ est une fonction d'arité n, et $t_1,\dots,t_n$ sont des termes tels que pour tout $i \in \{ 1,\dots,n \}$,
+$t^{\cM}_i(\bbar) = t^{\cN}_i(\bbar)$, alors
+\begin{align*}
+t^{\cM}(\bbar) &= f^{\cM}(t^{\cM}_1(\bbar),\dots,t^{\cM}_n(\bbar))\\
+&= f^{\cN}(t^{\cM}_1(\bbar),\dots,t^{\cM}_n(\bbar)) \text{ car $f^{\cM} = f^{\cN} \vert_{\cM^n}$,}\\
+&= f^{\cN}(t^{\cN}_1(\bbar),\dots,t^{\cN}_n(\bbar)) \text{ par hypothèse de récurrence,}\\
+&= t^{\cN}(\bbar) \text{ par définition.}
+\end{align*}
+On termine la preuve par induction sur les formules:\\
+Si $\phi$ est $t_1 = t_2$, alors
+\begin{align*}
+\cM \models \phi(\abar) &\iff t^{\cM}_1(\abar) = t^{\cM}_2(\abar)\\
+&\iff t^{\cN}_1(\abar) = t^{\cN}_2(\abar)\\
+&\iff \cN \models \phi(\abar)
+\end{align*}
+Si $\phi$ est $\cR(t_1,\dots,t_n)$, où $\cR$ est une relation d'arité n, alors
+\begin{align*}
+\cM \models \phi(\abar) &\iff (t^{\cM}_1(\abar),\dots,t^{\cM}_n(\abar)) \in \cR^{\cM}\\
+&\iff (t^{\cM}_1(\abar),\dots,t^{\cM}_n(\abar)) \in \cR^{\cN} \text{ car $\cR^{\cM} = \cR^{\cN} \vert_{\cM^n}$,}\\
+&\iff (t^{\cN}_1(\abar),\dots,t^{\cN}_n(\abar)) \in \cR^{\cN}\\
+&\iff \cN \models \phi(\abar)
+\end{align*}
+Si $\phi$ est $\neg\psi$ et qu'on suppose que le résultat est vrai pour $\psi$, alors
+\begin{align*}
+\cM \models \phi(\abar) &\iff \cM \not\models \psi(\abar)\\
+&\iff \cN \not\models \psi(\abar) \text{ par hypothèse}\\
+&\iff \cN \models \phi(\abar)
+\end{align*}
+Si $\phi$ est $\psi_1 \wedge \psi_2$ et qu'on suppose que le résultat est vrai pour $\psi_1$ et $\psi_2$, alors
+\begin{align*}
+\cM \models \phi(\abar) &\iff \cM \models \psi_1(\abar) \text{ et } \cM \models \psi_2(\abar)\\
+&\iff \cN \models \psi_1(\abar) \text{ et } \cN \models \psi_2(\abar) \text{ par hypothèse}\\
+&\iff \cN \models \phi(\abar)
+\end{align*}
+
+\noindent Le résultat est donc vrai pour toutes les formules atomiques et est stable sous négation et conjonction logique. Il est donc,
+par construction des formules d'un langage, vrai pour toutes formules sans quantificateurs.
+\end{proof}
 
 \begin{defi}[Structures élémentairement équivalentes]
 On dit que deux $\cL$-structures $\cM$ et $\cN$ sont élémentairement équivalentes, et on note $\cM \equiv \cN$, si
@@ -241,8 +280,6 @@ pour toute $\cL$-phrases $\phi$, on a
 Soient $\mathcal{M}$ et $\mathcal{N}$ deux $\mathcal{L}$-structures. Supposons qu'il existe $j: \mathcal{M} \rightarrow \mathcal{N}$ un isomorphisme,
 alors $\mathcal{M} \equiv \mathcal{N}$.
 \end{theo}
-
-La démonstration suivante donne une première mise en oeuvre du raisonnement par induction.
 
 \begin{proof}
 Nous commençons par montrer par induction que les définitions \ref{plongement} et \ref{defi-terme} suffisent à ce que les termes se comportent bien
@@ -265,7 +302,7 @@ et $\overline{a}=(a_1,\dots,a_n) \in M^n$, on a $j(t^{\mathcal{M}}(\overline{a})
     & = t^{\cN}(j(\overline{a})).
     \end{align*}
 
-Nous terminons la preuve par induction sur les formules.\\[0.5cm]
+Nous terminons la preuve par induction sur les formules:\\[0.5cm]
 Si $\phi(\overline{v}): t_1 = t_2$,
 \begin{align*}
 \mathcal{M} \models \phi(\overline{a}) &\iff t_1^{\mathcal{M}}(\overline{a}) = t_2^{\mathcal{M}}(\overline{a})\\
@@ -298,6 +335,18 @@ Si $\phi(\overline{v}): \exists w \text{ } \psi(\overline{v},w)$,
 &\iff \mathcal{N} \models \phi(j(\overline{a}))
 \end{align*}
 \end{proof}
+
+\subsection{Théories}
+
+\begin{defi}[Théories, modèles, satisfiabilité]
+Soit $\cL$ un langage.
+\begin{enumerate}
+\item Une $\cL$\kw{-théorie} $T$ est un ensemble de $\cL$-phrases (i.e un ensemble de $\cL$-formules sans variables libres), qu'on appelle \kw{axiomes}.
+\item On dit que $\cM$ est un \kw{modèle} de $T$, et on note $T \models \cM$, si l'on a $\cM \models \phi$ pour tout axiome $\phi \in T$.
+\item Une théorie $T$ est dite \kw{satisfiable} s'il existe une $\cL$-structure $\cM$ tel que $\cM$ est un modèle de $T$.
+\end{enumerate}
+\end{defi}
+
 
 \section{Ensembles définissables}
 \begin{defi}[Ensembles définissables]
@@ -354,9 +403,14 @@ Bien que la topologie singulière de $\mathbb{R}$ nous pousserait à croire qu'i
 illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions sur la droite réelle.
 \end{rema}
 
-\section{Théories et axiomes}
-
 \section{Ultrafiltres et Théorème de Compacité}
+
+\begin{theo}[Théorème de compacité]\label{theo-compacite}
+Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable. 
+\end{theo}
+
+\noindent Cette section s'écarte du plan de Marker pour fournir une preuve sémantique du théorème de compacité fondée sur les ultraproduits.
+Tandis que l'approche syntaxique découle du théorème de complétude, nous proposons ici de construire un tel modèle satisfaisant $T$ via une famille de structures.
 
 \begin{defi}[Filtres]
 Soit $I$ un ensemble quelconque, un filtre sur $I$ est un sous-ensemble $\mathcal{F}$ de $\mathcal{P}(I)$ tel que 
@@ -420,7 +474,7 @@ Nous prouvons la contraposée. Supposons que T est insatisfaisable, par définit
 $T \models (\phi \wedge \neg\phi)$ est trivialement vérifié, et par théorème de complétude de Gödel, $T \vdash (\phi \wedge \neg\phi)$.
 \end{proof}
 
-\begin{theo}[Théorème de compacité]\label{theo-compacite}
+\begin{theo}[Théorème de compacité]
 Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable. 
 \end{theo}
 
@@ -491,5 +545,3 @@ Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
 \todo[inline]{}\label{prop-sous-struct-existance}
 \todo[inline]{}\label{defi-diagramme}
 \todo[inline]{}\label{defi-decidable}
-\todo[inline]{}\label{defi-constructible}
-
