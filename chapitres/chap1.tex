@@ -417,18 +417,19 @@ Bien que la topologie singulière de $\mathbb{R}$ nous pousserait à croire qu'i
 illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions sur la droite réelle.
 \end{rema}
 
-\section{Ultrafiltres et Théorème de Compacité}
-
-Le théorème de compacite, pilier de la théorie des modèles, fournit un cadre
-
-\begin{theo}[Théorème de compacité]\label{theo-compacite}
-Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable. 
-\end{theo}
+\section{Ultraproduits et Théorème de Compacité}
 
 \noindent Cette section s'écarte du plan de Marker pour fournir une preuve sémantique du théorème de compacité fondée sur les ultraproduits.
 Tandis que l'approche syntaxique découle du théorème de complétude, nous proposons ici de construire un tel modèle satisfaisant $T$ via une famille de structures.
+Nous commençons par énoncer le résultat.
 
-\begin{defi}[Filtres]
+\begin{theo}[Théorème de compacité]
+Soit $T$ une $\cL$-théorie tel que tout sous-ensemble fini de $T$ est satisfiable, alors $T$ est satisfiable.
+\end{theo}
+
+\subsection{Ultrafiltres}
+
+\begin{defi}[Filtres, ultrafiltres]
 Soit $I$ un ensemble quelconque, un filtre sur $I$ est un sous-ensemble $\mathcal{F}$ de $\mathcal{P}(I)$ tel que 
 \begin{enumerate}
 \item $I \in \mathcal{F}, \emptyset \not\in \mathcal{F}$
@@ -438,32 +439,93 @@ Soit $I$ un ensemble quelconque, un filtre sur $I$ est un sous-ensemble $\mathca
 Un filtre est un ultrafiltre s'il est un filtre maximal au sens de l'inclusion.
 \end{defi}
 
-\todo[inline]{rapide rappel produit cartesien}
-\todo[inline]{finir filtre et exemple}
-\todo[inline]{résultat sur structure de l'ultraproduit}
+\begin{defi}
+Soient $I$ un ensemble et $A$ un ensemble de parties de $I$. On dit que $A$ a la propriété de l'intersection finie si,
+pour tout $A_0,\dots,A_n \in A$, on a $A_0 \cap \dots \cap A_n \ne \emptyset$.
+\end{defi}
+
+\begin{prop}
+Soit $A \subset I$ non vide et ayant la propriété de l'intersection finie. L'ensemble des parties de $I$ qui contiennent une intersection finie 
+d'éléments de $A$ est un filtre, qu'on appelle le filtre engendré par $A$.
+\end{prop}
+
+\begin{proof}
+Soit un tel sous-ensemble $A \subset I$. On montre que $ \cF = \{ X \subset I \mid \exists A_0,\dots,A_n \in A, A_0 \cap \dots \cap A_n \in X \}$ est un filtre.
+Clairement $I \in \cF$ et $\emptyset \not\in \cF$ par propriété d'intersection finie. Si $X \in \cF$ et $X \subset Y$, alors il existe $A_0,\dots,A_n \in A$
+tel que $A_0 \cap \dots \cap A_n \subset X$, d'où $A_0 \cap \dots \cap A_n \subset Y$, et $Y \in \cF$. Si $X,Y \in \cF$, alors il existe $I_X$ et $I_Y$ respectivement
+des intersections finies de parties de $A$ dans $X$ et $Y$, et $I_X \cap I_Y$ est encore une intersection finie d'éléments de $A$ tel que $I_X \cap I_Y \subset X \cap Y$,
+d'où $X \cap Y \in \cF$.
+\end{proof}
+
+\begin{prop}\label{lemmelos}
+Soit $I$ un ensemble. Un filtre $\cF$ est un ultrafiltre si et seulement si pour tout $X \subset I$, on a $X \in \cF$ ou bien $I \setminus X \in \cF$.
+Tout filtre est contenu dans un ultrafiltre.
+\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item On commence par remarquer qu'un filtre $\cF$ sur $I$ ne peut pas contenir une partie $A$ et son complémentaire $I \setminus A$,
+sinon $A \cap (I \setminus A) = \emptyset \in \cF$. Supposons alors un filtre $\cF$ sur $I$ tel que $A \not\in \cF$, on montre que
+$\cF \cup \{A\}$ a la propriété d'intersection finie si et seulement si $I \setminus A \not\in \cF$. Ceci impose l'implication directe: si $\cF$ est
+un ultrafiltre, alors on ne peut pas l'agrandir via $A$, et on obtient $I \setminus A \in \cF$.
+\begin{enumerate}[label= (\roman*)]
+\item Si $I \setminus A \in \cF$, alors $A \cup (I \setminus A) = \emptyset$ et $\cF \cup \{A\}$ n'a pas la propriété d'intersection finie.
+\item Si $\cF \cup \{A\}$ n'a pas la propriété d'intersection finie,
+alors il existe $B_0,\dots,B_n \in \cF$ tel que $B_0 \cap \dots \cap B_n \cap A = \emptyset$, d'où $B_0 \cap \dots \cap B_n \subset I \setminus A$,
+et $I \setminus A \in \cF$ par stabilité par sur-ensemble.
+\end{enumerate}
+Pour l'implication réciproque, on suppose par l'absurde qu'il existe un filtre $\cF$ sur $I$ vérifiant : pour tout $A \in I$, $A \in \cF$ ou bien
+$I \setminus A \in \cF$ mais que $\cF$ n'est pas maximal. Ainsi on a une partie $B \subset I$ tel que $B \not\in \cF$ et $\cF \cup \{B\}$ est toujours un filtre.
+Or $I \setminus B \in \cF$ par hypothèse, d'où $I \setminus B \in \cF \cup \{B\}$. Par stabilité sur intersection, $B \cap (I \setminus B) = \emptyset \in \cF \cup \{B\}$, 
+c'est absurde.
+\item Pour le deuxième point, invoquons le Lemme de Zorn. Soit $\cF$ un filtre sur $I$. Considérons l'ensemble de tous les filtres sur $I$ contenant $\cF$ ordonné par 
+la relation d'inclusion. Soit $(\cF_j)_{j \in J}$ une chaîne d'un tel ensemble. Ainsi $\bigcup_{j \in J} \cF_j$ est un majorant de cette chaîne, et les conditions du
+Lemme de Zorn sont remplis: un tel ensemble possède un élément maximal.
+\end{enumerate}
+\end{proof}
+
+\begin{exem}
+Un filtre $\cF$ sur $I$ est dit principal s'il existe $X_0 \subset I, X_0 \ne \emptyset$, tel que $\cF = \{ Y \subset I \mid X \subset Y \}$.
+Un filtre principal $\cF$ est un ultrafiltre sur $I$ si et seulement s'il est généré par un élément, c'est à dire s'il existe $x_0 \in I$
+tel que $\cF = \{ X \subset I \mid \{x_0\} \in X \}$.
+\end{exem}
 
 \subsection{Ultraproduits}
 
-\noindent Soit $I$ un ensemble d'indices, $(A_i)_{i \in I}$ une famille d'ensembles non vide et $\mathcal{A} = \prod_{i \in I} A_i$ leur produit cartésien.
-Soit $\mathcal{F}$ un filtre sur $I$. On définit une relation sur $\cA$ :
+\noindent Soient $I$ un ensemble d'indices, $(A_i)_{i \in I}$ une famille d'ensembles non vide et $\mathcal{A} = \prod_{i \in I} A_i$ leur produit cartésien,
+et $a,b \in \mathcal{A}$. Soit $\mathcal{F}$ un filtre sur $I$. On définit une relation sur $\cA$ :
 \begin{align*}
 a \equiv_{\cF} b \text{ ssi } \{ i \in I \mid a(i) = b(i) \} \in \cF
 \end{align*}
-On vérifie que $\equiv_{\cF}$ est une relation d'équivalence. On note $a_{\cF}$ la classe de $a$ sur cette relation.
-
-\noindent On introduit alors la définition suivante, en gardant les mêmes notations :
+où $a(i)$ désigne la $i$-ème coordonnées de $a$, c'est à dire $a(i) \in A_i$. Il découle aisément de la définition d'un filtre que $\equiv_{\cF}$
+est une relation d'équivalence. On note $a_{\cF}$ la classe de $a$ sur cette relation.
+On introduit alors la définition suivante, en gardant les mêmes notations :
 
 \begin{defi}[Ultraproduits]
 Le quotient $\cA / \cF = \{ a_{\cF} \mid a \in \cA \}$ est appellé \textbf{produit réduit} de $\cA$. Dans le cas où $\cF$ est un ultrafiltre,
 on appelle ce quotient un \textbf{ultraproduit}. Dans ce dernier cas, si $a \equiv_{\cF} b$, on dit que $a$ et $b$ sont égaux presque partout.
 \end{defi}
 
-\begin{defiprop}
-Soit $I$ un ensemble d'indices. Soient $(M_i)_{i \in I}$ une famille de $\cL$-structures et $\cM = \prod_{i \in I} A_i$ leur produit cartésien.
-Soit $\mathcal{U}$ un ultrafiltre sur $I$. L'ultraproduit 
+\begin{defiprop}[Structure de l'ultraproduit]
+Soit $I$ un ensemble d'indices. Soient $(M_i)_{i \in I}$ une famille de $\cL$-structures et $\cM = \prod_{i \in I} M_i$ leur produit cartésien.
+Soit $\mathcal{U}$ un ultrafiltre sur $I$. L'ultraproduit $\cM/\mathcal{U}$ est naurellement muni d'une $\cL$-structure, en intérpretant les symboles de $\cL$ ainsi:
+\begin{itemize}
+\item Pour chaque symbole de constante $c \in \cL$, $c^{\cM/\mathcal{U}} = (c^{M_i})_{i \in I}/\mathcal{U}$
+\item Pour chaque symbole de fonction $f \in \cL$ d'arité $n$, $f^{\cM/\mathcal{U}}(\abar_{\mathcal{U}}) = (f^{M_i}(\abar(i)))_{i \in I}/\mathcal{U}$
+\item Pour chaque relation $R \in \cL$, d'arité $n$, $\cM/\mathcal{U} \models R(\abar_{\mathcal{U}}) \iff \{ i \in I \mid
+M_i \models R(\abar(i))\} \in \mathcal{U}$
+\end{itemize}
 \end{defiprop}
 
-\noindent Nous admettons le résultat pivot suivant :
+\begin{proof}
+On doit montrer que nos interprétations sont bien définies, c'est à dire que le résultat ne dépend pas du choix des représentants des classes d'équivalence.
+On détaille le cas des symboles de fonctions.
+Supposons $\abar \equiv_{\mathcal{U}} \bbar$. On a ainsi que $I_0 = \{ i \in I \mid \abar(i) = \bbar(i) \} \in \mathcal{U}$.
+On doit montrer que $f^{\cM/\mathcal{U}}(\abar) \equiv_{\mathcal{U}} f^{\cM/\mathcal{U}}(\bbar)$, c'est à dire,
+$I_1 = \{ i \in I \mid f^{M_i}(\abar(i)) = f^{M_i}(\bbar(i)) \} \in \mathcal{U}$. Or par définition d'une application,
+on a clairement $I_0 \subset I_1$, et $\mathcal{U}$ est stable par sur-ensemble, d'où $I_1 \in \mathcal{U}$.
+\end{proof}
+
 
 \begin{theo}[Théorème de \L{}oś]
 Soient $I$ un ensemble d'indices et $(M_i)_{i \in I}$ une famille de $\cL$-structures. Soit $\mathcal{U}$ un ultrafiltre sur $I$.
@@ -474,7 +536,13 @@ Alors pour $\phi(\xbar)$ une $\cL$-formule et $\abar \in \prod_{i \in I} M_i = \
 où $\bar{a}_\mathcal{U}$ désigne la classe d'équivalence du tuple $\bar{a}$ dans l'ultraproduit.
 \end{theo}
 
-\begin{theo}[Théorème de compacité]
+\begin{rema}
+Ce résultat pivot, que l'on admettra, repose entre autre sur la caractérisation des ultrafiltres données dans la proposition \ref{lemmelos}.
+Il permet une sorte de "passage à l'infini" de la satisfiabilité d'une formule si et seulement si
+cette formule est "vraie presque partout" au sens de l'ultrafiltre. Cette caractérisation est la clé du Théorème de compacité.
+\end{rema}
+
+\begin{theo}[Théorème de compacité]\label{theo-compacite}
 Soit $T$ une $\cL$-théorie tel que tout sous-ensemble fini de $T$ est satisfiable, alors $T$ est satisfiable.
 \end{theo}
 
@@ -483,70 +551,14 @@ Soit $T$ une telle théorie. Pour chaque sous-ensemble fini $F$ de $T$, on appel
 Soit $I$ l'ensemble des parties finies de $T$. Pour chaque axiome $\phi$ de $T$, soit $V(\phi) = \{F \in I \mid \phi \in F \}$
 l'ensemble des parties finies de $T$ ayant $\phi$ pour axiome. On remarque que la famille $\{V(\phi) \mid \phi \in T\}$ a la propriété 
 de l'intersection finie, en effet pour $T_0 = \{\phi_1,\dots,\phi_n\}$ une famille finie d'axiome, on a $T_0 \in V(\phi_1) \cap \dots \cap V(\phi_n)$ 
-car $T_0 \in V(\phi_1) \text{ via } \phi_1, T_0 \in V(\phi_2) \text{ via } \phi_2$ etc. Ainsi $\{V(\phi) \mid \phi \in T\}$ est contenue dans un filtre,
-donc un ultrafiltre $\mathcal{U}$. On pose $\cM = \prod_{F \in I} \cM_F / \mathcal{U}$ l'ultraproduit des $\cM_F$. On montre que $\cM$ est un modèle de $T$.
+car $T_0 \in V(\phi_1) \text{ via } \phi_1, T_0 \in V(\phi_2) \text{ via } \phi_2$ etc. Ainsi $\{V(\phi) \mid \phi \in T\}$ engendre un filtre,
+donc est contenue dans un ultrafiltre $\mathcal{U}$. On pose $\cM = \prod_{F \in I} \cM_F / \mathcal{U}$ l'ultraproduit des $\cM_F$. On montre que $\cM$ est un modèle de $T$.
 Soit $\phi \in T$, on a $\cM \models \phi$ si et seulement si $J_{\phi} = \{ F \in I \mid \cM_F \models \phi \} \in \mathcal{U}$ par Théorème de \L{}oś.
 \begin{enumerate}
 \item Si $F \in V(\phi)$, alors trivialement $\cM_F \models \phi$, d'où $V(\phi) \subset J_{\phi}$.
-\item Or $V(\phi) \in \mathcal{U}$ par construction, et $\mathcal{U}$ est en particulier un filtre, d'où $J_\phi \in \mathcal{U}$.
+\item Or $V(\phi) \in \mathcal{U}$ par construction, et $\mathcal{U}$ est stable par sur-ensemble, d'où $J_\phi \in \mathcal{U}$.
 \end{enumerate}
 Nous avons construit un modèle de $T$: $\cM \models T$.
-\end{proof}
-
-\begin{rema}
-Le Théorème de \L{}oś et le quotient sur ultraproduit permettent ici une sorte de "passage à l'infini" par une propriété de "vrai presque partout" : 
-c'est exactement le sens de $J_  {\phi} \in \mathcal{U}$. Intuitivement, cela rappelle le concept de mesure : on ne garde ici que ce qui est "vrai presque partout"
-au sens de l'ultrafiltre, en laissant de côté les exceptions logiques locales.
-\end{rema}
-
-
-\section{Le Théorème de Compacité}
-
-\begin{defi}[Preuve]
-Soient $\phi$ une $\mathcal{L}$-formule, $T$ une $\mathcal{L}$-théorie. Une \kw{preuve de $\phi$ à partir de $T$}
-est une suite finie $\psi_1,\dots,\psi_n$ de $\mathcal{L}$-formules telle que $\psi_n = \phi$ et, pour chaque i, $\psi_i$ est soit un axiome de T, soit déduite de
-$\psi_1,\dots,\psi_{i-1}$ par des règles logiques simples. Nous notons $T \vdash \phi$ s'il existe une preuve de $\phi$ à partir de $T$. 
-Nous donnons des exemples de ce qu'on entend par "règles logiques simples":
-\begin{enumerate}[label= (\roman*)]
-\item De $\phi \wedge \psi$, nous concluons $\phi$.
-\item De $\phi$ et $\psi$, nous concluons $\phi \wedge \psi$.
-\item De $\phi$ et $\phi \rightarrow \psi$, nous concluons $\psi$.
-\end{enumerate}
-\end{defi}
-
-\begin{defi}[Théorie cohérente/incohérente]
-Soit $T$ une $\mathcal{L}$-théorie. T est incohérente s'il existe une $\mathcal{L}$-phrase $\phi$ telle que $T \vdash (\phi \wedge \neg\phi)$, autrement,
-nous dirons que $T$ est cohérente.
-\end{defi}
-
-\begin{rema}
-Nous allons voir qu'une théorie est satisfaisable si et seulement si elle est cohérente. L'implication directe repose sur le théorème de correction, énoncant que
-notre système de preuve ne produit naturellement que des conséquences formelles s'interprétant comme vraies: si $T \vdash \phi$, alors $T \models \phi$.
-Nous omettons la vérification de ce résultat pour nous concentrer sur l'implication réciproque.
-\end{rema}
-
-\begin{theo}[Théorème de complétude de Gödel]
-Soit $T$ une $\mathcal{L}$-théorie et $\phi$ une $\mathcal{L}$-phrase, alors $T \models \phi$ si et seulement si $T \vdash \phi$.
-\end{theo}
-
-\begin{coro}
-T est cohérente si et seulement si T est satisfaisable.
-\end{coro}
-\begin{proof}
-Nous prouvons la contraposée. Supposons que T est insatisfaisable, par définition il n'existe pas de modèles de T, donc pour $\phi$ une phrase quelconque,
-$T \models (\phi \wedge \neg\phi)$ est trivialement vérifié, et par théorème de complétude de Gödel, $T \vdash (\phi \wedge \neg\phi)$.
-\end{proof}
-
-\begin{theo}[Théorème de compacité]
-Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable. 
-\end{theo}
-
-\begin{proof}
-L'implication directe est claire: un modèle $M$ satisfaisant $T$ satisfait tout sous-ensemble $T_0 \subset T$. Réciproquement,
-nous prouvons la contraposée: supposons que $T$ est insatisfaisable. D'après le corollaire précédent, $T$ est incohérente. Il existe donc $\sigma$ une preuve d'une contradiction à partir de $T$.
-$\sigma$ étant par définition finie, elle invoque un nombre fini d'axiomes de $T$. Ainsi on a l'existence de $T_0 \subset T$ un sous-ensemble 
-fini de $T$ tel que $\sigma$ est une preuve d'une contradiction à partir de $T_0$. $T_0$ est donc incohérent. On conclut en utilisant à nouveau le corollaire précédent:
-$T_0$ est insatisfaisable.
 \end{proof}
 
 \section{Complétude, categoricité et test de Vaught}
@@ -603,6 +615,7 @@ Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
 
 \todo[inline]{sous section sur degré de transcandance et preuves}
 \todo[inline]{appeler steinitz, donner exemples pour demystifier ces manipulations d'infini}
+\todo[inline]{réfléchir sur ce qu'on met de ACF dans cette section et ce qu'on met dans chap2}
 
 \todo[inline]{}\label{lemm-sous-struct-sans-quant}
 \todo[inline]{}\label{prop-sous-struct-existance}
