@@ -420,7 +420,7 @@ illustre ici que le langage pur des corps est "aveugle" façe à nos intuitions 
 \section{Ultraproduits et Théorème de Compacité}
 
 \noindent Cette section s'écarte du plan de Marker pour fournir une preuve sémantique du théorème de compacité fondée sur les ultraproduits.
-Tandis que l'approche syntaxique découle du théorème de complétude, nous proposons ici de construire un tel modèle satisfaisant $T$ via une famille de structures.
+Tandis que l'approche syntaxique découle du théorème de complétude, nous proposons ici de construire un tel modèle satisfaisant $T$ en manipulant des familles de modèles.
 Nous commençons par énoncer le résultat.
 
 \begin{theo}[Théorème de compacité]
@@ -589,32 +589,53 @@ Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un
 $\phi$ étant une bijection entre structures vides, il n'y a aucun symbole à preserver et c'est un $\cL$-isomorphisme.
 \end{proof}
 
-\begin{rema}
-Ce premier résultat permet de nous familiariser avec la notion de categoricité, mais aussi de comprendre que c'est bien l'ajout d'une structure
-algébrique qui permet de distinguer des modèles de même cardinalité via des invariants. Nous étudions maintenant le cas de la théorie $\ACF_p$, qui perd la catégoricité pour $\kappa = \aleph_0$.
-\end{rema}
+\noindent Nous présentons le résultat suivant comme fait algébrique. Il est le pillier pour distinguer des modèles de $\ACF_p$ de même cardinalité via des invariants.
 
+\begin{theo}[Théorème de Steinitz]
+Deux corps algébriquement clos sont isomorphes si et seulement s'ils ont même caractéristique et même degré de transcendance.
+\end{theo}
 
-\begin{prop}
+\begin{coro}\label{acfcategorique}
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est $\kappa$-catégorique pour tout cardinal $\kappa$ indénombrable.
-\end{prop}
+\end{coro}
 
-\begin{prop}
+\begin{proof}
+Il est clair que deux modèles de $ACF_p$ sont tous deux de caractéristique $p$. De plus un corps algébriquement clos de degré de transcendance $\lambda$ a
+une cardinalité égale à $\max(\lambda, \aleph_0)$. Ainsi soit $\kappa > \aleph_0$ et un corps algébriquement clos de cardinalité $\kappa$, alors le 
+degré de transcendance est aussi égal à $\kappa$. Ainsi deux modèles de $ACF_p$ de même cardinalité indénombrable sont isomorphespar Théorème de Steinitz.
+\end{proof}
+
+\todo[inline]{texte synthétique pour expliquer la construction de Henkin mais j'ai pas d'idées pour bien le faire en 4 lignes}
+
+\begin{theo}[Löwenheim-Skolem ascendant]
 Soit $T$ une $\cL$-théorie satisfaite par des modèles infinis. Si $\kappa$ est un cardinal infini tel que $\kappa > \lvert \cL \rvert$, alors
 il existe un modèle de $T$ de cardinalité $\kappa$.
-\end{prop}
+\end{theo}
 
 \begin{theo}[Test de Vaught]
-Soit $T$ une $\cL$-théorie satisfaisable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
+Soit $T$ une $\cL$-théorie satisfiable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
 Alors $T$ est complète.
 \end{theo}
+
+\begin{proof}
+Supposons par l'absurde que $T$ n'est pas complète. Il existe alors une $\cL$-phrase $\phi$ telle que $T \not\models \phi$ et $T \not\models \neg\phi$.\\
+\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfiable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
+donc $T \cup \{\neg\phi\}$ est insatisfiable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfiable,
+cela signifie qu'un modèle de $T$ ne peut pas aussi satisfaire à $\neg\phi$, donc un tel modèle satisfait nécessairement $\phi$ par définition de la satisfaisabilité d'une formule, d'où $T \models \phi$. \\
+Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfiables.
+Par hypothèse $T$ n'a pas de modèles finis : ceci impose que les modèles de $T_0$ et $T_1$ soient infinis. Par Théorème de Löwenheim-Skolem ascendant, on a $\cM_0$ et $\cM_1$
+tout deux de cardinalité $\kappa > \lvert \cL \rvert$ tel que $\cM_0 \models T_0$ et $\cM_1 \models T_1$. Or ces deux modèles ne peuvent être élémentairement équivalent car ils divergent sur $\phi$.
+Par théorème \ref{isomorphisme}, ces modèles ne sont pas isomorphes. Ceci contradit la $\kappa$-catégoricité de $T$.
+\end{proof}
 
 \begin{coro}\label{coro-acf-complete}
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
 \end{coro}
 
-\todo[inline]{sous section sur degré de transcandance et preuves}
-\todo[inline]{appeler steinitz, donner exemples pour demystifier ces manipulations d'infini}
+\begin{proof}
+Immédiat par corollaire \ref{acfcategorique} et Test de Vaught.
+\end{proof}
+
 \todo[inline]{réfléchir sur ce qu'on met de ACF dans cette section et ce qu'on met dans chap2}
 
 \todo[inline]{}\label{lemm-sous-struct-sans-quant}
