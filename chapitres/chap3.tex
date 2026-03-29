@@ -157,10 +157,10 @@ $\theta$ telle que $\ACF_p \models \varphi \leftrightarrow \ACF_p \models
 $\ACF_p$ est complète.
 \end{proof}
 
-\section{Nullstelensatz}
+\section{Nullstellensatz}
 
 L'application que nous proposons dans ce chapitre est le célèbre
-kw{Nullstelensatz} de Hilbert qui permet d'illustrer comment
+kw{Nullstellensatz} de Hilbert qui permet d'illustrer comment
 l'élimination des quantificateurs permet de simplifier les questions d'existence
 de solutions à des systèmes d'équations.
 
@@ -210,7 +210,7 @@ des solutions, il n'y a pas besoin de chercher plus loin que dans un corps
 algébriquement clos, il ne donne cependant pas d'indication sur l'existence ou
 non de solutions. Pour cela, on a besoin du Nullstellensatz.
 
-\begin{theo}[Nullstelensatz faible]\label{theo-Nullstelensatz-faible}
+\begin{theo}[Nullstellensatz faible]\label{theo-Nullstellensatz-faible}
 Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
 Alors $I$ est un idéal propre si et seulement si $V(I) \neq \emptyset$.
 \end{theo}
@@ -231,7 +231,7 @@ et donc par le \cref{lemm-solution-systeme}, $K \models \exists \overline{x}
 \end{proof}
 
 
-\begin{theo}[Nullstelensatz]\label{theo-Nullstelensatz}
+\begin{theo}[Nullstellensatz]\label{theo-Nullstellensatz}
 Soit $K$ un corps algébriquement clos et $I$ un idéal de $K[\overline{x}]$.
 Alors \[ I(V(I)) = \sqrt{I} \] 
 \end{theo}
@@ -247,7 +247,7 @@ Par théorème de la base de Hilbert, il existe une famille finie telle que $I =
     Soit $(\abar,b) \in V(J)$, on a $P_i(\abar) = 0$ pour tout $i$ donc
     $f(\abar) = 0$  et $1 - b f(\abar) = 0$ ce
     qui est absurde, donc $V(J) = \emptyset$ donc d'après le Nullstellensatz
-    faible (\cref{theo-Nullstelensatz-faible}), $J$ n'est pas propre donc $J = K[\bar{x}, Y]$ et $1 \in J$.
+    faible (\cref{theo-Nullstellensatz-faible}), $J$ n'est pas propre donc $J = K[\bar{x}, Y]$ et $1 \in J$.
     Il existe ainsi des polynômes $A_1, \dots, A_m, B \in K[\bar{x}, Y]$ tels que:
     \[ 1 = \sum_{i=1}^m P_i(\bar{x}) A_i(\bar{x}, Y) + (1 - Y f(\bar{x})) B(\bar{x}, Y) \]
     
@@ -257,7 +257,7 @@ Par théorème de la base de Hilbert, il existe une famille finie telle que $I =
     En multipliant cette équation par une puissance $f^k$ suffisamment grande, on obtient une relation dans $K[\bar{x}]$ de la forme :
     \[ f^k = \sum_{i=1}^m P_i(\bar{x}) Q_i(\bar{x}) \]
     avec $Q_i \in K[\overline{x}]$ donc  $f^k \in I$.
-    
+
 L'inclusion réciproque est immédiate: supposons $f \in \sqrt{I} \text{ et } k \in \mathbb{N}^* \text{ tel que } f^k \in I$,
 on a pour tout $\xbar \in V(I),\text{ }f^k(\xbar)=0$, d'où, par intégrité, pour tout $\xbar \in V(I),\text{ }f(\xbar)=0$.\\
 \end{proof}
