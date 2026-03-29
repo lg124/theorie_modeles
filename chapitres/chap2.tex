@@ -63,26 +63,6 @@ appelé \kw{polynome minimal} de $a$.
     Il existe une extension $L$ de $K$ dans laquelle $P$ admet au moins une racine.
 \end{theo}
 
-\begin{proof}
-    Supposons d'abord que $P$ est irréductible dans $K[X]$.
-    Comme $K[X]$ est principal et que $P$ est irréductible, l'idéal $(P)$ est maximal (\cref{prop-KX-principal}).
-    
-    Donc d'après la \cref{prop-quotient-ideal-maximal} l'anneau quotient $L = K[X]/(P)$ est un corps.
-    
-    Montrons que $L$ est l'extension recherchée:
-    \begin{enumerate}
-        \item \textbf{$L$ contient $K$ :} Considérons la projection canonique $\pi : K[X] \to L$. La restriction de $\pi$ aux polynômes constants, $\phi : K \to L$ définie par $\phi(a) = \pi(a)$, est un morphisme d'anneaux. Comme $K$ est un corps, $\phi$ est injectif. On peut donc identifier $K$ à son image $\phi(K) \subset L$.
-        \item \textbf{$P$ a une racine dans $L$ :} Soit $\alpha = \pi(X)$ la classe de l'indéterminée $X$ dans $L$. Évaluons le polynôme $P = \sum a_i X^i$ en $\alpha$ :
-        \[ P(\alpha) = \sum_{i} a_i (\pi(X))^i = \sum_{i} \pi(a_i X^i) = \pi\left( \sum_{i} a_i X^i \right) = \pi(P) \]
-        Or, par construction, $P \in (P)$, donc $\pi(P) = 0$ dans $L$.
-        Ainsi, $P(\alpha) = 0$ et $\alpha$ est une racine de $P$ dans $L$.
-    \end{enumerate}
-    
-    Et si $P$ n'est pas irréductible, il suffit d'appliquer ce qui
-    précède sur un de ses facteurs irréductibles.
-\end{proof}
-
-
 \begin{defi}[Extension algébrique]
 Soit $L/K$ une extension de corps, si tout élément de $L$ est algébrique sur
 $K$, on dit que $L/K$ est une \kw{extension algébrique}.
@@ -197,7 +177,7 @@ de cardinal $p^k$ à isomorphisme près et de plus, $\Fpalg = \bigcup_{k
 
 \begin{theo}[Théorème de Steinitz]\label{theo-Steinitz}
 Tout corps $K$ admet une clôture algébrique, unique à isomorphisme près. On la notera $\overline{K}$.
-De plus, eux corps algébriquement clos sont isomorphes si et seulement s'ils ont même caractéristique et même degré de transcendance.
+De plus, deux corps algébriquement clos sont isomorphes si et seulement s'ils ont même caractéristique et même degré de transcendance.
 \end{theo}
 
 
@@ -271,7 +251,7 @@ tout deux de cardinalité $\kappa > \lvert \cL \rvert$ tel que $\cM_0 \models T_
 Par théorème~\ref{isomorphisme}, ces modèles ne sont pas isomorphes. Ceci contradit la $\kappa$-catégoricité de $T$.
 \end{proof}
 
-\begin{prop}\label{prop-acf-complete}
+\begin{prop} \label{prop-acf-complet}
 Soit $p \in \{0\} \cup \mathcal{P}$, alors $ACF_p$ est complète.
 \end{prop}
 
