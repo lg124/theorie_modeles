@@ -50,7 +50,7 @@ pour obtenir les axiomes de la théorie des corps.
 
 \section{Propriétés de base}
 
-\todo[inline]{A la fin, supprimer les résultats qu'on a au final pas utilisé ...}
+%\todo[inline]{A la fin, supprimer les résultats qu'on a au final pas utilisé ...}
 
 On rappelle ensuite quelques définitions et propriétés qui nous seront utiles
 par la suite. On donne certaines démonstrations, et on essaye d'utiliser la
@@ -351,7 +351,16 @@ $K[X]$ admet une racine dans $K$. On dit que $L$ est une \kw{clôture algébriqu
 de $K$ si $L/K$ est une extension algébrique et $L$ est algébriquement clos.
 \end{defi}
 
-On va avoir besoin des lemmes suivants:
+On va avoir besoin des résultats suivants:
+
+\begin{defi}[Diagramme d'une structure]\label{defi-diagramme}
+    Soit $\cM$ une $\cL$-structure et $\cL_{\cM}$ le language où on ajoute à $\cL$
+    des constantes $m$ pour chaque élément de $\cM$. Le \kw{diagramme} (atomique) de
+    $\cM$, noté  $\Diag(\cM)$ est l'ensemble $\{ \varphi(m_1, \ldots, m_n) :
+    \varphi$  est une $\cL$-formule atomique ou la négation d'une $\cL$-formule
+    atomique et $\cM \models \varphi(m_1, \ldots, m_n)  $\}.
+
+\end{defi}
 
 \begin{lemm}\label{lemm-extension-racine}
     Pour tout corps $K$, il existe une extension $L/K$ telle que tout polynôme non constant $P \in K[X]$ admette au moins une racine dans $L$.
@@ -365,7 +374,7 @@ On va avoir besoin des lemmes suivants:
 
     Soit $T$ la théorie constituée de:
     \begin{enumerate}
-        \item $\Diag(K)$ (\cref{defi-diagramme}) (pour assurer que le modèle sera une extension de $K$).
+        \item $\Diag(K)$ (pour assurer que le modèle sera une extension de $K$).
         \item L'axiome $P(c_P) = 0$ pour chaque $P \in K[X]$.
     \end{enumerate}
     
@@ -495,7 +504,7 @@ pour chaque degré $n \in \bNe$.
     algébriquement clos de caractéristique $n$ pour $n \in \bP \cup \{0\}$. 
 \end{defi}
 
-\todo[inline]{def dans le chap 1 ou pas?}
+%\todo[inline]{def dans le chap 1 ou pas?}
 
 \begin{defi}[Elimination des quantificateurs]\label{def-quant-elim}
 On dit qu'une théorie $T$ a l'\kw{élimination des quantificateurs} si pour toute
@@ -554,8 +563,11 @@ peut obtenir algorithmiquement une phrase sans quantificateurs équivalente dont
 la valeur de vérité est alors facilement vérifiable. On a donc établi le
 résultat suivant:
 
-\begin{coro}[Décidabilité de $ACF_p$]
-    La théorie $\ACF$ est décidable (\cref{defi-decidable}).
+\begin{coro}[Décidabilité de $ACF_n$]
+    On dit qu'une théorie $T$ est \kw{décidable} si il existe un algorithme qui pour
+    toute phrase $\varphi$ en entrée, décide si $T \models \varphi$.
+
+    La théorie $\ACF$ est décidable.
 \end{coro}
 
 \begin{defi}[Ensemble constructible]\label{defi-constructible}
@@ -605,9 +617,9 @@ On montre le résultat pour $\ACF_p$, la preuve pour $\ACF_0$ est identique en
 remplaçant $\bF_p$ par $\bQ$. \\
 Soient $K,L$ tels que $K,L \models \ACF_p$ et $\varphi$ une phrase dans le
 langage des anneaux. Par l'élimination des quantificateurs, il existe une phrase
-$\theta$ telle que $\ACF_p \models \varphi \leftrightarrow \ACF_p \models \theta$. Par le
-\cref{lemm-sous-struct-sans-quant}, $K \models \theta \iff
-\bF_p \models \theta \iff L \models \theta$ et par donc $K \models \varphi
+$\theta$ telle que $\ACF_p \models \varphi \leftrightarrow \ACF_p \models
+\theta$. On a $K \models \theta \iff
+\bF_p \models \theta \iff L \models \theta$ et donc $K \models \varphi
 \iff K \models \theta \iff L \models \theta
 \iff L \models \varphi$ ainsi $K$ et $L$ sont équivalentes et
 $\ACF_p$ est complète.

@@ -183,15 +183,14 @@ $\varphi(\overline{x},\overline{c})$ où $\varphi(\overline{x},\overline{y})$ se
 de la forme \[  (\bigwedge_{i=1}^{p} f_i(\overline{x},\overline{y})  =0 ) \wedge
 (\bigwedge_{i=1}^{q} g_i(\overline{x},\overline{y})  \neq 0 )  \] où les
 $f_i,g_i$ sont des polynômes de $\bZ[\overline{x},\overline{y}]$. Supposons que
-$L \models \exists \overline{x} \varphi(\overline{x},\overline{c})$. Alors,
-d'après la \cref{prop-sous-struct-existance}, $\overline{L} \models
-\exists \overline{x} \varphi(\overline{x},\overline{c})$. Donc, comme $\ACF$
+$L \models \exists \overline{x} \varphi(\overline{x},\overline{c})$ et donc $\overline{L} \models
+\exists \overline{x} \varphi(\overline{x},\overline{c})$. Ainsi, comme $\ACF$
 admet l'élimination des quantificateur (\cref{theo-acf-elim}), il existe une
 formule $\theta(\overline{y})$ sans quantificateurs telle que $\ACF_n \vdash
 \forall \overline{y} [\exists \overline{x} \varphi(\overline{x},\overline{c})
 \leftrightarrow \theta(\overline{y}) ]$. Ainsi on a $\overline{L} \models
 \theta(\overline{c})$ et comme $\theta$ est sans quantificateur et $K$ une
-sous-structure de $\overline{L}$ d'après le \cref{lemm-sous-struct-sans-quant}
+sous-structure de $\overline{L}$ donc
 on a $K \models \theta(\overline{c})$ et finalement, comme $K \models \ACF_n$,
 on a $K \models \exists \overline{x} \varphi(\overline{x},\overline{c})$.
 \end{proof} 
