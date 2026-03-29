@@ -352,7 +352,7 @@ On axiomatise la structure de groupe via le langage $\cL = \{ \star , e \}$ et l
 \begin{enumerate}
 \item $\forall x,y,z, (x \star y) \star z = x \star (y \star z)$
 \item $\forall x, x \star e = e \star x = x$
-\item $\forall x, x \star y = y \star x = e$
+\item $\forall x, \exists y, x \star y = y \star x = e$
 \end{enumerate}
 Cette théorie est satisfiable: par exemple, $\mathbb{R}$ muni de la loi d'addition $+$ et du neutre $e_{\mathbb{R}} = 0$ en est un modèle.
 \end{exem}
@@ -634,7 +634,7 @@ $\cL_{agp} =(+,-,0))$
 
 \begin{enumerate}[label=\textbf{R\arabic*}]
     \item $\forall x,y,z [(x+y)+z = x+(y+z)]$,
-    \item $\forall x [x+0 \wedge 0+x = x]$,
+    \item $\forall x [x+0 = x \wedge 0+x = x]$,
     \item $\forall x [x+(-x)=0 \wedge (-x)+x=0]$,
     \item $\forall x,y [x+y = y+x]$.
 \end{enumerate}
