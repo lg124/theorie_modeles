@@ -343,7 +343,7 @@ Soit $\cL$ un langage.
 \begin{enumerate}
 \item Une $\cL$\kw{-théorie} $T$ est un ensemble de $\cL$-phrases (i.e un ensemble de $\cL$-formules sans variables libres), qu'on appelle \kw{axiomes}.
 \item On dit que $\cM$ est un \kw{modèle} de $T$, et on note $T \models \cM$, si l'on a $\cM \models \phi$ pour tout axiome $\phi \in T$.
-\item Une théorie $T$ est dite \kw{satisfiable} s'il existe une $\cL$-structure $\cM$ tel que $\cM$ est un modèle de $T$.
+\item Une théorie $T$ est dite \kw{satisfaisable} s'il existe une $\cL$-structure $\cM$ tel que $\cM$ est un modèle de $T$.
 \end{enumerate}
 \end{defi}
 
@@ -354,7 +354,7 @@ On axiomatise la structure de groupe via le langage $\cL = \{ \star , e \}$ et l
 \item $\forall x, x \star e = e \star x = x$
 \item $\forall x, \exists y, x \star y = y \star x = e$
 \end{enumerate}
-Cette théorie est satisfiable: par exemple, $\mathbb{R}$ muni de la loi d'addition $+$ et du neutre $e_{\mathbb{R}} = 0$ en est un modèle.
+Cette théorie est satisfaisable: par exemple, $\mathbb{R}$ muni de la loi d'addition $+$ et du neutre $e_{\mathbb{R}} = 0$ en est un modèle.
 \end{exem}
 
 \begin{exem}
@@ -424,7 +424,7 @@ Tandis que l'approche syntaxique découle du théorème de complétude, nous pro
 Nous commençons par énoncer le résultat.
 
 \begin{theo*}[Théorème de compacité]
-Soit $T$ une $\cL$-théorie tel que tout sous-ensemble fini de $T$ est satisfiable, alors $T$ est satisfiable.
+Soit $T$ une $\cL$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable.
 \end{theo*}
 
 \subsection{Ultrafiltres}
@@ -543,11 +543,11 @@ cette formule est "vraie presque partout" au sens de l'ultrafiltre. Cette caract
 \end{rema}
 
 \begin{theo}[Théorème de compacité]\label{theo-compacite}
-Soit $T$ une $\cL$-théorie tel que tout sous-ensemble fini de $T$ est satisfiable, alors $T$ est satisfiable.
+Soit $T$ une $\cL$-théorie. $T$ est satisfaisable si et seulement si tout sous-ensemble fini de $T$ est satisfaisable.
 \end{theo}
 
 \begin{proof}
-Soit $T$ une telle théorie. Pour chaque sous-ensemble fini $F$ de $T$, on appelle $\cM_F$ un modèle satisfaisant $F$.
+L'implication directe est claire. Soit $T$ une telle théorie. Pour chaque sous-ensemble fini $F$ de $T$, on appelle $\cM_F$ un modèle satisfaisant $F$.
 Soit $I$ l'ensemble des parties finies de $T$. Pour chaque axiome $\phi$ de $T$, soit $V(\phi) = \{F \in I \mid \phi \in F \}$
 l'ensemble des parties finies de $T$ ayant $\phi$ pour axiome. On remarque que la famille $\{V(\phi) \mid \phi \in T\}$ a la propriété 
 de l'intersection finie, en effet pour $T_0 = \{\phi_1,\dots,\phi_n\}$ une famille finie d'axiome, on a $T_0 \in V(\phi_1) \cap \dots \cap V(\phi_n)$ 
@@ -590,9 +590,9 @@ Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un
 $\phi$ étant une bijection entre structures vides, il n'y a aucun symbole à preserver et c'est un $\cL$-isomorphisme.
 \end{proof}
 
-\noindent Le Théorème de compacité assure qu'une théorie reste satisfiable tant que ses sous-ensembles finis le sont.
-Pour une théorie $T$ finiment satisfiable et à modèles infinis, on peut ajouter une infinité de symboles de constante et imposer qu'ils soient deux à deux distincts.
-Ceci crée une nouvelle théorie, toujours finiment satisfiables (toute partie finie de la nouvelle théorie ne demandent qu'un nombre fini de constantes, lesquelles peuvent 
+\noindent Le Théorème de compacité assure qu'une théorie reste satisfaisable tant que ses sous-ensembles finis le sont.
+Pour une théorie $T$ finiment satisfaisable et à modèles infinis, on peut ajouter une infinité de symboles de constante et imposer qu'ils soient deux à deux distincts.
+Ceci crée une nouvelle théorie, toujours finiment satisfaisable (toute partie finie de la nouvelle théorie ne demandent qu'un nombre fini de constantes, lesquelles peuvent 
 être choisies par des éléments distincts d'un modèle infini de $T$), et imposant par compacité l'existence de modèles à cardinalité aussi grande que l'on souhaite.
 Ce raisonnement fonde le résultat suivant:
 
@@ -603,16 +603,16 @@ il existe un modèle de $T$ de cardinalité $\kappa$.
 \end{theo}
 
 \begin{theo}[Test de Vaught]\label{th-Vaught}
-Soit $T$ une $\cL$-théorie satisfiable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
+Soit $T$ une $\cL$-théorie satisfaisable, sans modèles finis, et $\kappa$-catégorique pour un certain cardinal infini $\kappa > \lvert \cL \rvert$.
 Alors $T$ est complète.
 \end{theo}
 
 \begin{proof}
 Supposons par l'absurde que $T$ n'est pas complète. Il existe alors une $\cL$-phrase $\phi$ telle que $T \not\models \phi$ et $T \not\models \neg\phi$.\\
-\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfiable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
-donc $T \cup \{\neg\phi\}$ est insatisfiable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfiable,
+\textbf{Fait :} $T \not\models \phi$ si et seulement si $T \cup \{\neg\phi\}$ est satisfaisable. En effet, si $T \models \phi$, alors $\neg\phi$ ne se satisfait dans aucun modèle de $T$,
+donc $T \cup \{\neg\phi\}$ est insatisfaisable car un tel modèle devrait satisfaire à la fois $T$ et à la fois $\neg\phi$. Réciproquement, si $T \cup \{\neg\phi\}$ est insatisfaisable,
 cela signifie qu'un modèle de $T$ ne peut pas aussi satisfaire à $\neg\phi$, donc un tel modèle satisfait nécessairement $\phi$ par définition de la satisfaisabilité d'une formule, d'où $T \models \phi$. \\
-Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfiables.
+Ainsi $T_0 = T \cup \{\phi\}$ et $T_1 = T \cup \{\neg\phi\}$ sont satisfaisables.
 Par hypothèse $T$ n'a pas de modèles finis : ceci impose que les modèles de $T_0$ et $T_1$ soient infinis. Par Théorème de Löwenheim-Skolem ascendant, on a $\cM_0$ et $\cM_1$
 tout deux de cardinalité $\kappa > \lvert \cL \rvert$ tel que $\cM_0 \models T_0$ et $\cM_1 \models T_1$. Or ces deux modèles ne peuvent être élémentairement équivalent car ils divergent sur $\phi$.
 Par théorème~\ref{isomorphisme}, ces modèles ne sont pas isomorphes. Ceci contradit la $\kappa$-catégoricité de $T$.
