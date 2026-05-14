@@ -104,14 +104,77 @@
         \pause
 
         Or, pour un ensemble fini, \textbf{injection $\iff$ surjection}. \\
-        
+
         Donc $y$ doit être dans l'image de $f$.
     \end{alertblock}
 \end{frame}
 
   
   \section{De l'élimination des quantificateurs au Nullstellensatz}
-    \begin{frame}
+
+    
+  % Def elimination des quantificateurs, th Tarski
+
+  \begin{frame}
+\begin{definition}[Élimination des quantificateurs]
+        Une théorie $T$ admet l'élimination des quantificateurs si pour toute formule $\varphi(\bar{x})$, il existe une formule $\theta(\bar{x})$ \textbf{sans quantificateurs} telle que :
+        \[ T \models \forall \bar{x} \, (\varphi(\bar{x}) \leftrightarrow \theta(\bar{x})) \]
+    \end{definition}
   \end{frame}
+
+  \pause 
+  \begin{theorem}[Tarski, 1951]
+        La théorie \textbf{ACF} admet l'élimination des quantificateurs.
+    \end{theorem}
+
+    % geo alg
+  \begin{frame}{Le Dictionnaire Algèbre-Géométrie}
+    Pour lier la l'algèbre à la géométrie, on définit deux correspondances fondamentales entre les points de $k^n$ et les polynômes de $K[\overline{x}]$.
+
+    \pause
+    \begin{block}{1. De l'Algèbre vers la Géométrie: l'ensemble des zéros communs}
+        Soit $S \subset k[\bar{x}]$ un ensemble de polynômes. L'ensemble de leurs zéros communs est:
+        \[ V(S) = \{ x \in k^n \mid \forall f \in S, f(x) = 0 \} \]
+        
+    \end{block}
+    \pause
+    \begin{block}{2. De la Géométrie vers l'Algèbre: l'idéal annulateur}
+        Soit $X \subset k^n$ un ensemble de points. L'ensemble des polynômes s'annulant sur $X$ est:
+        \[ I(X) = \{ f \in k[\bar{x}] \mid \forall x \in X, f(x) = 0 \} \]
+    \end{block}
+\end{frame}
+
+% 
+\begin{frame}{Une correspondance parfaite}
+    On vérifie facilement que $V(I(X)) = X$. \\
+    \vspace{0.5cm}
+    \textbf{Question :} A-t-on $I(V(I)) = I$ pour tout idéal $I$?
+
+    \pause
+    \begin{alertblock}{Contre-exemple}
+        Plaçons-nous dans $\mathbb{C}[X]$ et considérons l'idéal $I = (X^2)$.
+        \pause
+        \begin{enumerate}
+            \item L'ensemble des zéros est: $V(I) = \{ 0 \}$. \pause
+            \item L'idéal annulateur de ce point est: $I(\{0\}) = (X)$. \pause
+            \item Conclusion: $(X) \neq (X^2)$.
+        \end{enumerate}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Nullstellensatz}
+    \begin{definition}[Radical d'un idéal]
+        Le radical de $I$, noté $\sqrt{I}$, est l'ensemble des éléments dont une puissance appartient à $I$:
+        \[ \sqrt{I} = \{ f \in k[\bar{x}] \mid \exists n=m \ge 1, f^m \in I \} \]
+    \end{definition}
+
+    \pause
+    \begin{theorem}[Nullstellensatz de Hilbert]
+        Soit $k$ un corps algébriquement clos et $I$ un idéal de $K[\bar{x}]$. Alors:
+        \[ I(V(I)) = \sqrt{I} \]
+    \end{theorem}
+    \pause
+    \textit{Vérification sur notre exemple :} $\sqrt{(X^2)} = (X)$.
+\end{frame}
 
 \end{document}
