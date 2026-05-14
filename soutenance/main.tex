@@ -145,7 +145,7 @@
 \end{frame}
 
 % 
-\begin{frame}{Une correspondance parfaite}
+\begin{frame}{Une correspondance parfaite?}
     On vérifie facilement que $V(I(X)) = X$. \\
     \vspace{0.5cm}
     \textbf{Question :} A-t-on $I(V(I)) = I$ pour tout idéal $I$?
@@ -175,6 +175,29 @@
     \end{theorem}
     \pause
     \textit{Vérification sur notre exemple :} $\sqrt{(X^2)} = (X)$.
+\end{frame}
+
+\begin{frame}{Esquisse de la preuve}
+    L'inclusion $\sqrt{I} \subseteq I(V(I))$ est immédiate. Prouvons l'autre sens.
+    
+    \pause
+    \vspace{0.3cm}
+    Soit $f \in I(V(I))$. On introduit une nouvelle variable $Y$ et l'idéal :
+    \[ J = (I, 1 - Yf) \subset K[\overline{x}, Y] \]
+    
+    \pause
+    \begin{enumerate}
+        \item \textbf{Absence de zéros:} Si $x \in V(I)$, alors $f(x) = 0$, donc $1 - Y(0) = 1 \neq 0$. Ainsi, $V(J) = \emptyset$.
+        
+        \pause
+        \item \textbf{Nullstellensatz faible:} Par l'élimination des quantificateurs, $J$ n'est pas un idéal propre, donc $1 \in J$.
+        
+        \pause
+        \item \textbf{Identité de Bézout:} Il existe $A_i, B$ tels que 
+        \[ 1 = \sum P_i A_i + (1-Yf)B \]
+        \pause
+        \item \textbf{Évaluation:} En évaluant en $Y = 1/f(\overline{x})$ et en chassant les dénominateurs, on obtient $f^m \in I$, d'où $f \in \sqrt{I}$.
+    \end{enumerate}
 \end{frame}
 
 \end{document}
