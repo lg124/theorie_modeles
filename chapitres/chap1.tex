@@ -282,10 +282,9 @@ alors $\mathcal{M} \equiv \mathcal{N}$.
 \end{theo}
 
 \begin{proof}
-Nous commençons par montrer par induction que les définitions \ref{plongement} et \ref{defi-terme} suffisent à ce que les termes se comportent bien
-sous plongement quelconque, i.e pour $t$ un $\mathcal{L}$-terme, muni de variables libres dans $\overline{v} = (v_1,\dots,v_n)$,
-et $\overline{a}=(a_1,\dots,a_n) \in M^n$, on a $j(t^{\mathcal{M}}(\overline{a}))
-= t^{\mathcal{N}}(j(\overline{a}))$, en notant $j(\overline{a})=(j(a_1),\dots,j(a_n))$\\[0.5cm]
+Soit $\overline{a}=(a_1,\dots,a_n) \in M^n$ et $t$ un $\mathcal{L}$-terme, muni de variables libres dans $\overline{v} = (v_1,\dots,v_n)$.
+Nous montrons par induction sur la complexité de $t$ que $j(t^{\mathcal{M}}(\overline{a}))
+= t^{\mathcal{N}}(j(\overline{a}))$, en notant $j(\overline{a})=(j(a_1),\dots,j(a_n))$.\\[0.5cm]
     Si $t=c$ avec $c$ constante, on a 
     \begin{align*}
     j(t^{\cM}(\overline{a})) &= j(c^{\cM})\\
@@ -445,12 +444,12 @@ pour tout $A_0,\dots,A_n \in A$, on a $A_0 \cap \dots \cap A_n \ne \emptyset$.
 \end{defi}
 
 \begin{prop}
-Soit $A \subset I$ non vide et ayant la propriété de l'intersection finie. L'ensemble des parties de $I$ qui contiennent une intersection finie 
+Soit $A \subset \mathcal{P}(I)$ non vide et ayant la propriété de l'intersection finie. L'ensemble des parties de $I$ qui contiennent une intersection finie 
 d'éléments de $A$ est un filtre, qu'on appelle le filtre engendré par $A$.
 \end{prop}
 
 \begin{proof}
-Soit un tel sous-ensemble $A \subset I$. On montre que $ \cF = \{ X \subset I \mid \exists A_0,\dots,A_n \in A, A_0 \cap \dots \cap A_n \in X \}$ est un filtre.
+Soit un tel sous-ensemble $A \subset \mathcal{P}(I)$.\\ On montre que $ \cF = \{ X \subset I \mid \exists A_0,\dots,A_n \in A, A_0 \cap \dots \cap A_n \subset X \}$ est un filtre.
 Clairement $I \in \cF$ et $\emptyset \not\in \cF$ par propriété d'intersection finie. Si $X \in \cF$ et $X \subset Y$, alors il existe $A_0,\dots,A_n \in A$
 tel que $A_0 \cap \dots \cap A_n \subset X$, d'où $A_0 \cap \dots \cap A_n \subset Y$, et $Y \in \cF$. Si $X,Y \in \cF$, alors il existe $I_X$ et $I_Y$ respectivement
 des intersections finies de parties de $A$ dans $X$ et $Y$, et $I_X \cap I_Y$ est encore une intersection finie d'éléments de $A$ tel que $I_X \cap I_Y \subset X \cap Y$,
@@ -469,7 +468,7 @@ sinon $A \cap (I \setminus A) = \emptyset \in \cF$. Supposons alors un filtre $\
 $\cF \cup \{A\}$ a la propriété d'intersection finie si et seulement si $I \setminus A \not\in \cF$. Ceci impose l'implication directe: si $\cF$ est
 un ultrafiltre, alors on ne peut pas l'agrandir via $A$, et on obtient $I \setminus A \in \cF$.
 \begin{enumerate}[label= (\roman*)]
-\item Si $I \setminus A \in \cF$, alors $A \cup (I \setminus A) = \emptyset$ et $\cF \cup \{A\}$ n'a pas la propriété d'intersection finie.
+\item Si $I \setminus A \in \cF$, alors $A \cap (I \setminus A) = \emptyset$ et $\cF \cup \{A\}$ n'a pas la propriété d'intersection finie.
 \item Si $\cF \cup \{A\}$ n'a pas la propriété d'intersection finie,
 alors il existe $B_0,\dots,B_n \in \cF$ tel que $B_0 \cap \dots \cap B_n \cap A = \emptyset$, d'où $B_0 \cap \dots \cap B_n \subset I \setminus A$,
 et $I \setminus A \in \cF$ par stabilité par sur-ensemble.
@@ -587,7 +586,7 @@ Alors pour tout cardinal $\kappa$, $T_{\infty}$ est $\kappa$-catégorique.
 \begin{proof}
 Soit $\kappa$ un cardinal infini. Soient $\cM$ et $\cN$ deux modèles de $T_{\infty}$ tel que $\lvert \cM \rvert = \lvert \cN \rvert = \kappa$.
 Puisque $\cL = \emptyset$, nos modèles sont simplement des ensembles. Or par un argument ensembliste, $M$ et $N$ étant de même cardinalité, il existe $\phi: M \longrightarrow N$ une bijection.
-$\phi$ étant une bijection entre structures vides, il n'y a aucun symbole à preserver et c'est un $\cL$-isomorphisme.
+$\phi$ étant une bijection entre structures sans symboles, c'est trivialement un $\cL$-isomorphisme.
 \end{proof}
 
 \noindent Le Théorème de compacité assure qu'une théorie reste satisfaisable tant que ses sous-ensembles finis le sont.
