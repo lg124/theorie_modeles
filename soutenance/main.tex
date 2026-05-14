@@ -1,0 +1,115 @@
+\documentclass{beamer}
+\usepackage{datetime}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{booktabs}
+
+\usetheme{metropolis}           % Use metropolis theme
+
+\title{Théorie des modèles}
+\date{04/06/26}
+\author{Lucas Gaebele \& Adan Herlaut}
+\institute{Université Côte d'Azur}
+\begin{document}
+  \maketitle
+  \section{Introduction express à la théorie des modèles}
+  \begin{frame}{First Frame}
+    Hello, world!
+  \end{frame}
+
+ % Def complétude, ACF complete
+\begin{frame}{Complétude}
+    \begin{definition}[Théorie complète]
+        Une $\mathcal{L}$-théorie $T$ est dite \textbf{complète} si pour toute $\mathcal{L}$-phrase $\phi$, on a soit :
+        \[ T \models \phi \quad \text{ou} \quad T \models \neg\phi \]
+    \end{definition}
+    
+    \pause
+    \begin{theorem}[Complétude de $ACF_p$]
+        Soit $p \in \{0\} \cup \mathcal{P}$ la caractéristique. La théorie $ACF_p$ est \textbf{complète}.
+    \end{theorem}
+\end{frame}
+
+
+% Principe de Lefschetz
+\begin{frame}{Le Principe de Lefschetz}
+    La complétude et la \textbf{compacité} permettent de transférer les énoncés entre les caractéristiques:
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{ll}
+            \toprule
+            \textbf{Énoncé $\phi$ vrai sur...} & \textbf{Équivaut à...} \\
+            \midrule
+            Le corps $\mathbb{C}$ & Vrai sur tout $K \models ACF_0$ \\
+            Tout $K \models ACF_0$ & Vrai sur $ACF_p$ pour $p \gg 0$ \\
+            \bottomrule
+        \end{tabular}
+    \end{table}
+
+    \pause
+    \begin{exampleblock}{Idée de la preuve}
+        Si $ACF_0 \models \phi$, alors il existe un sous-ensemble fini d'axiomes $\Sigma \subset ACF_0$ tel que $\Sigma \models \phi$. Comme $\Sigma$ est fini, il n'exclut qu'un nombre fini de caractéristiques $p$.
+    \end{exampleblock}
+\end{frame}
+
+% Énoncé Ax-Grothendieck
+\begin{frame}{Le Théorème d'Ax-Grothendieck}
+    \begin{theorem}[Ax-Grothendieck, 1966]
+        Soit $f : \mathbb{C}^n \to \mathbb{C}^n$ une application polynomiale. 
+        Si $f$ est \textbf{injective}, alors elle est \textbf{surjective}.
+    \end{theorem}
+
+    \pause
+    
+    \begin{exampleblock}{Stratégie de la preuve}
+        Utiliser le principe de Lefschetz pour se ramener à un problème simple sur les corps finis.
+    \end{exampleblock}
+\end{frame}
+
+% Preuve AG 1
+\begin{frame}{Preuve : Étape 1 - Traduction de l'énoncé}
+    On fixe $n$ (variables) et $d$ (degré maximum). L'application polynomiale
+    $f$ est déterminée par ses coefficients $\bar{c}$. \\
+    % exemple au tableau
+    \pause
+    On peut écrire une phrase $\phi_{n,d}$ dans le langage $\mathcal{L}_{ring}$:
+    \[ \phi_{n,d} : \forall \bar{c} \, (\text{Inj}(\bar{c}) \to \text{Surj}(\bar{c})) \]
+    
+    \pause
+    Par principe de Lefschetz,pour prouver $\phi_{n,d}$ sur $\mathbb{C}$ il
+    suffit de le prouver sur $\overline{\mathbb{F}_p}$ pour tout $p$.
+
+\end{frame}
+
+% Preuve AG 2
+\begin{frame}{Preuve : Étape 2 - Raisonnement par l'absurde}
+    On travaille sur $\overline{\mathbb{F}_p}$. Soit $f$ injective. Supposons par l'absurde qu'il existe $y \notin \text{Im}(f)$.
+    
+    \pause
+    \begin{itemize}
+        \item Soit $K$ le sous-corps de $\overline{\mathbb{F}_p}$ engendré par les coefficients de $f$ et les composantes de $y$.
+        \pause
+        \item $K$ est une extension finie de $\mathbb{F}_p$, donc \textbf{$K$ est un corps fini}.
+    \end{itemize}
+    
+    \pause
+    \begin{alertblock}{Contradiction}
+        $f$ induit une application injective $f|_K : K^n \to K^n$. \\
+
+        \pause
+        
+        Or, pour un ensemble fini, \textbf{injection $\iff$ surjection}.
+        Donc $y$ doit être dans l'image de $f$.
+    \end{alertblock}
+\end{frame}
+
+  
+  \section{De l'élimination des quantificateurs au Nullstellensatz}
+    \begin{frame}
+  \end{frame}
+
+\end{document}
