@@ -16,9 +16,81 @@
 \begin{document}
   \maketitle
   \section{Introduction express à la théorie des modèles}
-  \begin{frame}{First Frame}
-    Hello, world!
-  \end{frame}
+\begin{frame}{Prélude}
+    La Théorie des modèles étudie les relations entre les énoncés formels (syntaxe) et les structures mathématiques qui les réalisent (sémantique).
+\end{frame}
+
+\begin{frame}{Langages}
+    Un langage $\mathcal{L}$ est une collection de symboles divisée en trois types : les fonctions, les relations et les constantes.
+    \begin{example}
+    Écrire les axiomes de la théorie des anneaux suppose un langage :
+    \begin{enumerate}
+    \item Des fonctions : $+, \times$
+    \item Des constantes : $0, 1$
+    \item Aucune relation
+    \end{enumerate}
+    On note $\mathcal{L}_{\text{ring}} = \{+, \times, 0, 1\}$ le langage des anneaux.
+    \end{example}
+\end{frame}
+
+\begin{frame}{Formules}
+On se donne un langage $\mathcal{L}$. A l'aide des symboles donnés par la Logique ($\wedge, \implies, =, \forall$...) et ceux donnés par $\mathcal{L}$,
+nous pouvons écrire des $\mathcal{L}$-formules.
+\begin{example}
+Reprenons $\mathcal{L}_{\text{ring}} = \{+, \times, 0, 1\}$.
+On peut alors écrire les formules : 
+\begin{enumerate}
+\item $\phi_1 : \forall x,y,z [ x \times (y+z) = x \times y + x \times z ]$
+\item $ \phi_2 : \forall x [ \neg(x = 0) \implies \exists y, x \times y = 1 ]$
+\end{enumerate}
+\end{example}
+\end{frame}
+
+\begin{frame}{Théories et modèles}
+\begin{definition}
+Soit $\mathcal{L}$ un langage. Une $\mathcal{L}$-théorie $\mathcal{T}$ est un ensemble de $\mathcal{L}$-formules.
+Un modèle $\mathcal{M}$ de $\mathcal{T}$ est une structure \textbf{mathématique} où toutes les formules de $\mathcal{T}$ sont \textbf{vraies} dans $\mathcal{M}$.
+\end{definition}
+\begin{example}
+Muni de $\mathcal{L}_{\text{ring}} = \{+, \times, 0, 1\}$, on peut écrire la \textbf{théorie des anneaux} $\mathcal{T}$. $\phi_1$ est un élément de $\mathcal{T}$.
+$\mathbb{Z}$ est un modèle de $\mathcal{T}$.
+\end{example}
+\end{frame}
+
+\begin{frame}{Théories et modèles}
+\begin{definition}
+\begin{enumerate}
+\item Soit $\mathcal{T}$ une $\mathcal{L}$-théorie. $\mathcal{T}$ est \textbf{satisfiable} s'il existe un modèle $\mathcal{M}$ de $\mathcal{T}$.
+\item Soit $\phi$ une $\mathcal{L}$-formule, on note $\mathcal{T} \models \phi$ si $\phi$ est vraie dans tous les modèles de $\mathcal{T}$.
+\end{enumerate}
+\end{definition}
+\begin{example}
+Soit $\mathcal{T}$ la théorie des anneaux. On a $\mathcal{T} \models \phi_1$, mais $\mathcal{T} \not\models \phi_2$.
+\end{example}
+\end{frame}
+
+\begin{frame}{Théorème de compacité}
+\begin{theorem}
+Soit $T$ une $\mathcal{L}$-théorie. $T$ est satisfiable si et seulement si tout sous-ensemble fini de $T$ est satisfiable.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Théorie des corps algébriquement clos}
+Soit $\mathcal{L}_{\text{ring}} = \{+, \times, 0, 1\}$. Formalisons la \textbf{théorie des corps algébriquement clos}.
+On rajoute à la théorie des corps les $\mathcal{L}_{ring}$-formules suivantes :
+\begin{align*}
+ \phi_n : \forall a_0, \ldots, a_{n-1}, \exists x [x^n+a_{n-1}\cdot x^{n-1} + \cdots + a_1 \cdot x + a_0 = 0].
+\end{align*}
+pour tout $n \in \mathbb{N^*}$. Ceci donne la théorie des corps algébriquement clos, notée $ACF$.
+\end{frame}
+
+\begin{frame}{Théorie des corps algébriquement clos}
+Soit $p \in \mathbb{P}$ et la $\mathcal{L}_{\text{ring}}$-formule $\chi_p : \underbrace{1 + \cdots 1 = 0}_\text{p}$.\\On définit :
+\begin{enumerate}
+\item $ACF_p = ACF \cup \chi_p$ la théorie des corps algébriquement clos de caractéristique $p$.
+\item $ACF_0 = ACF \cup \{\neg\chi_p \mid p \in \mathbb{P}\}$ la théorie des corps algébriquement clos de caractéristique nulle.
+\end{enumerate}
+\end{frame}
 
   \section{De la complétude au théorème d'Ax-Grothendieck}
  % Def complétude, ACF complete
